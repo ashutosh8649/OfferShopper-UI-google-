@@ -49,5 +49,5 @@ Product Page Description Component	-
 
 Product Page Images Component		-
 			
-Related Products Component 		-
+Related Products Component 		- Ashutosh Mishra
 
