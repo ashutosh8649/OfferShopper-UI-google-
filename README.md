@@ -43,7 +43,7 @@ Login & Register Component 		-
 
 Vendor related Services Component 	-
 
-Product Page Descruption Component	-
+Product Page Description Component	-
 
 Product Page Images Component		-
 			
