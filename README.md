@@ -27,7 +27,27 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Componenets List
-User profile      - Rajneesh
+User profile      			- Rajneesh
 
-Header and Footer - Anand
+Header and Footer 			- Anand
+
+Search boxes      			-
+
+Search Results & Pagination 		-
+
+Contact Page & Search Page Side Bar 	-
+
+Carry Bag Page 				-
+
+Vendor Page				-
+
+Login & Register Component 		-
+
+Vendor related Services Component 	-
+
+Product Page Descruption Component	-
+
+Product Page Images Component		-
+			
+Related Products Component 		-
 
