@@ -29,7 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Components List
 User profile      			- Rajneesh
 
-Header and Footer 			- 
+Header and Footer 			- Girish
 
 Search boxes & Vendor Page		-
 
