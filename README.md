@@ -31,15 +31,13 @@ User profile      			- Rajneesh
 
 Header and Footer 			- 
 
-Search boxes      			-
+Search boxes & Vendor Page		-
 
 Search Results & Pagination 		-
 
 Contact Page & Search Page Side Bar 	-
 
 Carry Bag Page 				- Anand
-
-Vendor Page				-
 
 Login & Register Component 		-
 
