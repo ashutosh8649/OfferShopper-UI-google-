@@ -41,7 +41,7 @@ Carry Bag Page & Component 		- Anand
 
 WishList Page and Component 		- Gursharan
 
-Login & Register Component 		-
+Login & Register Component 		- Dinesh
 
 Vendor related Services Component 	-
 
