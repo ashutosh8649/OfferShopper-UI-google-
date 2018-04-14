@@ -33,7 +33,7 @@ Header and Footer 			- Girish
 
 Search boxes & Vendor Page		-
 
-Search Results & Pagination 		-
+Search Results & Pagination 		- Vishruty
 
 Contact Page & Search Page Side Bar 	-
 
