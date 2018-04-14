@@ -37,7 +37,9 @@ Search Results & Pagination 		-
 
 Contact Page & Search Page Side Bar 	-
 
-Carry Bag Page 				- Anand
+Carry Bag Page & Component 		- Anand
+
+WishList Page and Component 		- Gursharan
 
 Login & Register Component 		-
 
