@@ -33,9 +33,9 @@ Header and Footer 			- Girish
 
 Search boxes & Vendor Page		-
 
-Search Results & Pagination 		- Vishruty
+Search Results & Pagination 		- 
 
-Contact Page & Search Page Side Bar 	-
+Contact Page & Search Page Side Bar - Vishruty
 
 Carry Bag Page & Component 		- Anand
 
