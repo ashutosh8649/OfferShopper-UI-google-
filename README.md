@@ -45,9 +45,9 @@ Login & Register Component 		- Dinesh
 
 Vendor related Services Component 	-
 
-Product Page Description Component	-
+Product Page Description Component	- Yashika
 
-Product Page Images Component		-
+Product Page Images Component		- Pooja
 			
 Related Products Component 		- Ashutosh Mishra
 
