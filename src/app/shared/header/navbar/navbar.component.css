@@ -1,0 +1,14 @@
+.logo{
+	width:5px;
+	height:5px;
+}
+
+.header{
+	background-color:LightGray;
+	text-align:center;
+}
+
+.location{
+	background-color: red;
+	text-align:center;
+}
