@@ -31,9 +31,9 @@ User profile      			- Rajneesh
 
 Header and Footer 			- Girish
 
-Search boxes & Vendor Page		- Nikhil KK
+Search boxes & Vendor Page		- Anish
 
-Search Results & Pagination 		- 
+Search Results & Pagination 		- Nikhil KK
 
 Contact Page & Search Page Side Bar - Vishruty
 
