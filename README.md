@@ -29,9 +29,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Components List
 User profile      			- Rajneesh
 
-Header and Footer 			- Girish
+Header and Footer 			- 
 
-Search boxes & Vendor Page		-
+Search boxes & Vendor Page		- Girish
 
 Search Results & Pagination 		- 
 
