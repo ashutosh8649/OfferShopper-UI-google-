@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+
+ import {VendorDetails} from './vendorDetails';
 
 @Component({
   selector: 'app-vendor-registration-details',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VendorRegistrationDetailsComponent implements OnInit {
 
+ vendorDetails:VendorDetails;
+  form:FormGroup;
+
   constructor() { }
 
   ngOnInit() {
+    this.form=new FormGroup({
+      firstName : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]),
+      lastName : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]),
+        email : new FormControl('', [Validators.required, Validators.email]),
+        password : new FormControl(''),
+        contact : new FormControl('', [Validators.pattern('[0-9]*'),Validators.minLength(10),Validators.maxLength(11)]),
+        DOB : new FormControl(''),
+        gender : new FormControl(''),
+        address : new FormControl(''),
+        city : new FormControl(''),
+        state : new FormControl(''),
+        zip : new FormControl('', [Validators.pattern('[0-9]*')]),
+        vendorAddress : new FormControl('', [Validators.required]),
+        vendorCity : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]),
+        vendorState : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]),
+        vendorZip : new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
+        vendorContact : new FormControl('', [Validators.pattern('[0-9]*'),Validators.minLength(10),Validators.maxLength(11)]),
+    })
   }
+
+Add(){
+  console.log(this.form.value);
+}
 
 }
