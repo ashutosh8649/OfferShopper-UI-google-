@@ -1,0 +1,22 @@
+.text-color {
+    color: darkkhaki
+}
+
+.text-heading {
+    color: peachpuff
+}
+nav a {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: oblique;
+    text-decoration: blanchedalmond;
+    color: aquamarine
+}
+
+.dropdown-item {
+    background: black
+}
+
+.dropdown-item:hover {
+    background: darkslategrey;
+    color: greenyellow
+}

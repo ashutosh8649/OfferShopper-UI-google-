@@ -1,0 +1,21 @@
+/**
+ * Demo Styles
+ */
+
+.demo {
+  margin: 0 auto;
+}
+
+/**
+ * Footer Styles
+ */
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #efefef;
+  text-align: center;
+  z-index: 1;
+}

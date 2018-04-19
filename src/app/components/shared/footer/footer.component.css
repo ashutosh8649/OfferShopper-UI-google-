@@ -1,0 +1,21 @@
+ul {
+    text-decoration: none;
+    list-style: none;
+    display: inline-block
+}
+
+li {
+    display: inline-flex;
+}
+
+a {
+    color: aquamarine
+}
+
+.text-color {
+    color: darkkhaki
+}
+
+.text-heading {
+    color: peachpuff
+}

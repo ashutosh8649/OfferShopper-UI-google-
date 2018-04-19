@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <a class="navbar-brand " href="#">OfferShopper</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Offers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#"></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Profile
+        </a>
+        <div class="dropdown-menu justify-content-right" aria-labelledby="navbarDropdownMenuLink">
+          <a class="btn btn-light sidebar-text d-flex justify-content-center" (click)="searchRestaurants('userdetails')">Profile</a>
+          <a class="btn btn-light sidebar-text d-flex justify-content-center" (click)="searchRestaurants('wishlist')" >Wishlist</a>
+          <a class="btn btn-light sidebar-text d-flex justify-content-center" (click)="searchRestaurants('carrybag')">Carrybag</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
