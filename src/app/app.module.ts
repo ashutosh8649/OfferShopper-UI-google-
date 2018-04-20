@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
+import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SharedComponent } from './components/shared/shared.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { NavbarComponent } from './components/shared/header/navbar/navbar.component';
-import { CarryBagComponent } from './components/shared/header/navbar/carry-bag/carry-bag.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SearchComponentComponent } from './components/home-page/search-component/search-component.component';
@@ -16,14 +15,10 @@ import { ShopPageComponent } from './components/shop-page/shop-page.component';
 import { SearchSideBarComponent } from './components/shop-page/search-side-bar/search-side-bar.component';
 import { SearchResultsComponent } from './components/shop-page/search-results/search-results.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { UserSideBarComponent } from './components/user-profile/user-side-bar/user-side-bar.component';
-import { UserContentComponent } from './components/user-profile/user-content/user-content.component';
-import { CarrybagOfferComponent } from './components/user-profile/carrybag/carrybag-offer/carrybag-offer.component';
-import { CarrybagHeaderComponent } from './components/user-profile/carrybag/carrybag-header/carrybag-header.component';
-import { WishlistOffersComponent } from './components/user-profile/wishlist/wishlist-offers/wishlist-offers.component';
-import { WishlistHeaderComponent } from './components/user-profile/wishlist/wishlist-header/wishlist-header.component';
-import { UserdetailsComponent } from './components/user-profile/userdetails/userdetails.component';
+import { UserComponent } from './components/user/user.component';
+import { CarrybagComponent } from './components/user/carrybag/carrybag.component';
+import { WishlistComponent } from './components/user/wishlist/wishlist.component';
+import { UserdetailsComponent } from './components/user/userdetails/userdetails.component';
 import { LocationComponent } from './components/shared/header/location/location.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
@@ -34,7 +29,7 @@ import { CarrybagService } from './services/carrybag.service';
 
 
 const appRoutes:Routes=[
-  {path:'userprofile',component:UserProfileComponent}
+  {path:'user/:param',component:UserComponent}
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
 ]
@@ -45,7 +40,6 @@ const appRoutes:Routes=[
     SharedComponent,
     HeaderComponent,
     NavbarComponent,
-    CarryBagComponent,
     FooterComponent,
     HomePageComponent,
     SearchComponentComponent,
@@ -55,15 +49,11 @@ const appRoutes:Routes=[
     SearchSideBarComponent,
     SearchResultsComponent,
     ContactUsComponent,
-    UserProfileComponent,
-    UserSideBarComponent,
-    UserContentComponent,
+    UserComponent,
     LocationComponent,
-    CarrybagOfferComponent,
-    CarrybagHeaderComponent,
+    CarrybagComponent,
     UserdetailsComponent,
-    WishlistOffersComponent,
-    WishlistHeaderComponent
+    WishlistComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,14 @@
-<div class="sidenav-back-color d-none d-sm-block">
+<div class="sidenav">
+  <div class="sidenav-back-color d-none d-sm-block">
   <div class="sidenav-large-content">
     <ul class="nav nav-pills flex-column">
-      <li class="btn btn-light sidebar-text d-flex justify-content-center" (click)="getUserdata()" (click)="showProfile('userdetails')">
+      <li class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'userdetails']">
           Personal Information
       </li>
-      <li class="btn btn-light sidebar-text d-flex justify-content-center" (click)="showProfile('carrybag')">
+      <li class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'carrybag']">
           Carry Bag
       </li>
-      <li class="btn btn-light sidebar-text d-flex justify-content-center" (click)="showProfile('wishlist')">
+      <li class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'wishlist']">
         Wish List
         </li>
       <li class="btn btn-light sidebar-text d-flex justify-content-center">
@@ -19,6 +20,7 @@
     </ul>
   </div>
 </div>
+<!-- (click)="showProfile('userdetails')"  -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light d-block d-sm-none">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -28,10 +30,10 @@
       <li class="nav-item sidebar-text" (click)="getUserdata()" routerLink='/userprofile'>
         Personal Information
       </li>
-      <li class="nav-item sidebar-text">
+      <li class="nav-item sidebar-text" (click)="go('wishlist')" routerLink='/userprofile'>
         Carry Bag
       </li>
-      <li class="nav-item sidebar-text" routerLink='/wishlist'>
+      <li class="nav-item sidebar-text" routerLink='/userprofile'>
         Wish List
       </li>
       <li class="nav-item sidebar-text">
@@ -43,3 +45,17 @@
     </ul>
   </div>
 </nav>
+</div>
+<div class="main">
+  <div [ngSwitch]="sub">
+    <div *ngSwitchCase="'userdetails'">
+      <app-userdetails></app-userdetails>
+    </div>
+    <div *ngSwitchCase="'carrybag'">
+      <app-carrybag></app-carrybag>
+    </div>
+    <div *ngSwitchCase="'wishlist'">
+      <app-wishlist></app-wishlist>
+    </div>
+  </div> 
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{UserService} from './../../../services/user.service';
 import {FormsModule} from '@angular/forms';
+
 @Component({
   selector: 'app-userdetails',
   templateUrl: './userdetails.component.html',

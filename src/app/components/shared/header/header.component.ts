@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +8,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() success = new EventEmitter<any>();
-
-  constructor() { }
+  constructor( private router: Router ) { }
 
   ngOnInit() {
   }
-
-  searchRestaurants(user) {
-      this.success.emit(user);
-    }
 }

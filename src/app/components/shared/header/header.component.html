@@ -20,9 +20,10 @@
           Profile
         </a>
         <div class="dropdown-menu justify-content-right" aria-labelledby="navbarDropdownMenuLink">
-          <a class="btn btn-light sidebar-text d-flex justify-content-center" (click)="searchRestaurants('userdetails')">Profile</a>
-          <a class="btn btn-light sidebar-text d-flex justify-content-center" (click)="searchRestaurants('wishlist')" >Wishlist</a>
-          <a class="btn btn-light sidebar-text d-flex justify-content-center" (click)="searchRestaurants('carrybag')">Carrybag</a>
+          <!-- <a class="btn btn-light sidebar-text d-flex justify-content-center" (click)="go('userdetails')">Profile</a> -->
+          <a class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'userdetails']">Profile</a>
+          <a class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'wishlist']" >Wishlist</a>
+          <a class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'carrybag']">Carrybag</a>
         </div>
       </li>
     </ul>

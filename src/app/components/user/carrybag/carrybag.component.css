@@ -1,3 +1,27 @@
+.wishlist-header {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	}
+.wishlist-header-content {
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  color:white;
+	}
+@media (max-width: 767.98px) {
+	.wishlist-header-content {
+	  font-size: 2rem;
+	}
+}
+
+@media (min-width: 768px){
+	.wishlist-header-content {
+	  font-size: 3rem;
+	}
+}
 
 .description-container {
 	font-size: 0.9rem;
@@ -5,6 +29,11 @@
 }
 .offer {
 	height: 200px;
+}
+
+.ifcarryempty
+{
+	font-style: italic;
 }
 
 .offer-center {
@@ -22,7 +51,7 @@
 	padding-left: 30px;
 }
 
-@media (max-width: 575.98px) { 
+@media (max-width: 575.98px) {
 	.show-offer-border {
 		margin-left: -7px;
 		margin-right: -7px;
@@ -81,8 +110,7 @@ del {
 	width: 100%;
 	height: 100%;
 }
-
-.wishlist-offer {
-	padding-left: 10px;
-	padding-right: 10px;
+.carryempty
+{
+	text-align: center;
 }
