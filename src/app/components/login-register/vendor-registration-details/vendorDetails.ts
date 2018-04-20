@@ -1,4 +1,4 @@
-export interface VendorDetails{
+export interface vendorDetails{
 	firstName:String,
 	lastName:String,
 	email:String,

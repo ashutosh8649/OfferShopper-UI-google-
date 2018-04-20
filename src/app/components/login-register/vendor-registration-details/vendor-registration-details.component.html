@@ -50,17 +50,34 @@
               </div>
               </div>
             </div>
+
             <div class="col-sm-5 form-group col-md-6">
               <label>Password</label>
-              <input type="password" placeholder="Password" formControlName="password" class="form-control"> </div>
+              <input type="password" placeholder="Password" formControlName="password" class="form-control"> 
+                 <div *ngIf="form.get('password').touched && form.get('password').invalid" class="alert-msg">
+              <div *ngIf="form.get('password').hasError('required')">
+                Password is required!  
+              </div>
+              </div>
+
+            </div>
           </div>
           <div class="row">
             <div class="form-group col-sm-4">
               <label>Contact Number</label>
               <input type="phone" id="phone" placeholder="Contact Number" formControlName="contact" class="form-control"> 
-                    <div *ngIf="form.get('contact').touched && form.get('contact').hasError('pattern')" class="alert-msg">
-             Contact Invalid!
-            </div></div>
+                   <div *ngIf="form.get('contact').touched && form.get('contact').invalid" class="alert-msg">
+              <div *ngIf="form.get('contact').hasError('minlength') && !form.get('contact').hasError('pattern')">
+                Less than 10 digits 
+              </div>
+              <div *ngIf="form.get('contact').hasError('maxlength') && !form.get('contact').hasError('pattern')">
+               More than 10 digits 
+              </div>
+              <div *ngIf="form.get('contact').hasError('pattern')">
+                Invalid Contact
+              </div>
+            </div>
+                  </div>
             <div class="form-group col-sm-4">
               <label>DOB</label>
               <input type="date" id="birthDate" formControlName="DOB" class="form-control"> </div>
@@ -82,16 +99,22 @@
           <div class="row">
             <div class="col-sm-4 form-group">
               <label>City</label>
-              <input type="text" placeholder="Enter City Name Here.." formControlName="city" class="form-control" id="City"> </div>
+              <input type="text" placeholder="Enter City Name Here.." formControlName="city" class="form-control" id="City"> <div *ngIf="form.get('city').touched && form.get('city').invalid" class="alert-msg">
+              <div *ngIf="form.get('city').hasError('pattern')">
+               City invalid!
+              </div></div></div>
             <div class="col-sm-4 form-group">
               <label>State</label>
-              <input type="text" placeholder="Enter State Name Here.." formControlName="state" class="form-control" id="State"> </div>
+              <input type="text" placeholder="Enter State Name Here.." formControlName="state" class="form-control" id="State"><div *ngIf="form.get('state').touched && form.get('state').invalid" class="alert-msg">
+              <div *ngIf="form.get('state').hasError('pattern')">
+               State invalid!
+              </div></div> </div>
             <div class="col-sm-4 form-group">
               <label>Zip</label>
               <input type="text" placeholder="Enter Zip Code Here.." formControlName="zip" class="form-control" id="ZipCode"> 
                <div *ngIf="form.get('zip').touched && form.get('zip').invalid" class="alert-msg">
-              <div *ngIf="form.get('zip').hasError('required')">
-               Vendor Address is required! 
+              <div *ngIf="form.get('zip').hasError('pattern')">
+               ZipCode invalid!
               </div></div>
             </div>
           </div>
@@ -154,24 +177,25 @@
               <label>Vendor Contact Number</label>
               <input type="phone" id="phone" placeholder="Contact Number"  formControlName="vendorContact" class="form-control"> 
                <div *ngIf="form.get('vendorContact').touched && form.get('vendorContact').invalid" class="alert-msg">
-              <div *ngIf="form.get('vendorContact').hasError('required') && !form.get('contact').hasError('pattern')">
-                Contact is required!  
+              <div *ngIf="form.get('vendorContact').hasError('required')">
+               Contact is required! 
               </div>
-              <div *ngIf="form.get('vendorContact').hasError('minlength') && !form.get('contact').hasError('pattern')">
+              <div *ngIf="form.get('vendorContact').hasError('minlength') && !form.get('vendorContact').hasError('pattern')">
                 Less than 10 digits 
               </div>
-              <div *ngIf="form.get('vendorContact').hasError('maxlength') && !form.get('contact').hasError('pattern')">
+              <div *ngIf="form.get('vendorContact').hasError('maxlength') && !form.get('vendorContact').hasError('pattern')">
                More than 10 digits 
               </div>
               <div *ngIf="form.get('vendorContact').hasError('pattern')">
-                Invalid Contact
+               Invalid Contact! 
               </div>
             </div>
-          </div></div>
+          </div>
+        </div>
           <!-- /.form-group -->
           <div class="row">
             <div class="form-group col-sm-3 col-sm-offset-3">
-              <button type="submit" class="btn btn-primary btn-block">Register</button>
+              <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block">Register</button>
             </div>
              
           </div>
