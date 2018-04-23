@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -21,15 +22,16 @@ import { WishlistComponent } from './components/user/wishlist/wishlist.component
 import { UserdetailsComponent } from './components/user/userdetails/userdetails.component';
 import { LocationComponent } from './components/shared/header/location/location.component';
 import { HttpModule } from '@angular/http';
-import { FormsModule }   from '@angular/forms';
 import { RouterModule,Routes } from '@angular/router';
 import { UserService } from './services/user.service';
 import { WishlistService } from './services/wishlist.service';
 import { CarrybagService } from './services/carrybag.service';
+import { LoginRegisterFrontpageComponent } from './components/login-register/login-register-frontpage.component';
 
 
 const appRoutes:Routes=[
-  {path:'user/:param',component:UserComponent}
+  {path:'user/:param',component:UserComponent},
+  {path:'login',component:LoginRegisterFrontpageComponent}
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
 ]
@@ -53,12 +55,14 @@ const appRoutes:Routes=[
     LocationComponent,
     CarrybagComponent,
     UserdetailsComponent,
-    WishlistComponent
+    WishlistComponent,
+    LoginRegisterFrontpageComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [UserService, WishlistService, CarrybagService],
