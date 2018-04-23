@@ -1,15 +1,8 @@
-ul {
-    text-decoration: none;
-    list-style: none;
-    display: inline-block
+footer {
+    background: url("../../../../assets/footer_bg.png")
 }
-
-li {
-    display: inline-flex;
-}
-
 a {
-    color: aquamarine
+    color: crimson
 }
 
 .text-color {
@@ -17,5 +10,27 @@ a {
 }
 
 .text-heading {
-    color: peachpuff
+    text-decoration: bold;
+    text-transform: capitalize;
+    color: turquoise
+}
+
+.text-lead {
+    color: lavender
+}
+
+.social-media {
+    display: inline-flex;
+    list-style: none;
+    padding-left: 0px;
+}
+
+.social-media > li {
+    padding: 1rem;
+
+}
+
+.links, .help, .categories {
+    padding-left: 0px;
+    list-style: none
 }

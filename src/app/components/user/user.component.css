@@ -1,17 +1,14 @@
 @media (min-width: 768px) {
 	.sidenav {
-	    height: 100%;
+	    
 	    width: 260px;
 	    position: fixed;
-	    z-index: 1;
-	    top: 0;
-	    left: 0;
+	    
 	    background-color: #f2f2f2;
 	    overflow-x: hidden;
 	}
 	.main {
     	margin-left: 260px;
-    	margin-bottom: 90px;
 	}
 }
 
@@ -24,6 +21,11 @@
 	width: 100%;
 }
 
-.sidenav-large-content {
+/*.sidenav-large-content {
 	margin-top: 110%;
+}
+*/
+
+.sidenav {
+	vertical-align: middle
 }

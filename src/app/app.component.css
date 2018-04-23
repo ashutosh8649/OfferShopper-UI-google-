@@ -1,16 +1,4 @@
-/**
- * Demo Styles
- */
-
-.demo {
-  margin: 0 auto;
-}
-
-/**
- * Footer Styles
- */
-
-.footer {
+/*.footer {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -19,3 +7,9 @@
   text-align: center;
   z-index: 1;
 }
+
+@media (min-width: 992px) {
+	.body {
+	margin-bottom: 145px;
+	}
+}*/
