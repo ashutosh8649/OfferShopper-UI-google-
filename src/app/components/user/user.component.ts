@@ -10,14 +10,17 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit {
 
   public userList;
+  public login;
 
-  constructor( private route: ActivatedRoute, private router: Router ) { }
+  constructor( 
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     /*let id = this.route.snapshot.params['id'];
     this.sub=id;*/
     this.route.paramMap.subscribe(params => {
-    console.log(params.get('param'));
     this.userList = params.get('param');
   });
   }
@@ -25,5 +28,4 @@ export class UserComponent implements OnInit {
   go(idSelected) {
       this.router.navigate(['/userprofile',idSelected])
     }
-
 }

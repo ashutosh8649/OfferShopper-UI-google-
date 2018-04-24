@@ -22,6 +22,7 @@ import { UserComponent } from './components/user/user.component';
 import { VendorPageComponent } from './components/vendor-page/vendor-page.component';
 import { CarrybagComponent } from './components/user/carrybag/carrybag.component';
 import { WishlistComponent } from './components/user/wishlist/wishlist.component';
+import { AddOfferComponent } from './components/user/add-offer/add-offer.component';
 import { UserdetailsComponent } from './components/user/userdetails/userdetails.component';
 import { LocationComponent } from './components/shared/header/location/location.component';
 import { HttpModule } from '@angular/http';
@@ -30,9 +31,11 @@ import { UserService } from './services/user.service';
 import { OffersService } from './services/offers.service';
 import { WishlistService } from './services/wishlist.service';
 import { CarrybagService } from './services/carrybag.service';
+import { AddOfferService } from './services/add-offer.service';
 import { LoginRegisterFrontpageComponent } from './components/login-register/login-register-frontpage.component';
 import { SearchService } from './services/search.service';
 import { SubscriptionListComponent } from './components/user/subscription-list/subscription-list.component';
+import { AuthorizationService } from './services/authorization.service';
 
 const appRoutes:Routes=[
 
@@ -70,7 +73,8 @@ const appRoutes:Routes=[
     WishlistComponent,
     LoginRegisterFrontpageComponent,
     SubscriptionListComponent,
-    VendorPageComponent
+    VendorPageComponent,
+    AddOfferComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,7 @@ const appRoutes:Routes=[
      apiKey: 'AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ'
    })
   ],
-  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService],
+  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

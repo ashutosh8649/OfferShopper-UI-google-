@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import {UserData} from '../configs/userdata.config'
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -10,7 +11,7 @@ export class UserService {
   private headers = new Headers({ 'Content-Type': 'application/json'});
 
    getProfile(){
-   return this.http.get('http://localhost:8768/userdata/rajneesh@gmail.com')
+   return this.http.get(UserData.userUrl+"megha@gmail.com")
    .map(data => data.json(),
    (error: any)=>console.log("error in getting data from database"));
  }

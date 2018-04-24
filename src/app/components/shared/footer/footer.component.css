@@ -1,7 +1,9 @@
 footer {
     font-family: 'Poiret One';
-    background: url("../../../../assets/footer_bg.png");
+    background: black;
+    padding-left: 8rem;
 }
+
 a {
     color: crimson
 }
@@ -13,11 +15,15 @@ a {
 .text-heading {
     text-decoration: bold;
     text-transform: capitalize;
-    color: turquoise
+    font-family: 'Holtwood One SC', serif;
+    color: white;
+    font-size: 18px;
 }
 
 .text-lead {
-    color: lavender
+    font-family: 'Julius Sans One', sans-serif;
+    color: lavender;
+    font-size: 13px;
 }
 
 .social-media {
@@ -28,10 +34,13 @@ a {
 
 .social-media > li {
     padding: 1rem;
-
 }
 
 .links, .help, .categories {
     padding-left: 0px;
     list-style: none
+}
+
+.nm-t{
+    margin-top: -35px;
 }

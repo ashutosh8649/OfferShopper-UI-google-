@@ -5,7 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://v40.pingendo.com/assets/4.0.0/default/theme.css" type="text/css"> </head>
+  <link rel="stylesheet" href="https://v40.pingendo.com/assets/4.0.0/default/theme.css" type="text/css"> 
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.min.js"></script>
+</head>
 
 <body >
 
@@ -86,6 +90,10 @@
               <input type="date" id="birthDate" formControlName="DOB" class="form-control"> </div>
             <div class="form-group col-sm-3">
               <label>Gender</label>
+              <div class="form-inline">
+              <input type="radio" name="gender" value='Male' formControlName="gender">Male
+      <input type="radio" name='gender' value='Female' formControlName="gender">Female
+    </div>
               <div class="form-inline">
                 <label class="checkbox-inline form-control">
                   <input type="checkbox" id="MaleCheckbox" formControlName="gender" value="Male"> Male </label>
@@ -198,9 +206,9 @@
           <!-- /.form-group -->
           <div class="row">
             <div class="form-group col-sm-3 col-sm-offset-3">
-              <button type="submit"  class="btn btn-primary btn-block" (click)="AddUser()">Register</button>
+              <button type="submit"  class="btn btn-primary btn-block" (click)="registerVendor()" [disabled]="form.invalid">Register</button>
             </div>
-             
+              <!--  -->
           </div>
         </div>
       </form>
@@ -209,10 +217,10 @@
 
 
   <!--Login-register-front-page-->
-  <div class="py-5" [hidden]="IsNotHidden">
+  <div class="py-5 loginContainer" [hidden]="IsNotHidden">
     <div class="container">
       <div class="card-group">
-        <div class="card text-white p-5 bg-primary">
+        <div class="card text-white cardPadding cards bg-primary">
           <div class="card-body">
             <h1 class="mb-4">Login</h1>
       
@@ -247,17 +255,21 @@
               <div class="form-group">
                 <a class="text-white" href>Forgot Password</a>
               </div>
-              <button type="submit" class="btn btn-secondary" [disabled]="loginForm.invalid" (click)="login()" >Login</button>
+              <button type="submit" class="btn btn-secondary" [disabled]="loginForm.invalid" (click)="login()">Login</button>
             </form>
           </div>
         </div>
-        <div class="card text-white p-5 bg-primary">
+        <div class="card text-white cardPadding cards bg-primary">
           <div class="card-body">
             <h1 class="mb-4">Register</h1>
                        <form [formGroup]="registerForm">
               <div class="form-group">
+               
+
+
                 <label>Username</label>
-                <input type="email" formControlName="username" class="form-control" placeholder="Enter email"> 
+                <input  type="email" formControlName="username" class="form-control" placeholder="Enter email"> 
+                 <div  class="alert-msg" *ngIf="registerForm.get('username').touched && isAlredyExist"> Already present! </div>
                 <div *ngIf="registerForm.get('username').touched && registerForm.get('username').invalid" class="alert-msg">
               <div *ngIf="registerForm.get('username').hasError('required')">
                 Username is required!  
@@ -265,7 +277,8 @@
               <div *ngIf="registerForm.get('username').hasError('email') && !registerForm.get('username').hasError('required')">
                 Username Invalid!
               </div>
-              </div></div>
+              </div>
+            </div>
                   <div class="form-group">
                 <label>Password</label>
                 <input type="password" formControlName="password" class="form-control" placeholder="Password"> 
@@ -304,7 +317,7 @@
                 <input type="checkbox" value="isVendor" name="isVendor"  (click)="onSelect()" [disabled]="registerForm.invalid">
                 <label>Vendor</label>
               </div>
-              <button type="submit" class="btn btn-secondary" [disabled]="registerForm.invalid" (click)="register()">Next</button>
+              <button type="submit" class="btn btn-secondary" [disabled]="registerForm.invalid" (click)="registerUser()">Next</button>
             </form>
           </div>
         </div>

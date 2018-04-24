@@ -43,6 +43,7 @@ export class SearchComponentComponent implements OnInit {
 }
 
   ngOnInit() {
+    this.category = 'All';
   }
 
   showValue() : void {

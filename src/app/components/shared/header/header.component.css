@@ -1,15 +1,15 @@
-/* for small devices 
+/* for small devices
 @media (min-width: 576px) {
     .wrapper-large {
         display: none;
     }
 }*/
 /* for extra-large devices */
-@media (min-width: 960px) { 
+@media (min-width: 960px) {
    .small {
        display: none;
-   } 
-   
+   }
+
  }
 
  @media (max-width: 960px) {
@@ -24,14 +24,11 @@
 
 .dot {
     color: lightcoral;
+    font-size:45px;
 }
 
-sub {
-    font-variant-position: super
-}
 #logo:hover {
-    
-    transform: scale(2,2);
+    transform: scale(5,5);
 }
 .text-color {
     color: darkkhaki
@@ -40,34 +37,63 @@ sub {
 .text-heading {
     color: peachpuff
 }
+
 nav a {
-    font-family: 'Poiret One';
-    font-style: oblique;
+    font-family: 'Julius Sans One', sans-serif;
     text-decoration: black;
-    color: lavender
+    color: #a49dad;
 }
 
 nav a:hover {
-    color: darksalmon
+    color: #e9967a;
 }
+
+div a:hover {
+    color:black;
+}
+
 .dropdown-item {
     display: flex;
     background: rgb(48, 52, 56)
 }
 
 .dropdown-item:hover {
-    background: darkslategrey;
-    color:  lavender
+    background: white;
+    color:  black;
 }
-
 
 .profile {
     list-style: none;
     display: inline-flex;
 }
 
-.logo{
-    font-family: 'Poiret One', cursive;
-    font-size: 40px;
-    color: lavender;
+.logo {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 28px;
+    color: black;
+    padding-left:50px;
+}
+
+.nav-text {
+  font-size:15px;
+  margin-left:20px;
+  margin-top:10px;
+}
+
+.header-shadow {
+  margin-left: -5px;
+  box-shadow: 10px 1px 3px black;
+}
+
+.text-pride {
+    color: lightcoral;
+}
+
+.active {
+    border: 1px solid lightcoral;
+}
+
+.logout{
+      padding:10px;
+     border: 1px solid lightcoral; 
 }

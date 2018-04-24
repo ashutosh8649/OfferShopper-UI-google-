@@ -10,30 +10,28 @@
       <div class="carousel-inner">
         <div>
           <form id="search" class="form-inline my-2 my-lg-0">
-            <div class="col-">
-              <select name="category-selected" class="dropdown btn btn-light dropdown-toggle mr-1" [(ngModel)]="category">
+              <select name="category-selected" class="dropdown btn btn-light dropdown-toggle mr-2" [(ngModel)]="category">
                 <option class="dropdown-item" selected>All</option>
                 <option class="dropdown-item">Electronics</option>
                 <option class="dropdown-item">Furniture</option>
                 <option class="dropdown-item">Stationery</option>
                 <option class="dropdown-item">Groceries</option>
               </select>
-            </div>
-            <input id="input" list="suggestions" name="query" [(ngModel)]="query" class="form-control mr-sm-2" (keyup)="searchTerm$.next($event.target.value)" autocomplete="off" type="text"
+            <input id="input" list="suggestions" name="query" [(ngModel)]="query" class="form-control mr-sm-2 search-box" (keyup)="searchTerm$.next($event.target.value)" autocomplete="off" type="text"
             placeholder="Search for your favorite deals here" aria-label="Search">
             <!-- search button -->
             <!-- on click of button show values for category and field-->
-            <button id="searchButton" type="button" (click)="showValue()"  class="btn btn-light"><i class="fas fa-search"></i></button>
+             <button id="searchButton" type="button" (click)="showValue()" class="btn btn-light search-btn"><i class="fas fa-search"></i></button>
           </form>
         </div>
         <div class="carousel-image carousel-item active">
           <img class="homepage-image d-block w-100" src="../../../../assets/images/carousel_1.jpg" alt="First slide">
         </div>
         <div class="carousel-image carousel-item">
-          <img class="homepage-image d-block w-100" src="../../../../assets/images/carousel_2.jpg" alt="Second slide">
+          <img class="homepage-image d-block w-100" src="../../../../assets/images/carousel_2.jpeg" alt="Second slide">
         </div>
         <div class="carousel-image carousel-item">
-          <img class="homepage-image d-block w-100" src="../../../../assets/images/carousel_3.jpg" alt="Third slide">
+          <img class="homepage-image d-block w-100" src="../../../../assets/images/carousel_3.jpeg" alt="Third slide">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -57,7 +55,7 @@
 
 
 <div *ngIf="products.length">
-  <div class="container mb-2 description-container">
+  <div class="container mb-2 description-container mt-4">
     <div class="row">
       <div class="col-md-3 col-sm-4 col-6">
       </div>

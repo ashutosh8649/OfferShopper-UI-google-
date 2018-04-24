@@ -14,10 +14,8 @@ export class RegisterService {
   private headers = new Headers({ 'Content-Type': 'application/json'});
 
   register(body){
-  	  	console.log(body);
-  	  	console.log("In service");
     return this.http.post(Register.registerDetails, body, {headers: this.headers})
-     .map(data => {console.log("In deep"+data);},
+     .map(data => {data.toString},
 	(error: any)=>console.log("error in calling register service"));
   }
 

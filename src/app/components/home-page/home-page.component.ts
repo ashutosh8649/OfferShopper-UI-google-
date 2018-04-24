@@ -9,7 +9,7 @@ export class HomePageComponent implements OnInit {
 
 
   constructor() { }
-
+  token:any;
   ngOnInit() {
   }
 

@@ -27,12 +27,11 @@ export class WishlistComponent implements OnInit {
       }, (error) =>{
       })
   }
-  deleteOffer(offerId,userId){
-    this.wishlistService.deleteRestaurant(offerId,userId).subscribe((res) =>{
-    	console.log("calling get after delete");
-    	this.getWishlist();
-      }, (error) =>{
-        alert(error + "deleting restaurant does not works");
-      })
-  }
+  // deleteOffer(offerId,userId){
+  //   this.wishlistService.deleteRestaurant(offerId,userId).subscribe((res) =>{
+  //   	this.getWishlist();
+  //     }, (error) =>{
+  //       alert(error + "deleting restaurant does not works");
+  //     })
+  // }
 }

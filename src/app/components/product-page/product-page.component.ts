@@ -18,6 +18,7 @@ export class ProductPageComponent implements OnInit {
     public productName : string;
      public productDescription : string;
      public productValidity :string;
+     public offer :any;
 
   constructor(
     private productDetailService : ProductDetailService,
@@ -33,6 +34,7 @@ export class ProductPageComponent implements OnInit {
   searchProduct(){
       this.productDetailService.searchProduct(this.vendorId)
       .subscribe((res) =>{
+        this.offer=res[0];
       this.productName=res[0].offerTitle;
       this.productDescription=res[0].offerDescription;
       this.productValidity=res[0].offerValidity;

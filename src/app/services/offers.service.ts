@@ -24,12 +24,5 @@ export class OffersService {
       (error: any)=>console.log("error in getting data from database"));
   }
 
-  getProfile(vendorId:string) {
-    return this.http.get(Offerslist.getProfile+vendorId)
-    .map(data => data.json(),
-      (error: any)=>error.json());
-  }
-
-
 
 }

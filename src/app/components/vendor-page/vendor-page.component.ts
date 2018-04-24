@@ -15,6 +15,7 @@ export class VendorPageComponent implements OnInit {
   lng: number;
   offersList:Array<{}>=[];
   priceAfterDiscount: any;
+  shopName:string;
   address:any;
   data:any;
   street:string;
@@ -30,9 +31,7 @@ export class VendorPageComponent implements OnInit {
 
   ngOnInit() {
     this.vendorId=this.route.snapshot.params.id;
-    this.getProfile();
     this.getOfferlist();
-   //this.initMap();
  }
  
 
@@ -41,8 +40,13 @@ export class VendorPageComponent implements OnInit {
  }
  getOfferlist() {
    this.offersService.getOffers(this.vendorId).subscribe((res) =>{
-     debugger
-     this.offersList = res;
+     this.data = res;     
+     this.shopName=this.data.address.name.toUpperCase()
+     this.street=this.data[0].address.street.toUpperCase();
+     this.city=this.data[0].address.city.toUpperCase();
+     this.zip=this.data[0].address.zipCode;
+     this.state=this.data[0].address.state.toUpperCase();
+     this.initMap();
    }, (error) =>{
    })
  }
@@ -55,18 +59,4 @@ export class VendorPageComponent implements OnInit {
    })
  }
 
-
- getProfile() {
-   this.offersService.getProfile(this.vendorId).subscribe((res) =>{
-     this.data=res;
-     this.street=this.data.shopAddress.street.toUpperCase();
-     this.city=this.data.shopAddress.city.toUpperCase();
-     this.zip=this.data.shopAddress.zipCode;
-     this.state=this.data.shopAddress.state.toUpperCase();
-     debugger
-     this.initMap();
-   },(error) =>{
-
-   })
- }
 }

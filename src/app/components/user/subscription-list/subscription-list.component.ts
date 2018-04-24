@@ -37,12 +37,4 @@ export class SubscriptionListComponent implements OnInit {
         alert(error + "deleting restaurant does not works");
       })
   }
-
-  getvalues(userId: string) {
-    let user=this.subscribeServiceList.find(ele=>ele.userId===userId);
-    console.log(user);
-    this.User=user;
-    document.getElementById("modal-body").innerHTML=this.User.userId;
-  }
-
 }

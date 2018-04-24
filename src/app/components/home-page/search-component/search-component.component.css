@@ -1,26 +1,26 @@
 .carousel-item{
-	height: 32rem;
+  height: 32rem;
 }
 
 #search {
-	text-align: center;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1;
-	}
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  }
 
 #category-button {
-	padding-right: 10px;
+  padding-right: 10px;
 }
 
 .homepage-image {
-	filter: brightness(60%);
-   -webkit-filter: brightness(60%);
-   -moz-filter: brightness(60%);
-   -o-filter: brightness(60%);
-   -ms-filter: brightness(60%);
+  filter: brightness(80%);
+   -webkit-filter: brightness(80%);
+   -moz-filter: brightness(80%);
+   -o-filter: brightness(80%);
+   -ms-filter: brightness(80%);
 }
 
 ul{
@@ -37,7 +37,16 @@ ul{
 
 }
 #suggestion:hover{
-    background-color: rgb(235, 229, 229);    
+    background-color: rgb(235, 229, 229);
+}
+
+
+.search-box{
+  width:400px;
+}
+
+.search-btn{
+  width:80px;
 }
 
 /*     trying css       */

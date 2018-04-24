@@ -14,7 +14,7 @@
         <li class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'subscriptionlist']">
           Subscriptions
         </li>
-        <li class="btn btn-light sidebar-text d-flex justify-content-center">
+        <li class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'add-offer']">
             Add Offers
         </li>
       </ul>
@@ -59,6 +59,9 @@
     </div>
     <div *ngSwitchCase="'subscriptionlist'">
       <app-subscription-list></app-subscription-list>
+    </div>
+    <div *ngSwitchCase="'add-offer'">
+      <app-add-offer></app-add-offer>
     </div>
   </div> 
 </div>
