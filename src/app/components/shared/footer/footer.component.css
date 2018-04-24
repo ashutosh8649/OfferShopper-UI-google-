@@ -1,12 +1,13 @@
 footer {
-    background: url("../../../../assets/footer_bg.png")
+    font-family: 'Poiret One';
+    background: url("../../../../assets/footer_bg.png");
 }
 a {
     color: crimson
 }
 
 .text-color {
-    color: darkkhaki
+    color: white
 }
 
 .text-heading {

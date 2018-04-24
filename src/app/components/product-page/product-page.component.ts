@@ -1,15 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductDetailService } from './../../services/product-detail.service';
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
-  styleUrls: ['./product-page.component.css']
+  styleUrls: ['./product-page.component.css'],
+  providers:[ProductDetailService]
 })
+
 export class ProductPageComponent implements OnInit {
 
-  constructor() { }
+  vendorId:string;
 
-  ngOnInit() {
+ @Output() success = new EventEmitter<any>();
+    public searchedProduct: string;
+    public productName : string;
+     public productDescription : string;
+     public productValidity :string;
+
+  constructor(
+    private productDetailService : ProductDetailService,
+    private route: ActivatedRoute
+    ) { }
+
+ ngOnInit() {
+   this.vendorId=this.route.snapshot.params.id;
+ }
+
+ // Function to get customer name and make service call to get customer name from app
+  searchProduct(){
+      this.productDetailService.searchProduct(this.vendorId)
+      .subscribe((res) =>{
+      this.productName=res[0].offerTitle;
+      this.productDescription=res[0].offerDescription;
+      this.productValidity=res[0].offerValidity;
+      console.log(res[0].offerTitle);
+       },(error) =>{
+
+      });
   }
-
 }
