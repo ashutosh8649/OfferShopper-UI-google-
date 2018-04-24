@@ -26,6 +26,7 @@ export class ProductPageComponent implements OnInit {
 
  ngOnInit() {
    this.vendorId=this.route.snapshot.params.id;
+   this.searchProduct();
  }
 
  // Function to get customer name and make service call to get customer name from app
