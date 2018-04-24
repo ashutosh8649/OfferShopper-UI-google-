@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  public sub;
+  public userList;
 
   constructor( private route: ActivatedRoute, private router: Router ) { }
 
@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
     this.sub=id;*/
     this.route.paramMap.subscribe(params => {
     console.log(params.get('param'));
-    this.sub = params.get('param');
+    this.userList = params.get('param');
   });
   }
 

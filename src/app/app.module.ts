@@ -27,11 +27,16 @@ import { UserService } from './services/user.service';
 import { WishlistService } from './services/wishlist.service';
 import { CarrybagService } from './services/carrybag.service';
 import { LoginRegisterFrontpageComponent } from './components/login-register/login-register-frontpage.component';
+import { SearchService } from './services/search.service';
+import { SubscriptionListComponent } from './components/user/subscription-list/subscription-list.component';
 
 
 const appRoutes:Routes=[
-  {path:'user/:param',component:UserComponent},
-  {path:'login',component:LoginRegisterFrontpageComponent}
+
+  { path: '', redirectTo: '/homepage', pathMatch: 'full' },
+  { path: 'homepage', component: HomePageComponent },
+  { path:'user/:param',component:UserComponent },
+  { path:'login',component:LoginRegisterFrontpageComponent },
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
 ]
@@ -56,7 +61,8 @@ const appRoutes:Routes=[
     CarrybagComponent,
     UserdetailsComponent,
     WishlistComponent,
-    LoginRegisterFrontpageComponent
+    LoginRegisterFrontpageComponent,
+    SubscriptionListComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,7 @@ const appRoutes:Routes=[
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService, WishlistService, CarrybagService],
+  providers: [UserService, WishlistService, CarrybagService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
