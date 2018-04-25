@@ -26,17 +26,17 @@
 				<div class="col-md-6">
 					<div class="page-header">
 						<h1>
-							{{ productName }} 
+							{{ productName }}
 						</h1>
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							 
-							
+
+
 						</div>
 						<div class="col-md-6">
-							 
-							
+
+
 						</div>
 					</div>
 					<div id="card-938170">
@@ -61,7 +61,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 			</div>
 		</div>
 	</div>
@@ -100,41 +100,40 @@
 			<div class="col-sm-12 col-md-8 col-lg-7">
 				<li class="list-group-item">
 					<label class="text-heading">Title:</label>
-					<span class="text-lead">{{offer.offerTitle}}</span> 
-					<span class="text-lead">{{offer.Rating}}</span> 
+					<span class="text-lead">{{productName}}</span>
 				</li>
-				
+
 				<li class="list-group-item">
 					<label class="text-heading">Description:</label>
-					<span class="text-lead">{{offer.offerDescription}}</span> 
+					<span class="text-lead">{{productDescription}}</span>
 				</li>
-					
+
 				<li class="list-group-item">
 					<label class="text-heading">Original Price:</label>
-					<span class="text-lead">{{offer.originalPrice}}</span> 
+					<span class="text-lead">{{productOriginalPrice}}</span>
 					<label class="text-heading">Discount</label>
-					<span class="text-lead">{{offer.offerDiscount}}</span> 
+					<span class="text-lead">{{productOfferDiscount}}</span>
 				</li>
-				
+
 				<li class="list-group-item">
 					<label class="text-heading">Seller Name: </label>
-					<span class="text-lead">{{offer.userId}}</span> 
+					<span class="text-lead">{{productVendorId}}</span>
 				</li>
-			
+
 				<li class="list-group-item">
 					<label class="text-heading">Validity: </label>
-					<span class="text-lead">{{offer.offerValidity}}</span> 
+					<span class="text-lead">{{productValidity}}</span>
 				</li>
-				
+
 			</div>
 		</div>
 	</div>
-	
+
 
 	<div class="container-fluid mt-1 ">
 		<div class="row">
 			<!-- Button to add to wishlist-->
-			<input class="btn btn-primary col-2 mx-3" type="button" value="Add to Wishlist">
+			<input class="btn btn-primary col-2 mx-3" (click)="addToWishlist(offer)" type="button" value="Add to Wishlist">
 			<!-- End of button to add to widhlist-->
 
 			<!-- Button to add to carrybag-->
@@ -142,5 +141,5 @@
 			<!-- End of button to add to carrybag-->
 		</div>
 	</div>
-	 
+
 <!--</div>-->

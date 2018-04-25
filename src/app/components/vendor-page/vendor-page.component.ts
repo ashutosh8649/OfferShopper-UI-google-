@@ -33,15 +33,15 @@ export class VendorPageComponent implements OnInit {
     this.vendorId=this.route.snapshot.params.id;
     this.getOfferlist();
  }
- 
+
 
  productPrice(offerOriginalPrice,offerDiscount){
    this.priceAfterDiscount = (offerOriginalPrice)*(1-(offerDiscount)/100);
  }
  getOfferlist() {
    this.offersService.getOffers(this.vendorId).subscribe((res) =>{
-     this.data = res;     
-     this.shopName=this.data.address.name.toUpperCase()
+     this.data = res;
+    // this.shopName=this.data.address.name.toUpperCase()
      this.street=this.data[0].address.street.toUpperCase();
      this.city=this.data[0].address.city.toUpperCase();
      this.zip=this.data[0].address.zipCode;

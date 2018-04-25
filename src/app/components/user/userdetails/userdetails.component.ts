@@ -137,7 +137,7 @@ export class UserdetailsComponent implements OnInit {
       "timestamp": this.timestamp
     }
     this.userdata.putProfile(this.obj).subscribe((res) =>{
-    
+
     }, (error) =>{
 
 
