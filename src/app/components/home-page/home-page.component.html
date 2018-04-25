@@ -1,7 +1,7 @@
 <app-search-component (success)="setCategoryAndQuery($event)"></app-search-component>
 <div class="card-deck mx-5 my-3" *ngIf="offers">
 	<div class="" *ngFor="let offer of offers">
-	  <a >
+	  <span [routerLink]="['/', 'product',offer.userId]">
 		  <div class="card mx-2 my-3 ">
 		    <img class="card-img-top img-fluid" src="http://www.freepngimg.com/download/special_offer/6-2-special-offer-png.png" alt="Card image cap">
 		    <div class="card-body">
@@ -14,7 +14,7 @@
 		      <p class="card-text "><small class="text-muted">Last updated 3 mins ago</small></p>
 		    </div>
 		  </div>
-	  </a>
+	  </span>
  
   	</div>
 </div>
