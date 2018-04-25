@@ -37,7 +37,7 @@ export class LoginRegisterFrontpageComponent implements OnInit {
     @Inject(FormBuilder)  fb: FormBuilder,
     private loginService:LoginService,
     private registerService:RegisterService,
-    ) { 
+    ) {
     this.fb=fb;
     this.registerForm=this.fb.group({
       username: ['',[Validators.required, Validators.email]],
@@ -78,7 +78,7 @@ export class LoginRegisterFrontpageComponent implements OnInit {
       this.isAlredyExist=false;
     });
   }
-  
+
   validateUsername(){
     let body= {
       "email": this.registerForm.get('username').value
@@ -94,9 +94,9 @@ export class LoginRegisterFrontpageComponent implements OnInit {
 
 
   login(){
-    let username=this.loginForm.get('username').value;	
+    let username=this.loginForm.get('username').value;
     let	password = this.loginForm.get('password').value;
-    var xorKey = 129; 
+    var xorKey = 129;
     var result = "";
 
     for (let i = 0; i < password.length; i++) {
@@ -105,7 +105,7 @@ export class LoginRegisterFrontpageComponent implements OnInit {
 
     this.loginService.loginWithEmailId(username,result).subscribe((res) =>{
       alert("Login Successfull");
-      window.location.assign("/homepage");	 
+      window.location.assign("/homepage");
     }, (res:Response) =>{
       if(res.status==401){
         alert("Unauthorized User");
@@ -124,7 +124,6 @@ export class LoginRegisterFrontpageComponent implements OnInit {
       }
       else{
         alert("Connection error");
-
       }
     });
   }
@@ -142,9 +141,9 @@ checkIfMatchingPasswords(group: FormGroup) {
 
 registerVendor(){
   let tempPassword="";
-  
+
   tempPassword=this.form.get('password').value;
-  var xorKey = 129; 
+  var xorKey = 129;
   var resultPassword = "";
 
   for (let i = 0; i < tempPassword.length; i++) {
@@ -177,7 +176,7 @@ registerVendor(){
   console.log(this.form.value);
 
   this.registerService.register(body).subscribe((res) =>{
-    alert("Registered");  
+    alert("Registered");
   }, (res:Response) =>{
     console.log(res);
     if(res.status==401 || res.status==409){
@@ -205,9 +204,9 @@ registerVendor(){
 
 registerUser(){
   let tempPassword="";
-  
+
   tempPassword=this.registerForm.get('password').value;
-  var xorKey = 129; 
+  var xorKey = 129;
   var resultPassword = "";
 
   for (let i = 0; i < tempPassword.length; i++) {
@@ -221,7 +220,7 @@ registerUser(){
   };
 
   this.registerService.register(body).subscribe((res) =>{
-    alert("Registered");  
+    alert("Registered");
   }, (res:Response) =>{
     console.log(res);
     if(res.status==401 || res.status==409){

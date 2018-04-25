@@ -7,7 +7,11 @@ import {Carrybag} from './../configs/carrybag.config';
 @Injectable()
 export class CarrybagService {
 
-  constructor(private http: Http) { }
+  private userInfo;
+
+  constructor(
+    private http: Http
+) { }
 
 
   private headers = new Headers({ 'Content-Type': 'application/json'});
@@ -16,7 +20,7 @@ export class CarrybagService {
     return this.http.get(Carrybag.getCarryBagUrl)
     .map(data => data.json(),
     (error: any)=>console.log("error in getting data from database"));
-    
+
   }
 
   deleteCarrybag(offerId) {

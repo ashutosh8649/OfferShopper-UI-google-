@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
 	userId: string;
 	userInfo: string;
 
-	constructor( 
+	constructor(
 		private router: Router,
-		private authorizationService: AuthorizationService 
+		private authorizationService: AuthorizationService
 		) { }
 
 
@@ -25,9 +25,9 @@ export class HeaderComponent implements OnInit {
 		this.isLogin();
 	}
 
-	isLogin(){		
+	isLogin(){
 		this.login = this.authorizationService.isLogin();
-		this.getUserId();		
+		this.getUserId();
 	}
 
 	logout(){
@@ -35,10 +35,9 @@ export class HeaderComponent implements OnInit {
 		window.location.assign("/homepage");
 	}
 
-	getUserId() {		
+	getUserId() {
 		this.authorizationService.getUserId().subscribe((res) =>{
-			this.userInfo = res;
-			console.log(this.userInfo);
+			this.userInfo = res.text().split(',');
 		}, (error) =>{
 		})
 	}

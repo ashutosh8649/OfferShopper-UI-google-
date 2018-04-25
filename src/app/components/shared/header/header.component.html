@@ -56,7 +56,16 @@
               <a [routerLink]="['/login']"><i class="far fa-user"></i></a>
             </li>
           </div>
-          <li class="nav-item dropdown ml-3">
+          <li *ngIf="!login" class="nav-item dropdown ml-3">
+            <a class="nav-link dropdown-toggle ml-2" [routerLink]="['/login']" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+            <div *ngIf="login" class="dropdown-menu m-0 p-0 justify-content-left" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" [routerLink]="['/user', 'wishlist']">Wishlist</a>
+              <a class="dropdown-item" [routerLink]="['/user', 'carrybag']">Carrybag</a>
+            </div>
+          </li>
+          <li *ngIf="login" class="nav-item dropdown ml-3">
             <a class="nav-link dropdown-toggle ml-2" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-shopping-cart"></i>
             </a>

@@ -7,20 +7,19 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http) { }
-  private headers = new Headers({ 'Content-Type': 'application/json'});
+ constructor(private http: Http) { }
+ private headers = new Headers({ 'Content-Type': 'application/json'});
 
-   getProfile(){
-   return this.http.get(UserData.userUrl+"megha@gmail.com")
+  getProfile(userId:string){
+  return this.http.get(UserData.userUrl+userId)
+  .map(data => data.json(),
+  (error: any)=>console.log("error in getting data from database"));
+}
+
+ putProfile(obj){
+  return this.http.put(UserData.updateUrl,obj, {headers: this.headers})
    .map(data => data.json(),
-   (error: any)=>console.log("error in getting data from database"));
- }
-
-  putProfile(obj){
-
-   return this.http.put('http://localhost:8768/update',obj, {headers: this.headers})
-    .map(data => data.json(),
-  (error: any)=>console.log("error"));
- }
+ (error: any)=>console.log("error"));
+}
 
 }
