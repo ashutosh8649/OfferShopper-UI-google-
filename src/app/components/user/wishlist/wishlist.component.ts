@@ -28,14 +28,18 @@ export class WishlistComponent implements OnInit {
   	this.priceAfterDiscount = (offerOriginalPrice)*(1-(offerDiscount)/100);
   }
   getUserId() {
+    debugger
 		this.authorizationService.getUserId().subscribe((res) =>{
 			this.userInfo = res.text().split(',');
       this.userId = this.userInfo[2];
       this.getWishlist();
 		}, (error) =>{
+      console.log(error);
 		})
 	}
   getWishlist() {
+    console.log("adfsdf");
+    console.log(this.userId);
     this.wishlistService.getWishlist(this.userId).subscribe((res) =>{
       this.wishlistOffers = res;
       }, (error) =>{

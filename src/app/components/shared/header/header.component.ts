@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 	login:boolean = false;
 	token:any;
 	userId: string;
-	userInfo: string;
+	userInfo: any = [];
 
 	constructor(
 		private router: Router,
@@ -36,8 +36,8 @@ export class HeaderComponent implements OnInit {
 	}
 
 	getUserId() {
-		this.authorizationService.getUserId().subscribe((res) =>{
-			this.userInfo = res.text().split(',');
+		this.authorizationService.getUserId().subscribe((res:any) =>{
+			//this.userInfo = res.text().split(',');
 		}, (error) =>{
 		})
 	}

@@ -28,7 +28,7 @@ export class CarrybagComponent implements OnInit {
     this.authorizationService.getUserId().subscribe((res) =>{
       this.userInfo = res.text().split(',');
       this.userId = this.userInfo[2];
-      this.getCarrybag(this.userId);
+      this.getCarrybag();
     }, (error) =>{
     })
   }
@@ -40,8 +40,8 @@ export class CarrybagComponent implements OnInit {
 
 
 
-  getCarrybag(userId) {
-    this.carrybagService.getCarrybaglist(userId).subscribe((res) =>{
+  getCarrybag() {
+    this.carrybagService.getCarrybaglist().subscribe((res) =>{
       this.carryBagOffers = res;
     }, (error) =>{console.log("error");
       })

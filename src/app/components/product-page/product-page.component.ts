@@ -1,12 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductDetailService } from './../../services/product-detail.service';
+import { WishlistService } from './../../services/wishlist.service';
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css'],
-  providers:[ProductDetailService]
+  providers:[ProductDetailService, WishlistService]
 })
 
 export class ProductPageComponent implements OnInit {
@@ -22,7 +23,8 @@ export class ProductPageComponent implements OnInit {
 
   constructor(
     private productDetailService : ProductDetailService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private wishlistService:WishlistService
     ) { }
 
  ngOnInit() {
@@ -34,7 +36,7 @@ export class ProductPageComponent implements OnInit {
   searchProduct(){
       this.productDetailService.searchProduct(this.vendorId)
       .subscribe((res) =>{
-        this.offer=res[0];
+      this.offer=res[0];
       this.productName=res[0].offerTitle;
       this.productDescription=res[0].offerDescription;
       this.productValidity=res[0].offerValidity;
@@ -42,5 +44,14 @@ export class ProductPageComponent implements OnInit {
        },(error) =>{
 
       });
+  }
+
+  addToWishlist(offer1) {
+    alert(offer1.userId);
+    this.wishlistService.addToWishlist(offer1).subscribe((res) =>{
+      alert("added");
+      }, (error) =>{
+        alert("not added");
+      })
   }
 }
