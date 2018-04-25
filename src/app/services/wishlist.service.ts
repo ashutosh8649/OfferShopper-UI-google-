@@ -17,10 +17,17 @@ private authorizationService: AuthorizationService
   private headers = new Headers({ 'Content-Type': 'application/json'});
   getWishlist(userId){
     console.log(userId);
-    return this.http.get(Wishlist.getWishlistUrl+"12345")
+    return this.http.get(Wishlist.getWishlistUrl+userId)
     .map(data => data.json(),
     (error: any)=>console.log("error in getting data from database"));
   }
+
+  addToWishlist(offer){
+    return this.http.post(Wishlist.postWishlistUrl, offer, {headers: this.headers})
+     .map(data => data.json(),
+   (error: any)=>console.log("error in adding restaurant"));
+  }
+
 
   deleteRestaurant(offerId,userId) {
   	return this.http.delete(Wishlist.deleteWishlistUrl+offerId+"/"+userId, { headers: this.headers })
