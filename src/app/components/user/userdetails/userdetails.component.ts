@@ -28,7 +28,7 @@ export class UserdetailsComponent implements OnInit {
   state:string;
   password:string;
   dob:string;
-  gender:string,
+  gender:string;
   spinCount:number;
   osCash:number;
   shopName:string;

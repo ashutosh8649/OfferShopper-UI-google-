@@ -12,7 +12,9 @@ import { HttpModule } from '@angular/http';
 export class SearchService {
   baseUrl: string = 'http://10.151.60.93:8800/q/';
   baseUrlProduct: string = 'http://10.151.60.93:8800/search-key/';
-
+  baseUrlCategorySearch : string = "http://10.151.60.93:8800/offerCategories/";
+  baseUrlCategoryProductSearchUrl1 : string = "http://10.151.60.93:8800/offerCategories/";
+  baseUrlCategoryProductSearchUrl2 : string = "search-key/";
 
   public keywords:any=[];
   public products:any=[];
@@ -44,11 +46,28 @@ export class SearchService {
         }
 
 
-        searchProducts(result){
-          this.products=this.http
-          .get(this.baseUrlProduct + result)
-          .map(res => res.json(),
-          (error: any)=>this.handleError(error));
-          return this.products; 
-        } 
+      searchProducts(result){
+        this.products=this.http
+        .get(this.baseUrlProduct + result)
+        .map(res => res.json(),
+        (error: any)=>this.handleError(error));
+        return this.products; 
+      } 
+
+      searchProductsCategoryOnly(category) {
+        this.products=this.http
+        .get(this.baseUrlCategorySearch+category)
+        .map(res => res.json(),
+        (error: any)=>this.handleError(error));
+        return this.products;
+      }
+
+      searchProductsCategoryAndKey(category, key) {
+        this.products=this.http
+        .get(this.baseUrlCategoryProductSearchUrl1+category+"/"+
+          this.baseUrlCategoryProductSearchUrl2+key)
+        .map(res => res.json(),
+        (error: any)=>this.handleError(error));
+        return this.products;
+      }
 }
