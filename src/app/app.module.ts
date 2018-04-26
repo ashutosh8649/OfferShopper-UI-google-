@@ -36,6 +36,9 @@ import { LoginRegisterFrontpageComponent } from './components/login-register/log
 import { SearchService } from './services/search.service';
 import { SubscriptionListComponent } from './components/user/subscription-list/subscription-list.component';
 import { AuthorizationService } from './services/authorization.service';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { UpdatePasswordService } from './services/update-password.service';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 const appRoutes:Routes=[
 
@@ -44,8 +47,10 @@ const appRoutes:Routes=[
   { path:'user/:param',component:UserComponent },
   { path:'login',component:LoginRegisterFrontpageComponent },
   { path:'product/:id',component: ProductPageComponent},
+  { path:'forgot-password',component: ForgotPasswordComponent},
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
+  { path:'token/:id',component: UpdatePasswordComponent},
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
 ]
@@ -74,7 +79,9 @@ const appRoutes:Routes=[
     LoginRegisterFrontpageComponent,
     SubscriptionListComponent,
     VendorPageComponent,
-    AddOfferComponent
+    AddOfferComponent,
+    ForgotPasswordComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +93,7 @@ const appRoutes:Routes=[
      apiKey: 'AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ'
    })
   ],
-  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService],
+  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, UpdatePasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
