@@ -114,6 +114,14 @@ export class AddOfferComponent implements OnInit {
 		}, (error) =>{
 
 		})
+
+		this.addOfferService.putOffersInCarryBag(this.obj).subscribe((res) =>{
+			this.getOffers();
+			this.reset();
+		}, (error) =>{
+
+		})
+
 	}
 
 	addOffer(){
