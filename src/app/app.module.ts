@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -36,9 +37,13 @@ import { LoginRegisterFrontpageComponent } from './components/login-register/log
 import { SearchService } from './services/search.service';
 import { SubscriptionListComponent } from './components/user/subscription-list/subscription-list.component';
 import { AuthorizationService } from './services/authorization.service';
+<<<<<<< HEAD
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { UpdatePasswordService } from './services/update-password.service';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+=======
+import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
+>>>>>>> 498a4e2b2fcd53e8d6f2588270b4ac97317e506d
 
 const appRoutes:Routes=[
 
@@ -46,8 +51,13 @@ const appRoutes:Routes=[
   { path: 'homepage', component: HomePageComponent },
   { path:'user/:param',component:UserComponent },
   { path:'login',component:LoginRegisterFrontpageComponent },
+  { path:'vendor-register',component:VendorRegisterComponent },
   { path:'product/:id',component: ProductPageComponent},
+<<<<<<< HEAD
   { path:'forgot-password',component: ForgotPasswordComponent},
+=======
+  { path:'product/:id/:offerId',component: ProductPageComponent},
+>>>>>>> 498a4e2b2fcd53e8d6f2588270b4ac97317e506d
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
   { path:'token/:id',component: UpdatePasswordComponent},
@@ -80,10 +90,15 @@ const appRoutes:Routes=[
     SubscriptionListComponent,
     VendorPageComponent,
     AddOfferComponent,
+<<<<<<< HEAD
     ForgotPasswordComponent,
     UpdatePasswordComponent
+=======
+    VendorRegisterComponent
+>>>>>>> 498a4e2b2fcd53e8d6f2588270b4ac97317e506d
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     HttpModule,
     FormsModule,
