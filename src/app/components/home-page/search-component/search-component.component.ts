@@ -14,6 +14,11 @@ export class SearchComponentComponent implements OnInit {
   //event created to pass category and query to parent class
   @Output() success = new EventEmitter<any>();
 
+  //true if search has been done
+  searchFlag : boolean = false;
+  //true if results were found
+  resultsFlag : boolean = false;
+
   public results:any=[];
   public products:any=[];
   name:String;
@@ -48,6 +53,7 @@ export class SearchComponentComponent implements OnInit {
 
   showValue() : void {
     //no results shown
+    this.searchFlag = true;
   if(this.category=="All" && this.query == null) {
     alert("Please select a category or search for a deal.");
   }

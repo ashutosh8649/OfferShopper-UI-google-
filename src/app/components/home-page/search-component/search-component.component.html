@@ -121,11 +121,9 @@
           <button class="btn btn-dark my-2 my-sm-0 container-button" type="button">Add to Carry Bag</button>
           <button class="btn btn-dark my-2 my-sm-0 container-button" [routerLink]="['/', 'vendorInfo',product.userId]" type="button">{{product.userId}}</button>
         </div>
-
       </div>
     </div>
   </div>
 
   <pagination-controls (pageChange)="p=$event"></pagination-controls>
-
 </div>
