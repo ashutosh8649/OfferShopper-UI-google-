@@ -41,14 +41,20 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
     updatePassword(){
+    let password=this.updatePass.get('password').value;
+    var xorKey = 129;
+    var result = "";
 
+    for (let i = 0; i < password.length; i++) {
+      result += String.fromCharCode(xorKey ^ password.charCodeAt(i));
+    }
       let body={
                     "jwe": this.token,
-                    "password": this.updatePass.get('password').value
+                    "password": result
                 };
-              console.log(body);
      this.updatePasswordService.updatePassWithEmail(body).subscribe((res) =>{
       alert("Updated");  
+      console.log(res);
       }, (res:Response) =>{
        if(res.status==401 || res.status==409){
           alert("Username already exists");
