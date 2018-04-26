@@ -85,7 +85,7 @@ const appRoutes:Routes=[
     VendorPageComponent,
     AddOfferComponent,
     ForgotPasswordComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
     VendorRegisterComponent
   ],
   imports: [
