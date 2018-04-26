@@ -27,6 +27,8 @@ export class ProductPageComponent implements OnInit {
   public offer :any;
   public userInfo : any;
   public user : any;
+  public wishAdded =1;
+  public cartAdded =1;
 
   constructor(
     private productDetailService : ProductDetailService,
@@ -80,8 +82,9 @@ export class ProductPageComponent implements OnInit {
 
    }
    this.wishlistService.addToWishlist(wishlistBean).subscribe((res) =>{
-     
+     this.wishAdded = 2;
    },(error) =>{
+     this.wishAdded = 3;
    })
   }
 
@@ -97,7 +100,9 @@ export class ProductPageComponent implements OnInit {
      "vendorId":offer1.userId
    }
    this.carrybagService.addToCarrybag(carrybagBean).subscribe((res) =>{
+     this.cartAdded = 2;
    },(error) =>{
+     this.cartAdded = 3;
    })
   }
 }

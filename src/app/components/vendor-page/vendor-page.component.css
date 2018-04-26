@@ -7,8 +7,9 @@
 }
 
 .offer-center {
-	margin: auto;
 	position: relative;
+	margin-top: 22px; 
+	margin-bottom: 0px;
 }
 
 .display-offer-image img{

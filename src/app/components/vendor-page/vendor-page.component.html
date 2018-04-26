@@ -66,7 +66,7 @@
               <img class="card-img" src="../../assets/tab.jpg" alt="Card image">
             </div>
         </div>
-        <div class="col-md-5 col-sm-4 col-6 d-none d-sm-block offer-center" style="margin-top: 22px; margin-bottom: 0px;">
+        <div class="col-md-5 col-sm-4 col-6 d-none d-sm-block offer-center">
           <b>{{offerList.offerTitle}}</b>
           <p>{{offerList.offerDescription}}</p>
         </div>
@@ -88,7 +88,7 @@
         </div>
         <div class="col-md-2 d-none d-md-block offer-center">
           {{offerList.offerValidity | date}}
-                <button type="button" class="btn btn-secondary">Add To Cart</button>
+                <button type="button" class="btn btn-secondary" (click)="addToCarrybag(offerList)" >Add To CarryBag</button>
         </div>
       </div>
     </div>

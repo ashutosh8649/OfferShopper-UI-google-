@@ -24,5 +24,12 @@ export class OffersService {
       (error: any)=>console.log("error in getting data from database"));
   }
 
+  addToCarrybag(offer){
+    return this.http.post(Carrybag.postCarrybagUrl, offer, {headers: this.headers})
+     .map(data => data.json(),
+   (error: any)=>console.log("error in adding restaurant"));
+  }
+
+
 
 }
