@@ -26,28 +26,25 @@ export class UserComponent implements OnInit {
     /*let id = this.route.snapshot.params['id'];
     this.sub=id;*/
     this.route.paramMap.subscribe(params => {
-    this.userList = params.get('param');
-    this.isLogin();
-  });
+      this.userList = params.get('param');
+      this.isLogin();
+    });
   }
 
   go(idSelected) {
-      this.router.navigate(['/userprofile',idSelected])
-    }
+    this.router.navigate(['/userprofile',idSelected])
+  }
 
-    isLogin(){
-  		this.login = this.authorizationService.isLogin();
-  		this.getUserId();
-  	}
+  isLogin(){
+    this.login = this.authorizationService.isLogin();
+    this.getUserId();
+  }
 
-    getUserId() {
-  		this.authorizationService.getUserId().subscribe((res) =>{
-        console.log(res);
-        console.log(res.text());
-        this.userInfo = res.text().split(',');
-        this.role = this.userInfo[1];
-        console.log(this.role);
-  		}, (error) =>{
-  		})
-  	}
+  getUserId() {
+    this.authorizationService.getUserId().subscribe((res) =>{
+      this.userInfo = res.text().split(',');
+      this.role = this.userInfo[1];
+    }, (error) =>{
+    })
+  }
 }
