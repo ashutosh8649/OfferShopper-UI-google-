@@ -13,11 +13,11 @@ export class HeaderComponent implements OnInit {
 	login:boolean = false;
 	token:any;
 	userId: string;
-	userInfo: string;
+	userInfo: any = [];
 
-	constructor( 
+	constructor(
 		private router: Router,
-		private authorizationService: AuthorizationService 
+		private authorizationService: AuthorizationService
 		) { }
 
 
@@ -25,9 +25,9 @@ export class HeaderComponent implements OnInit {
 		this.isLogin();
 	}
 
-	isLogin(){		
+	isLogin(){
 		this.login = this.authorizationService.isLogin();
-		this.getUserId();		
+		this.getUserId();
 	}
 
 	logout(){
@@ -35,10 +35,9 @@ export class HeaderComponent implements OnInit {
 		window.location.assign("/homepage");
 	}
 
-	getUserId() {		
-		this.authorizationService.getUserId().subscribe((res) =>{
-			this.userInfo = res;
-			console.log(this.userInfo);
+	getUserId() {
+		this.authorizationService.getUserId().subscribe((res:any) =>{
+			//this.userInfo = res.text().split(',');
 		}, (error) =>{
 		})
 	}

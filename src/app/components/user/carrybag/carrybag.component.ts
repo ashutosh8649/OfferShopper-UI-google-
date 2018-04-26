@@ -1,18 +1,19 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { CarrybagService } from '../../../services/carrybag.service';
+import { AuthorizationService } from '../../../services/authorization.service';
 
 
 @Component({
   selector: 'app-carrybag',
   templateUrl: './carrybag.component.html',
   styleUrls: ['./carrybag.component.css'],
-  providers:[CarrybagService]
+  providers:[CarrybagService,AuthorizationService]
 
 })
 export class CarrybagComponent implements OnInit {
   @ViewChild('myModal')myModal;
   couponId:any;
-  userId:String="megha@gmail.com"
+  //userId:String="megha@gmail.com"
   currentUserId:String;
   currentOfferId:String;
   offerId:String;
@@ -23,18 +24,33 @@ export class CarrybagComponent implements OnInit {
   flag:boolean;
   nothing:number;
 
-  constructor(private carrybagService: CarrybagService) { }
+  constructor(private carrybagService: CarrybagService,
+  private authorizationService: AuthorizationService) { }
   priceAfterDiscount: any;
+  public userInfo;
+  public userId;
+  public carryBagOffers=[];
+
+  ngOnInit()
+  {
+  	this.getUserId();
+  }
+
+  getUserId() {
+    this.authorizationService.getUserId().subscribe((res) =>{
+      this.userInfo = res.text().split(',');
+      this.userId = this.userInfo[2];
+      this.getCarrybag();
+    }, (error) =>{
+    })
+  }
 
   productPrice(offerOriginalPrice,offerDiscount){
   	this.priceAfterDiscount = (offerOriginalPrice)*(1-(offerDiscount)/100);
   }
 
-  ngOnInit()
-  {
-  	this.getCarrybag();
-  }
-  public carryBagOffers=[];
+
+
 
   getCarrybag() {
     this.carrybagService.getCarrybaglist(this.userId).subscribe((res) =>{
@@ -42,8 +58,8 @@ export class CarrybagComponent implements OnInit {
     }, (error) =>{console.log("error");
       })
   }
-  deleteOffer(offerId){
-    this.carrybagService.deleteCarrybag(offerId).subscribe((res) =>{
+  deleteOffer(userId, offerId){
+    this.carrybagService.deleteCarrybag(userId, offerId).subscribe((res) =>{
     	this.getCarrybag();
       }, (error) =>{
         alert(error + "deleting restaurant does not works");
@@ -52,19 +68,19 @@ export class CarrybagComponent implements OnInit {
 
 
   couponGenerate(userId,offerId){
-    alert(userId+offerId);
+    
     this.carrybagService.validateCoupon(userId,offerId).subscribe((res) =>{
       let data=res;
-      alert(data.couponId);
+ 
       if(data.userId==null){
       let user=this.carryBagOffers.find(ele=>ele.offerId===offerId);
       this.couponId=Math.floor(Math.random()*100000);
-      //alert(this.data);
+      
       this.obj={
                   "couponId" :this.couponId,
                   "userId"  :user.userId,
                   "offerId" :user.offerId,
-                  "vendorValidationFlag" : true,
+                  "vendorValidationFlag" : false,
                   "rating" :0,
                   "feedback" :null
                 } 
@@ -97,7 +113,7 @@ export class CarrybagComponent implements OnInit {
           "couponId" :data.couponId ,
           "userId"  :data.userId,
           "offerId" :data.offerId,
-          "vendorValidationFlag" : true,
+          "vendorValidationFlag" : data.vendorValidationFlag,
           "rating" :this.rating,
           "feedback" :this.feedback
         } 
@@ -126,16 +142,18 @@ export class CarrybagComponent implements OnInit {
 
     this.carrybagService.validateCoupon(userId,offerId).subscribe((res) =>{
       
-alert(offerId+ userId);
-      this.data=res;
+
+      let data=res;
+     
       
-      if(this.data.feedback==null){
+      if(data.feedback==null&&data.vendorValidationFlag==true){
         this.myModal.nativeElement.click();
         //this.flag=true;
 
         }  else  {
           this.flag=false;
-        }
+          alert("feedback already exists");
+          }
     }, (error) =>{console.log("error");
       })
      
@@ -143,4 +161,6 @@ alert(offerId+ userId);
  
 
   } 
+
+  
 }

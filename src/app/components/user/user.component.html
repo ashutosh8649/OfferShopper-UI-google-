@@ -14,8 +14,11 @@
         <li class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'subscriptionlist']">
           Subscriptions
         </li>
-        <li class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'add-offer']">
+        <li *ngIf="role=='vendor'" class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/user', 'add-offer']">
             Add Offers
+        </li>
+        <li *ngIf="role=='customer'" class="btn btn-light sidebar-text d-flex justify-content-center" [routerLink]="['/','vendor-register']">
+            Be a Seller
         </li>
       </ul>
     </div>
@@ -63,5 +66,5 @@
     <div *ngSwitchCase="'add-offer'">
       <app-add-offer></app-add-offer>
     </div>
-  </div> 
+  </div>
 </div>

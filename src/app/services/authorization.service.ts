@@ -29,18 +29,28 @@ export class AuthorizationService {
 		return true;
 	}
 
-	getUserId() {
+	getUserId(){
 		let token=localStorage.getItem("application-token");
-		return this.http.get("http://10.151.61.152:8765/api/uaa-server/verifytoken/"+"eyJraWQiOiJrMSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJPZmZlclNob3BwZXIiLCJhdWQiOiJPZmZlclNob3BwZXJVc2VyIiwiZXhwIjoxNTI0NjExNTg0LCJqdGkiOiJOa0VzRzQ5RklCWHRRMlJCWVFrWjJ3IiwiaWF0IjoxNTI0NTk5NTg0LCJuYmYiOjE1MjQ1OTk0NjQsInN1YiI6IkN1c3RvbWVyIiwidXNlcm5hbWUiOiJhYmNAYWJjZCJ9.EEZvfynPLoREK-kDpVBflFekxUHge1v0sUiZeEker2hTreZY_AMdma-iDJ6zmHcGhuEy6zytaC8Xdr2oBZ-qVDBwDyhFFlXK5lYa0qPTQirWjwFkLyioGhf1UxsCAIdr6ZmK46oXLUdO0wHLIcj2XnlRtu_CgWqlMEJAqedrtY2QrqSfLk6hDeXt1VZXBajxjPZJwZrikw5kHCuxTbQOXTf7F5CVnqYTUrwbmRioHt8g0pW4XKxJsp7ovR8PMSQcK43mf7DhZKuI84enUMEOkC9gcjPvXxC_6RNYSuJpzBDkn-n1D3JuGuyFZyURTvINdb6NjfqDMKauRcwPFZ3U1Q")
-    .map(data =>data.toString(),
-      (error: any)=>console.log("error in getting data from database"));
+		return this.http.get("http://10.151.61.152:8765/api/uaa-server/verifytoken/"+token)
+		.map((res:Response) =>res,(error: any)=>error.json());
 	}
 
 	logout() {
 		localStorage.removeItem("application-token");
 		localStorage.removeItem("userId");
 	}
-}
+
+	// authorization() {
+	// 	   if(!this.isLogin()) {
+	// 			 return this.router.navigate(['/','login']);
+	// 		 }else {
+	// 			 let token=localStorage.getItem("application-token");
+  //      	let headers = new Headers({ 'Authorization': token });
+  //        return new RequestOptions({ headers: headers});
+  //      }
+  //      return new RequestOptions({ headers: headers });
+  //    }
+	 }
 
 
 /*true, role, emailId*/

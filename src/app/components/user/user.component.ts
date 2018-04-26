@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { AuthorizationService } from '../../services/authorization.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
+  providers:[ AuthorizationService ]
 })
 export class UserComponent implements OnInit {
 
   public userList;
   public login;
+  public userInfo;
+  public role;
 
-  constructor( 
+  constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authorizationService: AuthorizationService
     ) { }
 
   ngOnInit() {
@@ -22,10 +27,27 @@ export class UserComponent implements OnInit {
     this.sub=id;*/
     this.route.paramMap.subscribe(params => {
     this.userList = params.get('param');
+    this.isLogin();
   });
   }
 
   go(idSelected) {
       this.router.navigate(['/userprofile',idSelected])
     }
+
+    isLogin(){
+  		this.login = this.authorizationService.isLogin();
+  		this.getUserId();
+  	}
+
+    getUserId() {
+  		this.authorizationService.getUserId().subscribe((res) =>{
+        console.log(res);
+        console.log(res.text());
+        this.userInfo = res.text().split(',');
+        this.role = this.userInfo[1];
+        console.log(this.role);
+  		}, (error) =>{
+  		})
+  	}
 }

@@ -23,7 +23,8 @@
  }
 
 .dot {
-    color: lightcoral;
+    /* color: lightcoral; */
+    color:#fd4747;
     font-size:45px;
 }
 
@@ -86,14 +87,14 @@ div a:hover {
 }
 
 .text-pride {
-    color: lightcoral;
+    color: #fd4747;
 }
 
 .active {
-    border: 1px solid lightcoral;
+    border: 1px solid #fd4747;
 }
 
 .logout{
       padding:10px;
-     border: 1px solid lightcoral; 
+     border: 1px solid #fd4747;
 }

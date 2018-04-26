@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -36,6 +37,7 @@ import { LoginRegisterFrontpageComponent } from './components/login-register/log
 import { SearchService } from './services/search.service';
 import { SubscriptionListComponent } from './components/user/subscription-list/subscription-list.component';
 import { AuthorizationService } from './services/authorization.service';
+import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
 
 const appRoutes:Routes=[
 
@@ -43,7 +45,9 @@ const appRoutes:Routes=[
   { path: 'homepage', component: HomePageComponent },
   { path:'user/:param',component:UserComponent },
   { path:'login',component:LoginRegisterFrontpageComponent },
+  { path:'vendor-register',component:VendorRegisterComponent },
   { path:'product/:id',component: ProductPageComponent},
+  { path:'product/:id/:offerId',component: ProductPageComponent},
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
@@ -74,9 +78,11 @@ const appRoutes:Routes=[
     LoginRegisterFrontpageComponent,
     SubscriptionListComponent,
     VendorPageComponent,
-    AddOfferComponent
+    AddOfferComponent,
+    VendorRegisterComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     HttpModule,
     FormsModule,

@@ -12,22 +12,23 @@ import { FormsModule} from '@angular/forms';
 export class AddOfferComponent implements OnInit {
 	offerId:String ;
 	userId: String ;
-	dateOfAnnouncement:DateTimeFormat;
+	dateOfAnnouncement:any;
 	offerCategories:String;
-	offerValidity:DateTimeFormat;
-	discount:number;
+	offerValidity:any;
+	discount:any;
 	keywords:String;
 	offerDescription:String;
 	offerTerms:String;
 	offerTitle:String;
-	originalPrice:number;
+	originalPrice:any;
 	city:String;
 	state:String;
 	street:String;
-	zipCode:number;
+	zipCode:any;
 	name:String;
 	number:String;
 	offerRating:String;
+	coupon:number;
 
 	obj={};
 	User:any={};
@@ -42,9 +43,9 @@ export class AddOfferComponent implements OnInit {
 	public offers=[];
 
 	getOffers() {
-		console.log("ksdjk");
+
 		this.addOfferService.getOffersList().subscribe((res) =>{
-			console.log("ksdjk");
+
 			this.offers = res;
 			console.log(this.offers);
 		}
@@ -60,7 +61,23 @@ export class AddOfferComponent implements OnInit {
 		})
 	}
 
-
+	reset(){
+		this.offerId="";
+		this.userId="";
+		this.offerTitle="";
+		this.offerValidity="";
+		this.dateOfAnnouncement="";
+		this.offerDescription="";
+		this.originalPrice="";
+		this.discount="";
+		this.offerRating="";
+		this.offerCategories="";
+		this.offerTerms="";
+		this.keywords="";
+		this.city="";
+		this.state="";
+		this.street="";
+	}
 
 	updateOffer(offerId){
 		let user=this.offers.find(ele=>ele.offerId===offerId);
@@ -93,7 +110,7 @@ export class AddOfferComponent implements OnInit {
 		}
 		this.addOfferService.putOffer(this.obj).subscribe((res) =>{
 			this.getOffers();
-
+			this.reset();
 		}, (error) =>{
 
 		})
@@ -123,5 +140,42 @@ export class AddOfferComponent implements OnInit {
 
 		})
 	}
+couponValidate()
+{
+	
+	this.addOfferService.couponValidateService(this.coupon).subscribe((res) =>{
+
+		debugger
+		let couponData = res;
+		//alert(couponData);
+		if(couponData==null) {
+			alert("wrong coupon entered");
+		}
+		else {
+			let obj = {
+				"couponId" : couponData.couponId,
+				"userId" : couponData.userId,
+				"offerId" : couponData.offerId,
+				"rating" : couponData.rating,
+				//"feedback" : couponData.feedback,
+				"vendorValidationFlag" : true
+			}
+
+			this.addOfferService.changeFlag(obj).subscribe((res) =>{
+				let responseMessage = res;
+				alert(responseMessage);
+				
+	
+			}, (error) =>{
+	
+			})
+		}
+	
+	}
+	, (error) =>{console.log("error");
+})
+}
+
+
 
 }
