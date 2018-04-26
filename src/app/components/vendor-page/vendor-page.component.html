@@ -86,11 +86,18 @@
             <dd></dd>
           </dl>
         </div>
-        <div class="col-md-2 d-none d-md-block offer-center">
+        <div *ngIf="user; else elseBlock">
+          <div class="col-md-2 d-none d-md-block offer-center">
           {{offerList.offerValidity | date}}
                 <button type="button" class="btn btn-secondary" (click)="addToCarrybag(offerList)" >Add To CarryBag</button>
+          </div>
+       </div>
+        <ng-template #elseBlock>
+          <div class="col-md-2 d-none d-md-block offer-center">
+          {{offerList.offerValidity | date}}
+              <button type="button" class="btn btn-secondary" (click)="notLogin()" >Add To CarryBag</button>
         </div>
+        </ng-template>
       </div>
-    </div>
     </div>
 </div>

@@ -116,12 +116,22 @@
         <div class="col-md-3 d-none d-md-block offer-center">
           {{product.offerDescription}}
         </div>
-        <div class="col-md-2 d-none d-md-block offer-center">
+        <div *ngIf="user; else elseBlock">
+          <div class="col-md-2 d-none d-md-block offer-center">
           {{product.offerRating}}
           <button class="btn btn-dark my-2 my-sm-0 container-button" (click)="addToCarrybag(product)" type="button">Add to Carry Bag</button>
           <button class="btn btn-dark my-2 my-sm-0 container-button" [routerLink]="['/', 'vendorInfo',product.userId]" type="button">{{product.address.name}}</button>
         </div>
+        </div>
 
+
+        <ng-template #elseBlock>
+          <div class="col-md-2 d-none d-md-block offer-center">
+          {{product.offerRating}}
+          <button class="btn btn-dark my-2 my-sm-0 container-button" (click)="notLogin()" type="button">Add to Carry Bag</button>
+          <button class="btn btn-dark my-2 my-sm-0 container-button" [routerLink]="['/', 'vendorInfo',product.userId]" type="button">{{product.address.name}}</button>
+        </div>
+        </ng-template>
       </div>
     </div>
   </div>

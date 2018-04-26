@@ -5,6 +5,7 @@ import { AuthorizationService } from '../../../services/authorization.service';
 import { MessageService } from '../../../services/message.service';
 import { CarrybagService } from '../../../services/carrybag.service';
 
+
 @Component({
   selector: 'app-search-component',
   templateUrl: './search-component.component.html',
@@ -142,9 +143,6 @@ export class SearchComponentComponent implements OnInit {
  }
 
    addToCarrybag(offer1) {
-     console.log(offer1);
-
-     console.log(this.user);
    let carrybagBean = {
      "userId":this.user,
      "offerId":offer1._id,
@@ -162,5 +160,9 @@ export class SearchComponentComponent implements OnInit {
 
    })
  }
+
+ notLogin(){
+ this.messageService.showErrorToast(this._vcr,"Please Login");
+  }
 
 }
