@@ -47,6 +47,7 @@ const appRoutes:Routes=[
   { path:'login',component:LoginRegisterFrontpageComponent },
   { path:'vendor-register',component:VendorRegisterComponent },
   { path:'product/:id',component: ProductPageComponent},
+  { path:'product/:id/:offerId',component: ProductPageComponent},
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
