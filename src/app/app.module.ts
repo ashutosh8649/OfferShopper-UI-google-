@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -80,6 +81,7 @@ const appRoutes:Routes=[
     VendorRegisterComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     HttpModule,
     FormsModule,

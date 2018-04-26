@@ -47,25 +47,36 @@ export class SearchComponentComponent implements OnInit {
   }
 
   showValue() : void {
-   this.searchService.searchProducts(this.query)
-   .subscribe(res => {
-     this.products = res;
-   });
-   this.flag=false;
-    this.success.emit({
-      'query' : this.query,
-      'category' : this.category
-    });
+    //no results shown
+  if(this.category=="All" && this.query == null) {
+    alert("Please select a category or search for a deal.");
   }
 
-  // for the search to work even on pressing enter
-  /*
-  onPressEnter(event) {
-    if(event.keyCode == 13) {
-      document.getElementById("searchButton").click();
-    }
+  // category based search
+  else if(this.category == "All" && this.query != null) {
+    this.searchService.searchProducts(this.query)
+    .subscribe(res => {
+      this.products = res;
+    });
+    this.flag=false;
+     }  
+
+  else if(this.category != "All" && this.query == null) {
+    this.searchService.searchProductsCategoryOnly(this.category)
+    .subscribe(res => {
+      this.products = res;
+    });
+    this.flag=false;
   }
-  */
+  //search by both category and key
+  else {
+    this.searchService.searchProductsCategoryAndKey(this.category, this.query)
+    .subscribe(res => {
+      this.products = res;
+    });
+    this.flag=false;
+  }
+  }
 
   //searching the products in backend
   onclick(result) {
