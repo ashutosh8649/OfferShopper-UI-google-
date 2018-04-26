@@ -23,8 +23,8 @@ export class CarrybagService {
 
   }
 
-  deleteCarrybag(offerId) {
-  	return this.http.delete(Carrybag.deleteCarryBagUrl+offerId, { headers: this.headers })
+  deleteCarrybag(offerId,userId) {
+  	return this.http.delete(Carrybag.deleteCarryBagUrl+"userId/"+userId+"/offerId/"+offerId, { headers: this.headers })
     .map(data => data.status,
     (error: any)=>console.log(error + "error in deleting offer"));
   }

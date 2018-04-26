@@ -47,7 +47,7 @@ export class CarrybagComponent implements OnInit {
       })
   }
   deleteOffer(offerId){
-    this.carrybagService.deleteCarrybag(offerId).subscribe((res) =>{
+    this.carrybagService.deleteCarrybag(offerId,this.userId).subscribe((res) =>{
     	this.getCarrybag();
       }, (error) =>{
         alert(error + "deleting restaurant does not works");
