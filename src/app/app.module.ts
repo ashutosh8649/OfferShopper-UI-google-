@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -93,6 +95,8 @@ const appRoutes:Routes=[
     BrowserModule,
     HttpModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
