@@ -24,5 +24,5 @@ export class OffersService {
       (error: any)=>console.log("error in getting data from database"));
   }
 
-
+  
 }

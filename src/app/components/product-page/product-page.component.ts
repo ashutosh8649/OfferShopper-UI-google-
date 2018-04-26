@@ -46,8 +46,6 @@ export class ProductPageComponent implements OnInit {
     else {
       this.searchProduct();  
     }
-    this.searchProduct();
-    this.getUserId();
   }
 
  // Function to get customer name and make service call to get customer name from app
