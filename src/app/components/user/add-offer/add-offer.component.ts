@@ -43,9 +43,9 @@ export class AddOfferComponent implements OnInit {
 	public offers=[];
 
 	getOffers() {
-		console.log("ksdjk");
+
 		this.addOfferService.getOffersList().subscribe((res) =>{
-			console.log("ksdjk");
+
 			this.offers = res;
 			console.log(this.offers);
 		}
@@ -143,6 +143,37 @@ export class AddOfferComponent implements OnInit {
 couponValidate()
 {
 	
+	this.addOfferService.couponValidateService(this.coupon).subscribe((res) =>{
+
+		debugger
+		let couponData = res;
+		//alert(couponData);
+		if(couponData==null) {
+			alert("wrong coupon entered");
+		}
+		else {
+			let obj = {
+				"couponId" : couponData.couponId,
+				"userId" : couponData.userId,
+				"offerId" : couponData.offerId,
+				"rating" : couponData.rating,
+				//"feedback" : couponData.feedback,
+				"vendorValidationFlag" : true
+			}
+
+			this.addOfferService.changeFlag(obj).subscribe((res) =>{
+				let responseMessage = res;
+				alert(responseMessage);
+				
+	
+			}, (error) =>{
+	
+			})
+		}
+	
+	}
+	, (error) =>{console.log("error");
+})
 }
 
 

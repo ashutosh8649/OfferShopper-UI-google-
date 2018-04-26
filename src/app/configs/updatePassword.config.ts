@@ -1,4 +1,4 @@
 export class updatePassword{
-	public static updatePassEmailId="http://10.151.61.152:8765/api/uaa-server/forgetpassword/";
+	public static updatePassEmailId="http://10.151.60.189:8095/forgetpassword/";
 	
 }

@@ -4,21 +4,17 @@ import { Observable } from 'rxjs/Observable';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import 'rxjs/add/operator/map';
 
-import {updatePassword} from '../configs/updatePassword.config';
+import {VerifyEmail} from '../configs/verifyEmail.config';
 
 @Injectable()
-export class UpdatePasswordService {
+export class VerifyEmailService {
 
   constructor(private http: Http) { }
 
-  private headers = new Headers({ 'Content-Type': 'application/json'});
-
-   updatePassWithEmail(body){
-    return this.http.post(updatePassword.updatePassEmailId, body, {headers: this.headers})
+     verifyEmailWithEmail(token){
+    return this.http.get(VerifyEmail.passEmailId+token)
      .map((res:Response) => {
-     	console.log("Inservice");
-     	console.log(res);
-     },
+ },
 	(error: any)=>console.log("error in calling register service"));
 }
 

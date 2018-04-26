@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -40,7 +42,9 @@ import { AuthorizationService } from './services/authorization.service';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { UpdatePasswordService } from './services/update-password.service';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { VerifyEmailService } from './services/verify-email.service';
 import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 const appRoutes:Routes=[
 
@@ -55,6 +59,7 @@ const appRoutes:Routes=[
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
   { path:'token/:id',component: UpdatePasswordComponent},
+    { path:'verifyToken/user/:id',component: VerifyEmailComponent}
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
 ]
@@ -84,6 +89,7 @@ const appRoutes:Routes=[
     SubscriptionListComponent,
     VendorPageComponent,
     AddOfferComponent,
+    VerifyEmailComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
     VendorRegisterComponent
@@ -93,13 +99,15 @@ const appRoutes:Routes=[
     BrowserModule,
     HttpModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
      apiKey: 'AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ'
    })
   ],
-  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, UpdatePasswordService],
+  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, VerifyEmailService,UpdatePasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
