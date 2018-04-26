@@ -17,9 +17,6 @@ import { ProductPageComponent } from './components/product-page/product-page.com
 import { SearchComponentComponent } from './components/home-page/search-component/search-component.component';
 import { ProductsHeaderComponent } from './components/home-page/products-header/products-header.component';
 import { ProductsListComponent } from './components/home-page/products-list/products-list.component';
-import { ShopPageComponent } from './components/shop-page/shop-page.component';
-import { SearchSideBarComponent } from './components/shop-page/search-side-bar/search-side-bar.component';
-import { SearchResultsComponent } from './components/shop-page/search-results/search-results.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { UserComponent } from './components/user/user.component';
 import { VendorPageComponent } from './components/vendor-page/vendor-page.component';
@@ -45,6 +42,10 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 import { VerifyEmailService } from './services/verify-email.service';
 import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { ShopPageComponent } from './components/home-page/shop-page/shop-page.component';
+import { SeachResultsComponent } from './components/home-page/shop-page/seach-results/seach-results.component';
+import { SideBarComponent } from './components/home-page/shop-page/side-bar/side-bar.component';
+import { SearchBarComponent } from './components/home-page/shop-page/search-bar/search-bar.component';
 
 const appRoutes:Routes=[
 
@@ -75,9 +76,6 @@ const appRoutes:Routes=[
     SearchComponentComponent,
     ProductsHeaderComponent,
     ProductsListComponent,
-    ShopPageComponent,
-    SearchSideBarComponent,
-    SearchResultsComponent,
     ContactUsComponent,
     UserComponent,
     LocationComponent,
@@ -92,7 +90,11 @@ const appRoutes:Routes=[
     VerifyEmailComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
-    VendorRegisterComponent
+    VendorRegisterComponent,
+    ShopPageComponent,
+    SeachResultsComponent,
+    SideBarComponent,
+    SearchBarComponent
   ],
   imports: [
     NgxPaginationModule,
