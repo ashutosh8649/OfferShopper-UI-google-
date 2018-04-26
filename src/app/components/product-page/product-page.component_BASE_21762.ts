@@ -1,0 +1,88 @@
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductDetailService } from './../../services/product-detail.service';
+import { WishlistService } from './../../services/wishlist.service';
+import { AuthorizationService } from './../../services/authorization.service';
+
+@Component({
+  selector: 'app-product-page',
+  templateUrl: './product-page.component.html',
+  styleUrls: ['./product-page.component.css'],
+  providers:[ProductDetailService, WishlistService, AuthorizationService]
+})
+
+export class ProductPageComponent implements OnInit {
+
+  vendorId:string;
+
+  @Output() success = new EventEmitter<any>();
+  public searchedProduct: string;
+  public productName : string;
+  public productDescription : string;
+  public productValidity :string;
+  public productOriginalPrice :string;
+  public productOfferDiscount :string;
+  public productVendorId :string;
+  public offer :any;
+  public userInfo : any;
+  public user : any;
+
+  constructor(
+    private productDetailService : ProductDetailService,
+    private route: ActivatedRoute,
+    private wishlistService:WishlistService,
+    private authorizationService: AuthorizationService
+    ) { }
+
+  ngOnInit() {
+    this.vendorId=this.route.snapshot.params.id;
+    this.searchProduct();
+  }
+
+ // Function to get customer name and make service call to get customer name from app
+ searchProduct(){
+   this.productDetailService.searchProduct(this.vendorId)
+   .subscribe((res) =>{
+     this.offer=res[0];
+     this.productName=res[0].offerTitle;
+     this.productDescription=res[0].offerDescription;
+     this.productValidity=res[0].offerValidity;
+     this.productOriginalPrice=res[0].originalPrice;
+     this.productOfferDiscount=res[0].offerDiscount;
+     this.productVendorId=res[0].userId;
+     console.log(res[0].offerTitle);
+   },(error) =>{
+
+   });
+ }
+
+ getUserId() {
+    this.authorizationService.getUserId().subscribe((res) =>{
+      this.userInfo = res.text().split(',');
+      this.user = this.userInfo[2];
+    }, (error) =>{
+    })
+  }
+
+ addToWishlist(offer1) {
+   let wishlistBean = {
+     "userId":"marryjane@gmail.com",
+     "offerId":offer1.offerId,
+     "offerTitle":offer1.offerTitle,
+     "offerOriginalPrice":offer1.originalPrice,
+     "offerDiscount":offer1.discount,
+     "offerImage":"abcd",
+     "offerValidity":offer1.offerValidity
+
+   }
+   this.wishlistService.addToWishlist(wishlistBean).subscribe((res) =>{
+     
+   },(error) =>{
+   })
+    /*this.wishlistService.addToWishlist(offer1).subscribe((res) =>{
+      alert("added");
+      }, (error) =>{
+        alert("not added");
+      })*/
+    }
+  }
