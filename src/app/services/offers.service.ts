@@ -24,5 +24,10 @@ export class OffersService {
       (error: any)=>console.log("error in getting data from database"));
   }
 
+  /*getOfferById(offerId:string) {
+    return this.http.get(Offerslist.getOfferByOfferId+offerId)
+    .map(data => data.json(),
+      (error: any)=>console.log("error in getting data from database"));
+  }*/
 
 }
