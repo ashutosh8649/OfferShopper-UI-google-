@@ -1,5 +1,6 @@
-<div class="add-offer"> 
+<div class="add-offer">
   <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-success d-flex justify-content-end" data-toggle="modal" data-target="#couponVerifyModal">validatecoupon</button>
       <button type="button" class="btn btn-success d-flex justify-content-end" data-toggle="modal" data-target="#myAddofferModal">Add Offer</button>
   </div>
   <div class="container mt-2">
@@ -77,7 +78,7 @@
       </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (Click)='reset()'>Close</button>
       </div>
     </div>
 
@@ -138,6 +139,33 @@
             </div>
           </div>
           <button type="submit" class="btn  btn-secondary button justify-content-center" data-dismiss="modal" (click)="addOffer()">addOffer</button>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    </div>
+</div>
+
+<div id="couponVerifyModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header ">
+          <h4 class="modal-title ">verify coupon</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="coupon">COUPON</label>
+              <input type="coupon" class="form-control" id="coupon" [(ngModel)]="coupon" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <button type="submit" class="btn  btn-secondary button justify-content-center" data-dismiss="modal" (click)="couponValidate()">VALIDATE</button>
       </form>
       </div>
       <div class="modal-footer">
