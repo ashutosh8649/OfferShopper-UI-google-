@@ -42,7 +42,9 @@ export class UserComponent implements OnInit {
 
     getUserId() {
   		this.authorizationService.getUserId().subscribe((res) =>{
-  			this.userInfo = res.text().split(',');
+        console.log(res);
+        console.log(res.text());
+        this.userInfo = res.text().split(',');
         this.role = this.userInfo[1];
         console.log(this.role);
   		}, (error) =>{

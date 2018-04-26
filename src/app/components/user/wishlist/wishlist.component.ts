@@ -37,8 +37,6 @@ export class WishlistComponent implements OnInit {
 		})
 	}
   getWishlist() {
-    console.log("adfsdf");
-    console.log(this.userId);
     this.wishlistService.getWishlist(this.userId).subscribe((res) =>{
       this.wishlistOffers = res;
       }, (error) =>{
