@@ -37,13 +37,13 @@ import { LoginRegisterFrontpageComponent } from './components/login-register/log
 import { SearchService } from './services/search.service';
 import { SubscriptionListComponent } from './components/user/subscription-list/subscription-list.component';
 import { AuthorizationService } from './services/authorization.service';
-<<<<<<< HEAD
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { UpdatePasswordService } from './services/update-password.service';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
-=======
+import { VerifyEmailService } from './services/verify-email.service';
 import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
->>>>>>> 498a4e2b2fcd53e8d6f2588270b4ac97317e506d
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+
 
 const appRoutes:Routes=[
 
@@ -53,14 +53,15 @@ const appRoutes:Routes=[
   { path:'login',component:LoginRegisterFrontpageComponent },
   { path:'vendor-register',component:VendorRegisterComponent },
   { path:'product/:id',component: ProductPageComponent},
-<<<<<<< HEAD
+
   { path:'forgot-password',component: ForgotPasswordComponent},
-=======
+
   { path:'product/:id/:offerId',component: ProductPageComponent},
->>>>>>> 498a4e2b2fcd53e8d6f2588270b4ac97317e506d
+
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
   { path:'token/:id',component: UpdatePasswordComponent},
+    { path:'verifyToken/user/:id',component: VerifyEmailComponent}
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
 ]
@@ -90,12 +91,13 @@ const appRoutes:Routes=[
     SubscriptionListComponent,
     VendorPageComponent,
     AddOfferComponent,
-<<<<<<< HEAD
+
     ForgotPasswordComponent,
-    UpdatePasswordComponent
-=======
-    VendorRegisterComponent
->>>>>>> 498a4e2b2fcd53e8d6f2588270b4ac97317e506d
+    UpdatePasswordComponent,
+
+    VendorRegisterComponent,
+
+    VerifyEmailComponent
   ],
   imports: [
     NgxPaginationModule,
@@ -108,7 +110,7 @@ const appRoutes:Routes=[
      apiKey: 'AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ'
    })
   ],
-  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, UpdatePasswordService],
+  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, VerifyEmailService,UpdatePasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

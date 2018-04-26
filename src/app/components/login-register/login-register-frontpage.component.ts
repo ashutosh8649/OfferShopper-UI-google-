@@ -176,7 +176,7 @@ registerVendor(){
   console.log(this.form.value);
 
   this.registerService.register(body).subscribe((res) =>{
-    alert("Registered");
+    alert("Link sent to your account for verification");
   }, (res:Response) =>{
     console.log(res);
     if(res.status==401 || res.status==409){
@@ -220,7 +220,7 @@ registerUser(){
   };
 
   this.registerService.register(body).subscribe((res) =>{
-    alert("Registered");
+      alert("Link sent to your account for verification");
   }, (res:Response) =>{
     console.log(res);
     if(res.status==401 || res.status==409){

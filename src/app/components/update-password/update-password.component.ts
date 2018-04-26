@@ -50,7 +50,6 @@ export class UpdatePasswordComponent implements OnInit {
      this.updatePasswordService.updatePassWithEmail(body).subscribe((res) =>{
       alert("Updated");  
       }, (res:Response) =>{
-        console.log(res);
        if(res.status==401 || res.status==409){
           alert("Username already exists");
         }
@@ -67,7 +66,7 @@ export class UpdatePasswordComponent implements OnInit {
           alert("403 Forbidden");
         }
         else{
-          // alert("Connection error");
+           alert("Connection error");
 
         }
   });
