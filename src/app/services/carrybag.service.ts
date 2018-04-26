@@ -54,8 +54,9 @@ updateFeedback(obj){
 
 
   addToCarrybag(offer){
+    console.log(offer);
     return this.http.post(Carrybag.postCarrybagUrl, offer, {headers: this.headers})
      .map(data => data.status,
-   (error: any)=>console.log("error in adding restaurant"));
+   (error: any)=>console.log("error"));
   }
 }
