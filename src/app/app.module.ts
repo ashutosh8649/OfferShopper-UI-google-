@@ -37,6 +37,9 @@ import { LoginRegisterFrontpageComponent } from './components/login-register/log
 import { SearchService } from './services/search.service';
 import { SubscriptionListComponent } from './components/user/subscription-list/subscription-list.component';
 import { AuthorizationService } from './services/authorization.service';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { UpdatePasswordService } from './services/update-password.service';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
 
 const appRoutes:Routes=[
@@ -47,8 +50,11 @@ const appRoutes:Routes=[
   { path:'login',component:LoginRegisterFrontpageComponent },
   { path:'vendor-register',component:VendorRegisterComponent },
   { path:'product/:id',component: ProductPageComponent},
+  { path:'forgot-password',component: ForgotPasswordComponent},
+  { path:'product/:id/:offerId',component: ProductPageComponent},
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
+  { path:'token/:id',component: UpdatePasswordComponent},
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
 ]
@@ -78,6 +84,8 @@ const appRoutes:Routes=[
     SubscriptionListComponent,
     VendorPageComponent,
     AddOfferComponent,
+    ForgotPasswordComponent,
+    UpdatePasswordComponent
     VendorRegisterComponent
   ],
   imports: [
@@ -91,7 +99,7 @@ const appRoutes:Routes=[
      apiKey: 'AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ'
    })
   ],
-  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService],
+  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, UpdatePasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
