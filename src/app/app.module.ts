@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -44,7 +46,6 @@ import { VerifyEmailService } from './services/verify-email.service';
 import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
-
 const appRoutes:Routes=[
 
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
@@ -53,11 +54,8 @@ const appRoutes:Routes=[
   { path:'login',component:LoginRegisterFrontpageComponent },
   { path:'vendor-register',component:VendorRegisterComponent },
   { path:'product/:id',component: ProductPageComponent},
-
   { path:'forgot-password',component: ForgotPasswordComponent},
-
   { path:'product/:id/:offerId',component: ProductPageComponent},
-
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
   { path:'token/:id',component: UpdatePasswordComponent},
@@ -91,19 +89,18 @@ const appRoutes:Routes=[
     SubscriptionListComponent,
     VendorPageComponent,
     AddOfferComponent,
-
+    VerifyEmailComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
-
-    VendorRegisterComponent,
-
-    VerifyEmailComponent
+    VendorRegisterComponent
   ],
   imports: [
     NgxPaginationModule,
     BrowserModule,
     HttpModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({

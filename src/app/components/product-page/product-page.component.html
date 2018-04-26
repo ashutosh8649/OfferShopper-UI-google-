@@ -1,136 +1,66 @@
-<!-- <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<nav>
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item">
-						<a href="#">Home</a>
-					</li>
-					<li class="breadcrumb-item">
-						<a href="#">Library</a>
-					</li>
-					<li class="breadcrumb-item active">
-						Data
-					</li>
-				</ol>
-			</nav>
-			<div class="row">
-				<div class="col-md-2" >
-					<img alt="Bootstrap Image Preview" src="http://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded" id= "previewimage"/>
-					<img alt="Bootstrap Image Preview" src="http://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded" id= "previewimage"/>
-					<img alt="Bootstrap Image Preview" src="http://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded" id= "previewimage"/>
-				</div>
-				<div class="col-md-4">
-					<img alt="Bootstrap Image Preview" src="http://www.layoutit.com/img/sports-q-c-140-140-3.jpg" id ="browseimage"/>
-				</div>
-				<div class="col-md-6">
-					<div class="page-header">
-						<h1>
-							{{ productName }}
-						</h1>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-
-
-						</div>
-						<div class="col-md-6">
-
-
-						</div>
-					</div>
-					<div id="card-938170">
-						<div class="card">
-							<div class="card-header">
-								 <a class="card-link collapsed" data-toggle="collapse" data-parent="#card-938170" href="#card-element-19863">Product Description</a>
-							</div>
-							<div id="card-element-19863" class="collapse">
-								<div class="card-block">
-									{{productDescription}}
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								 <a class="card-link collapsed" data-toggle="collapse" data-parent="#card-938170" href="#card-element-218113">Product Validity</a>
-							</div>
-							<div id="card-element-218113" class="collapse">
-								<div class="card-block">
-									{{productValidity}}
-								</div>
-							</div>
-						</div>
-					</div>
-
-			</div>
-		</div>
-	</div>
-</div> -->
-
-<!--<div *ngIf>-->
-	<div class="container-fluid">
-		<div class="row align-items-center">
-			<aside class="col-sm-12 col-md-4 col-lg-5">
+<div class="container-fluid">
+	<div class="row align-items-center">
+		<aside class="col-sm-12 col-md-4 col-lg-5">
 			<!-- Offer Images -->
-				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-					<div class="carousel-inner">
+			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img class="d-block w-100" src=".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+						<img class="d-block w-100" src="../../../assets/product-3.jpg" alt="First slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+						<img class="d-block w-100" src="../../../assets/product-2.jpg" alt="Second slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+						<img class="d-block w-100" src="../../../assets/product-3.jpg" alt="Third slide">
 					</div>
-					</div>
-					<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				</div>
+				<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
-					</a>
-				</div>
+				</a>
+			</div>
 			<!-- End of Offer Images-->
 
-			</aside>
+		</aside>
 
-			<div class="col-sm-12 col-md-8 col-lg-7">
-				<li class="list-group-item">
-					<label class="text-heading">Title:</label>
-					<span class="text-lead">{{productName}}</span>
-				</li>
+		<div class="col-sm-12 col-md-8 col-lg-7">
+			<li class="list-group-item">
+				<label class="text-heading">Title:</label>
+				<span class="text-lead">{{productName}}</span>
+			</li>
 
-				<li class="list-group-item">
-					<label class="text-heading">Description:</label>
-					<span class="text-lead">{{productDescription}}</span>
-				</li>
+			<li class="list-group-item">
+				<label class="text-heading">Description:</label>
+				<span class="text-lead">{{productDescription}}</span>
+			</li>
 
-				<li class="list-group-item">
-					<label class="text-heading mx-2">Original Price:</label>
-					<span class="text-lead">Rs. {{productOriginalPrice}}</span>
-					<label class="text-heading mx-2 ml-5">Discount</label>
-					<span class="text-lead">{{productDiscount}}%</span>
-				</li>
+			<li class="list-group-item">
+				<label class="text-heading mx-2">Original Price:</label>
+				<span class="text-lead">Rs. {{productOriginalPrice}}</span>
+				<label class="text-heading mx-2 ml-5">Discount</label>
+				<span class="text-lead">{{productDiscount}}%</span>
+			</li>
 
-				<li class="list-group-item">
-					<label class="text-heading">Seller Name: </label>
-					<span class="text-lead">{{productSeller}}</span>
-				</li>
+			<li class="list-group-item">
+				<label class="text-heading">Seller Name: </label>
+				<span class="text-lead">{{productSeller}}</span>
+			</li>
 
-				<li class="list-group-item">
-					<label class="text-heading">Validity: </label>
-					<span class="text-lead">{{productValidity}}</span>
-				</li>
+			<li class="list-group-item">
+				<label class="text-heading">Validity: </label>
+				<span class="text-lead">{{productValidity | date}}</span>
+			</li>
 
-			</div>
 		</div>
 	</div>
+</div>
 
-  	<div *ngIf="user">
-	<div class="container-fluid mt-1 ">
+<div *ngIf="user">
+	<div class="container-fluid mt-1 mb-3">
 		<div class="row">
 			<!-- Button to add to wishlist-->
 			<input class="btn btn-primary col-2 mx-3" (click)="addToWishlist(offer)" type="button" value="Add to Wishlist">
@@ -141,10 +71,10 @@
 			<!-- End of button to add to carrybag-->
 		</div>
 	</div>
-	</div>
+</div>
 
-	<div *ngIf="!user">
-	<div class="container-fluid mt-1 ">
+<div *ngIf="!user">
+	<div class="container-fluid mt-1 mb-3">
 		<div class="row">
 			<!-- Button to add to wishlist-->
 			<input class="btn btn-primary col-2 mx-3" [routerLink]="['/login']" type="button" value="Add to Wishlist">
@@ -155,5 +85,4 @@
 			<!-- End of button to add to carrybag-->
 		</div>
 	</div>
-	</div>
-<!--</div>-->
+</div>

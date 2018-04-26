@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OffersService } from '../../services/offers.service';
+import { AuthorizationService } from './../../services/authorization.service';
 
 @Component({
   selector: 'app-vendor-page',
   templateUrl: './vendor-page.component.html',
   styleUrls: ['./vendor-page.component.css'],
-  providers:[OffersService]
+  providers:[OffersService,AuthorizationService]
 })
 
 export class VendorPageComponent implements OnInit {
@@ -23,10 +24,13 @@ export class VendorPageComponent implements OnInit {
   zip:number;
   state:string;
   vendorId:string;
+  public userInfo : any;
+  public user : any;
 
   constructor(
     private offersService: OffersService,
     private route: ActivatedRoute,
+    private authorizationService: AuthorizationService
     ) { }
 
   ngOnInit() {
@@ -34,15 +38,24 @@ export class VendorPageComponent implements OnInit {
     this.getOfferlist();
  }
 
+  getUserId() {
+    this.authorizationService.getUserId().subscribe((res) =>{
+      this.userInfo = res.text().split(',');
+      this.user = this.userInfo[2];
+    }, (error) =>{
+    })
+  }
 
  productPrice(offerOriginalPrice,offerDiscount){
    this.priceAfterDiscount = (offerOriginalPrice)*(1-(offerDiscount)/100);
  }
  getOfferlist() {
    this.offersService.getOffers(this.vendorId).subscribe((res) =>{
+     this.offersList = res;
      this.data = res;
-    // this.shopName=this.data.address.name.toUpperCase()
+     this.shopName=this.data[0].address.name.toUpperCase()
      this.street=this.data[0].address.street.toUpperCase();
+     console.log(this.street);
      this.city=this.data[0].address.city.toUpperCase();
      this.zip=this.data[0].address.zipCode;
      this.state=this.data[0].address.state.toUpperCase();
@@ -58,5 +71,21 @@ export class VendorPageComponent implements OnInit {
    }, (error) =>{
    })
  }
+
+  addToCarrybag(offer) {
+   let carrybagBean = {
+     "userId":this.user,
+     "offerId":offer.offerId,
+     "offerTitle":offer.offerTitle,
+     "offerOriginalPrice":offer.originalPrice,
+     "offerDiscount":offer.discount,
+     "offerImage":"abcd",
+     "offerValidity":offer.offerValidity,
+     "vendorId":offer.userId
+   }
+   this.offersService.addToCarrybag(carrybagBean).subscribe((res) =>{
+   },(error) =>{
+   })
+  }
 
 }
