@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductDetailService } from './../../services/product-detail.service';
 import { WishlistService } from './../../services/wishlist.service';
-import { CarrybagService } from './../../services/carrybag.service';
 import { AuthorizationService } from './../../services/authorization.service';
 
 @Component({
@@ -33,8 +32,7 @@ export class ProductPageComponent implements OnInit {
     private productDetailService : ProductDetailService,
     private route: ActivatedRoute,
     private wishlistService:WishlistService,
-    private authorizationService: AuthorizationService,
-    private carrybagService: CarrybagService
+    private authorizationService: AuthorizationService
     ) { }
 
   ngOnInit() {
@@ -46,8 +44,7 @@ export class ProductPageComponent implements OnInit {
     else {
       this.searchProduct();  
     }
-    this.searchProduct();
-    this.getUserId();
+    
   }
 
  // Function to get customer name and make service call to get customer name from app
@@ -91,10 +88,9 @@ export class ProductPageComponent implements OnInit {
     })
   }
 
-  
  addToWishlist(offer1) {
    let wishlistBean = {
-     "userId":this.user,
+     "userId":"marryjane@gmail.com",
      "offerId":offer1.offerId,
      "offerTitle":offer1.offerTitle,
      "offerOriginalPrice":offer1.originalPrice,
@@ -107,21 +103,10 @@ export class ProductPageComponent implements OnInit {
      
    },(error) =>{
    })
+    /*this.wishlistService.addToWishlist(offer1).subscribe((res) =>{
+      alert("added");
+      }, (error) =>{
+        alert("not added");
+      })*/
+    }
   }
-
-  addToCarrybag(offer1) {
-   let carrybagBean = {
-     "userId":this.user,
-     "offerId":offer1.offerId,
-     "offerTitle":offer1.offerTitle,
-     "offerOriginalPrice":offer1.originalPrice,
-     "offerDiscount":offer1.discount,
-     "offerImage":"abcd",
-     "offerValidity":offer1.offerValidity,
-     "vendorId":offer1.userId
-   }
-   this.carrybagService.addToCarrybag(carrybagBean).subscribe((res) =>{
-   },(error) =>{
-   })
-  }
-}

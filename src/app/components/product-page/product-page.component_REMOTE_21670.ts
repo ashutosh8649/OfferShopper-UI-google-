@@ -14,8 +14,7 @@ import { AuthorizationService } from './../../services/authorization.service';
 
 export class ProductPageComponent implements OnInit {
 
-  vendorId: string;
-  offerId: string;
+  vendorId:string;
 
   @Output() success = new EventEmitter<any>();
   public searchedProduct: string;
@@ -23,8 +22,8 @@ export class ProductPageComponent implements OnInit {
   public productDescription : string;
   public productValidity :string;
   public productOriginalPrice :string;
-  public productDiscount :string;
-  public productSeller :string;
+  public productOfferDiscount :string;
+  public productVendorId :string;
   public offer :any;
   public userInfo : any;
   public user : any;
@@ -39,13 +38,6 @@ export class ProductPageComponent implements OnInit {
 
   ngOnInit() {
     this.vendorId=this.route.snapshot.params.id;
-    this.offerId = this.route.snapshot.params.offerId;
-    if( this.vendorId && this.offerId) {
-      this.getOfferById();
-    }
-    else {
-      this.searchProduct();  
-    }
     this.searchProduct();
     this.getUserId();
   }
@@ -59,30 +51,14 @@ export class ProductPageComponent implements OnInit {
      this.productDescription=res[0].offerDescription;
      this.productValidity=res[0].offerValidity;
      this.productOriginalPrice=res[0].originalPrice;
-     this.productDiscount=res[0].offerDiscount;
-     this.productSeller=res[0].userId;
+     this.productOfferDiscount=res[0].offerDiscount;
+     this.productVendorId=res[0].userId;
      console.log(res[0].offerTitle);
    },(error) =>{
 
    });
  }
-
- getOfferById() { 
-  this.productDetailService.getOfferById(this.offerId)
-    .subscribe((res) =>{
-      this.offer=res;
-      console.log(res);
-      this.productName=res.offerTitle;
-      this.productDescription=res.offerDescription;
-      this.productValidity=res.offerValidity;
-      this.productSeller=res.userId;
-      this.productOriginalPrice=res.originalPrice;
-      this.productDiscount=res.discount;
-    },(error) =>{
-
-    });
-}
-
+ 
  getUserId() {
     this.authorizationService.getUserId().subscribe((res) =>{
       this.userInfo = res.text().split(',');

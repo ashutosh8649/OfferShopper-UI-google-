@@ -129,7 +129,7 @@
 		</div>
 	</div>
 
-
+  	<div *ngIf="user">
 	<div class="container-fluid mt-1 ">
 		<div class="row">
 			<!-- Button to add to wishlist-->
@@ -137,9 +137,23 @@
 			<!-- End of button to add to widhlist-->
 
 			<!-- Button to add to carrybag-->
-			<input class="btn btn-primary col-2 mx-3" type="button" value="Add to Carrybag">
+			<input class="btn btn-primary col-2 mx-3" (click)="addToCarrybag(offer)" type="button" value="Add to Carrybag">
 			<!-- End of button to add to carrybag-->
 		</div>
 	</div>
+	</div>
 
+	<div *ngIf="!user">
+	<div class="container-fluid mt-1 ">
+		<div class="row">
+			<!-- Button to add to wishlist-->
+			<input class="btn btn-primary col-2 mx-3" [routerLink]="['/login']" type="button" value="Add to Wishlist">
+			<!-- End of button to add to widhlist-->
+
+			<!-- Button to add to carrybag-->
+			<input class="btn btn-primary col-2 mx-3" [routerLink]="['/login']" type="button" value="Add to Carrybag">
+			<!-- End of button to add to carrybag-->
+		</div>
+	</div>
+	</div>
 <!--</div>-->

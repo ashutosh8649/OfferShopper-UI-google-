@@ -87,4 +87,38 @@ export class SearchComponentComponent implements OnInit {
     });
     this.flag=false;
   }
+
+  //sorting 
+  sorters = {
+    byPrice: function(firstProduct, secondProduct) {
+      return firstProduct.originalPrice - secondProduct.originalPrice;
+    },
+    byDiscount: function(firstProduct, secondProduct) {
+      return firstProduct.discount - secondProduct.discount;
+    }
+  };
+
+  //function for chosing on which basis to sort from
+  sortBy(x) {
+    switch (x) {
+      case "priceLH":
+        this.products.sort(this.sorters.byPrice);
+        break;
+
+      case "priceHL":
+        this.products.sort(this.sorters.byPrice);
+        this.products.reverse();
+        break;
+
+      case "discountLH":
+        this.products.sort(this.sorters.byDiscount);
+        break;
+
+      case "discountHL":
+        this.products.sort(this.sorters.byDiscount);
+        this.products.reverse();
+        break;
+    }
+  }
+
 }

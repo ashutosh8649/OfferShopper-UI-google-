@@ -39,6 +39,7 @@ export class ProductPageComponent implements OnInit {
 
   ngOnInit() {
     this.vendorId=this.route.snapshot.params.id;
+<<<<<<< HEAD
     this.offerId = this.route.snapshot.params.offerId;
     if( this.vendorId && this.offerId) {
       this.getOfferById();
@@ -46,8 +47,11 @@ export class ProductPageComponent implements OnInit {
     else {
       this.searchProduct();  
     }
+    
+=======
     this.searchProduct();
     this.getUserId();
+>>>>>>> c0a71023bb705a178000a20fc328e279a7919371
   }
 
  // Function to get customer name and make service call to get customer name from app
@@ -66,6 +70,7 @@ export class ProductPageComponent implements OnInit {
 
    });
  }
+<<<<<<< HEAD
 
  getOfferById() { 
   this.productDetailService.getOfferById(this.offerId)
@@ -83,6 +88,9 @@ export class ProductPageComponent implements OnInit {
     });
 }
 
+=======
+ 
+>>>>>>> c0a71023bb705a178000a20fc328e279a7919371
  getUserId() {
     this.authorizationService.getUserId().subscribe((res) =>{
       this.userInfo = res.text().split(',');
