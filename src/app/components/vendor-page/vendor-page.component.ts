@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OffersService } from '../../services/offers.service';
 import { AuthorizationService } from './../../services/authorization.service';
+import { MessageService } from './../../services/message.service';
 
 @Component({
   selector: 'app-vendor-page',
   templateUrl: './vendor-page.component.html',
   styleUrls: ['./vendor-page.component.css'],
-  providers:[OffersService,AuthorizationService]
+  providers:[OffersService,AuthorizationService,MessageService]
 })
 
 export class VendorPageComponent implements OnInit {
@@ -30,7 +31,9 @@ export class VendorPageComponent implements OnInit {
   constructor(
     private offersService: OffersService,
     private route: ActivatedRoute,
-    private authorizationService: AuthorizationService
+    private authorizationService: AuthorizationService,
+    private messageService:MessageService,
+    private _vcr:ViewContainerRef
     ) { }
 
   ngOnInit() {
@@ -85,6 +88,7 @@ export class VendorPageComponent implements OnInit {
      "vendorId":offer.userId
    }
    this.offersService.addToCarrybag(carrybagBean).subscribe((res) =>{
+     this.messageService.showSuccessToast(this._vcr,"Added to CarryBag");
    },(error) =>{
    })
   }
