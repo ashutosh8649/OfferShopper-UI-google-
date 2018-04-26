@@ -29,4 +29,9 @@ export class CarrybagService {
     (error: any)=>console.log(error + "error in deleting offer"));
   }
 
+  addToCarrybag(offer){
+    return this.http.post(Carrybag.postCarrybagUrl, offer, {headers: this.headers})
+     .map(data => data.json(),
+   (error: any)=>console.log("error in adding restaurant"));
+  }
 }

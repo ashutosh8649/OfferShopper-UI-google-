@@ -108,17 +108,16 @@
 					<span class="text-lead">{{productDescription}}</span>
 				</li>
 
-				<li class="list-group-item ">
-					<label class="text-heading mx-2">Original Price:</label>
-					<span class="text-lead">Rs. {{productOriginalPrice}}</span>
-					
-					<label class="text-heading mx-2 ml-5">Discount</label>
-					<span class="text-lead">{{productDiscount}}%</span>
+				<li class="list-group-item">
+					<label class="text-heading">Original Price:</label>
+					<span class="text-lead">{{productOriginalPrice}}</span>
+					<label class="text-heading">Discount</label>
+					<span class="text-lead">{{productOfferDiscount}}</span>
 				</li>
 
 				<li class="list-group-item">
 					<label class="text-heading">Seller Name: </label>
-					<span class="text-lead">{{productSeller}}</span>
+					<span class="text-lead">{{productVendorId}}</span>
 				</li>
 
 				<li class="list-group-item">
@@ -130,7 +129,7 @@
 		</div>
 	</div>
 
-
+  	<div *ngIf="user">
 	<div class="container-fluid mt-1 ">
 		<div class="row">
 			<!-- Button to add to wishlist-->
@@ -138,9 +137,23 @@
 			<!-- End of button to add to widhlist-->
 
 			<!-- Button to add to carrybag-->
-			<input class="btn btn-primary col-2 mx-3" type="button" value="Add to Carrybag">
+			<input class="btn btn-primary col-2 mx-3" (click)="addToCarrybag(offer)" type="button" value="Add to Carrybag">
 			<!-- End of button to add to carrybag-->
 		</div>
 	</div>
+	</div>
 
+	<div *ngIf="!user">
+	<div class="container-fluid mt-1 ">
+		<div class="row">
+			<!-- Button to add to wishlist-->
+			<input class="btn btn-primary col-2 mx-3" [routerLink]="['/login']" type="button" value="Add to Wishlist">
+			<!-- End of button to add to widhlist-->
+
+			<!-- Button to add to carrybag-->
+			<input class="btn btn-primary col-2 mx-3" [routerLink]="['/login']" type="button" value="Add to Carrybag">
+			<!-- End of button to add to carrybag-->
+		</div>
+	</div>
+	</div>
 <!--</div>-->

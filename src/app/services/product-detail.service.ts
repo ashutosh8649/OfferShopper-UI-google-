@@ -21,11 +21,4 @@ export class ProductDetailService {
    private handleError(error: Response){
      return Observable.throw(error.statusText);
    }
-
-   getOfferById(offerId) {
-    return this.http.get(Product.getOfferByOfferId+offerId)
-    .map(data => data.json(),
-      (error: any)=>console.log("error in getting data from database"));
-  }
-
  }
