@@ -12,8 +12,8 @@ export class CarrybagService {
 
   private headers = new Headers({ 'Content-Type': 'application/json'});
 
-  getCarrybaglist(){
-    return this.http.get(Carrybag.getCarryBagUrl)
+  getCarrybaglist(userId){
+    return this.http.get("http://10.151.61.122:9004/bag/userId/"+userId)
     .map(data => data.json(),
     (error: any)=>console.log("error in getting data from database"));
     
@@ -24,5 +24,26 @@ export class CarrybagService {
     .map(data => data.status,
     (error: any)=>console.log(error + "error in deleting offer"));
   }
+
+  newCouponGenerate(obj){
+
+    return this.http.post(Carrybag.generateCouponUrl,obj, {headers: this.headers})
+     .map(data => data.json(),
+   (error: any)=>console.log("error"));
+ }
+
+ validateCoupon(userId,offerId){
+
+  return this.http.get(Carrybag.getCouponIdUrl+"userId/"+userId+"/offerId/"+offerId)
+  .map(data => data.json(),
+  (error: any)=>console.log("error in getting data from database"));
+ 
+}
+
+updateFeedback(obj){
+  return this.http.post(Carrybag.addCommentUrl, obj, {headers: this.headers})
+  .map(data => data.json(),
+  (error: any)=>console.log("error in getting data from database"));
+}
 
 }
