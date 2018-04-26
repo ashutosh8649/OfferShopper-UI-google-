@@ -49,4 +49,6 @@ ul{
   width:80px;
 }
 
-/*     trying css       */
+.dropdown-item {
+  cursor: pointer;
+}
