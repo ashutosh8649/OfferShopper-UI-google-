@@ -44,25 +44,25 @@ deleteOffer(offerId) {
 
   addNewOffer(obj){
 
-   return this.http.post(AddOfferConfig.addOfferURL,obj, {headers: this.headers})
+   return this.http.post(AddOfferConfig.addOfferURL,obj, this.options)
     .map(data => data.json(),
   (error: any)=>console.log("error"));
 }
 
 couponValidateService(coupon){
-  return this.http.get(AddOfferConfig.validateCouponUrl+coupon)
+  return this.http.get(AddOfferConfig.validateCouponUrl+coupon, this.options)
   .map(data => data.json(),
   (error: any)=>console.log("error in getting data from database"));
 }
 
 changeFlag(obj) {
-  return this.http.post(AddOfferConfig.couponFlagChangedUrl,obj, {headers: this.headers})
+  return this.http.post(AddOfferConfig.couponFlagChangedUrl,obj, this.options)
     .map(data => data.json(),
   (error: any)=>console.log("error"));
 }
 
 putOffersInCarryBag(obj){
-  return this.http.put(AddOfferConfig.updateOffersInCarryBag,obj, {headers: this.headers})
+  return this.http.put(AddOfferConfig.updateOffersInCarryBag,obj, this.options)
   .map(data => data.json(),
 (error: any)=>console.log("error"));
 }
