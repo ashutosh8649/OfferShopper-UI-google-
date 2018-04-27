@@ -52,13 +52,17 @@
           {{offerList.offerValidity}}
         </div>
         <div class="container-button d-none d-md-block">
-          <button class="btn btn-dark my-2 my-sm-0 " type="button"> Generate Coupon</button>
-          <button class="btn btn-dark my-2 my-sm-0 " type="button" (click)="deleteOffer(offerList.offerId,offerList.userId)"><i class="fas fa-trash-alt"></i> Delete</button>
+          <button class="btn btn-dark my-2 my-sm-0 " type="button" data-toggle="modal" data-target="#couponModal" (click)="couponGenerate(offerList.userId,offerList.offerId)"> Generate Coupon</button>
+          <button class="btn btn-dark my-2 my-sm-0 " type="button" (click)="deleteOffer(offerList.userId, offerList.offerId)"><i class="fas fa-trash-alt"></i> Delete</button>
+          
+          <button class="btn btn-dark my-2 my-sm-0 " type="button" (click)="checkFeedbackExistence(offerList.offerId,offerList.userId)">Add Feedback</button>
+          <div data-toggle="modal" data-target="#feedbackModal"  #myModal ></div>
           <div>
         <button class="btn btn-dark my-2 my-sm-0 container-button-small d-block d-sm-none" type="button" (click)="deleteCarrybag(offerList.offerId)"><i class="fas fa-trash-alt"></i></button>
       </div>
     </div>
   </div>
+</div>
 </div>
 <div *ngIf="!carryBagOffers.length" class="carryempty">
   <h1>empty</h1>
@@ -75,3 +79,53 @@
      </div>
    </div> -->
 </div>
+
+
+<div id="feedbackModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="rating"> rating</label>
+              <input type="rating" class="form-control" id="rating" [(ngModel)]="rating" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="feedback"> feedback</label>
+              <input type="feedback" class="form-control" id="feedback" [(ngModel)]="feedback" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <button type="button" class="btn button justify-content-cente" (click)="addfeedback()">Submit</button>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div id="couponModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>your coupon id is</p>{{couponId}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

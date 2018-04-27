@@ -34,6 +34,7 @@ export class VendorPageComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.getUserId();
     this.vendorId=this.route.snapshot.params.id;
     this.getOfferlist();
  }
@@ -55,7 +56,6 @@ export class VendorPageComponent implements OnInit {
      this.data = res;
      this.shopName=this.data[0].address.name.toUpperCase()
      this.street=this.data[0].address.street.toUpperCase();
-     console.log(this.street);
      this.city=this.data[0].address.city.toUpperCase();
      this.zip=this.data[0].address.zipCode;
      this.state=this.data[0].address.state.toUpperCase();
@@ -75,6 +75,7 @@ export class VendorPageComponent implements OnInit {
   addToCarrybag(offer) {
    let carrybagBean = {
      "userId":this.user,
+
      "offerId":offer.offerId,
      "offerTitle":offer.offerTitle,
      "offerOriginalPrice":offer.originalPrice,

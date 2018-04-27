@@ -13,7 +13,6 @@ export class UserdetailsComponent implements OnInit {
 
   constructor(private userdata:UserService,
       private authorizationService: AuthorizationService) { }
-
   data:any;
   firstName:string;
   lastName:string;
@@ -30,6 +29,7 @@ export class UserdetailsComponent implements OnInit {
   dob:string;
   gender:string;
   spinCount:number;
+  offerIdList:Array<String>=[];
   osCash:number;
   shopName:string;
   shopNumber:string;
@@ -83,6 +83,7 @@ export class UserdetailsComponent implements OnInit {
       this.shopZip=this.data.shopAddress.shopZip;
       this.vendorMobileNo=this.data.vendorMobileNo;
       this.timestamp=this.data.timestamp;
+      this.offerIdList=this.data.offerIdList;
     },(error) =>{
     })
   }
@@ -134,6 +135,7 @@ export class UserdetailsComponent implements OnInit {
         "zipCode": this.shopZip
       },
       "vendorMobileNo":this.vendorMobileNo,
+      "offerIdList":this.offerIdList,
       "timestamp": this.timestamp
     }
     this.userdata.putProfile(this.obj).subscribe((res) =>{

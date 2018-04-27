@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -15,9 +17,6 @@ import { ProductPageComponent } from './components/product-page/product-page.com
 import { SearchComponentComponent } from './components/home-page/search-component/search-component.component';
 import { ProductsHeaderComponent } from './components/home-page/products-header/products-header.component';
 import { ProductsListComponent } from './components/home-page/products-list/products-list.component';
-import { ShopPageComponent } from './components/shop-page/shop-page.component';
-import { SearchSideBarComponent } from './components/shop-page/search-side-bar/search-side-bar.component';
-import { SearchResultsComponent } from './components/shop-page/search-results/search-results.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { UserComponent } from './components/user/user.component';
 import { VendorPageComponent } from './components/vendor-page/vendor-page.component';
@@ -40,7 +39,13 @@ import { AuthorizationService } from './services/authorization.service';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { UpdatePasswordService } from './services/update-password.service';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { VerifyEmailService } from './services/verify-email.service';
 import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { ShopPageComponent } from './components/home-page/shop-page/shop-page.component';
+import { SeachResultsComponent } from './components/home-page/shop-page/seach-results/seach-results.component';
+import { SideBarComponent } from './components/home-page/shop-page/side-bar/side-bar.component';
+import { SearchBarComponent } from './components/home-page/shop-page/search-bar/search-bar.component';
 
 const appRoutes:Routes=[
 
@@ -55,6 +60,7 @@ const appRoutes:Routes=[
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
   { path:'token/:id',component: UpdatePasswordComponent},
+    { path:'verifyToken/user/:id',component: VerifyEmailComponent}
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
 ]
@@ -70,9 +76,6 @@ const appRoutes:Routes=[
     SearchComponentComponent,
     ProductsHeaderComponent,
     ProductsListComponent,
-    ShopPageComponent,
-    SearchSideBarComponent,
-    SearchResultsComponent,
     ContactUsComponent,
     UserComponent,
     LocationComponent,
@@ -84,22 +87,29 @@ const appRoutes:Routes=[
     SubscriptionListComponent,
     VendorPageComponent,
     AddOfferComponent,
+    VerifyEmailComponent,
     ForgotPasswordComponent,
     UpdatePasswordComponent,
-    VendorRegisterComponent
+    VendorRegisterComponent,
+    ShopPageComponent,
+    SeachResultsComponent,
+    SideBarComponent,
+    SearchBarComponent
   ],
   imports: [
     NgxPaginationModule,
     BrowserModule,
     HttpModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
      apiKey: 'AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ'
    })
   ],
-  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, UpdatePasswordService],
+  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, VerifyEmailService,UpdatePasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,7 +16,6 @@ private authorizationService: AuthorizationService
 
   private headers = new Headers({ 'Content-Type': 'application/json'});
   getWishlist(userId){
-    console.log(userId);
     return this.http.get(Wishlist.getWishlistUrl+userId)
     .map(data => data.json(),
     (error: any)=>console.log("error in getting data from database"));
@@ -24,7 +23,7 @@ private authorizationService: AuthorizationService
 
   addToWishlist(offer){
     return this.http.post(Wishlist.postWishlistUrl, offer, {headers: this.headers})
-     .map(data => data.json(),
+     .map(data => data.status,
    (error: any)=>console.log("error in adding restaurant"));
   }
 

@@ -43,4 +43,17 @@ deleteOffer(offerId) {
     .map(data => data.json(),
   (error: any)=>console.log("error"));
 }
+
+couponValidateService(coupon){
+  return this.http.get(AddOfferConfig.validateCouponUrl+coupon)
+  .map(data => data.json(),
+  (error: any)=>console.log("error in getting data from database"));
+}
+
+changeFlag(obj) {
+  return this.http.post(AddOfferConfig.couponFlagChangedUrl,obj, {headers: this.headers})
+    .map(data => data.json(),
+  (error: any)=>console.log("error"));
+}
+
 }
