@@ -5,10 +5,10 @@ import { AgmCoreModule } from '@agm/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { IonRangeSliderModule } from "ng2-ion-range-slider";
 
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
-import { SharedComponent } from './components/shared/shared.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { NavbarComponent } from './components/shared/header/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -44,7 +44,6 @@ import { VendorRegisterComponent } from './components/vendor-register/vendor-reg
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { ShopPageComponent } from './components/home-page/shop-page/shop-page.component';
 import { SeachResultsComponent } from './components/home-page/shop-page/seach-results/seach-results.component';
-import { SideBarComponent } from './components/home-page/shop-page/side-bar/side-bar.component';
 import { SearchBarComponent } from './components/home-page/shop-page/search-bar/search-bar.component';
 
 const appRoutes:Routes=[
@@ -60,15 +59,15 @@ const appRoutes:Routes=[
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
   { path:'token/:id',component: UpdatePasswordComponent},
-    { path:'verifyToken/user/:id',component: VerifyEmailComponent}
+    { path:'verifyToken/user/:id',component: VerifyEmailComponent},
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
+  { path:'search/:id1/:id2',component: ShopPageComponent},
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    SharedComponent,
     HeaderComponent,
     NavbarComponent,
     FooterComponent,
@@ -93,10 +92,10 @@ const appRoutes:Routes=[
     VendorRegisterComponent,
     ShopPageComponent,
     SeachResultsComponent,
-    SideBarComponent,
     SearchBarComponent
   ],
   imports: [
+    IonRangeSliderModule,
     NgxPaginationModule,
     BrowserModule,
     HttpModule,

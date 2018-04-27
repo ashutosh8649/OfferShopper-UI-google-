@@ -80,10 +80,11 @@ export class UserdetailsComponent implements OnInit {
       this.shopStreet=this.data.shopAddress.street;
       this.shopCity=this.data.shopAddress.city;
       this.shopState=this.data.shopAddress.state;
-      this.shopZip=this.data.shopAddress.shopZip;
+      this.shopZip=this.data.shopAddress.zipCode;
       this.vendorMobileNo=this.data.vendorMobileNo;
       this.timestamp=this.data.timestamp;
       this.offerIdList=this.data.offerIdList;
+      console.log(res);
     },(error) =>{
     })
   }
@@ -96,6 +97,11 @@ export class UserdetailsComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("inputCity")).disabled = false;
     (<HTMLInputElement>document.getElementById("inputZip")).disabled = false;
     (<HTMLInputElement>document.getElementById("inputState")).disabled = false;
+    (<HTMLInputElement>document.getElementById("inputShopName")).disabled = false;
+    (<HTMLInputElement>document.getElementById("inputShopAddress")).disabled = false;
+    (<HTMLInputElement>document.getElementById("inputShopCity")).disabled = false;
+    (<HTMLInputElement>document.getElementById("inputShopZip")).disabled = false;
+    (<HTMLInputElement>document.getElementById("inputShopState")).disabled = false;
   };
 
   submit(){
@@ -106,6 +112,11 @@ export class UserdetailsComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("inputCity")).disabled = true;
     (<HTMLInputElement>document.getElementById("inputZip")).disabled =true;
     (<HTMLInputElement>document.getElementById("inputState")).disabled = true;
+    (<HTMLInputElement>document.getElementById("inputShopName")).disabled = true;
+    (<HTMLInputElement>document.getElementById("inputShopAddress")).disabled = true;
+    (<HTMLInputElement>document.getElementById("inputShopCity")).disabled = true;
+    (<HTMLInputElement>document.getElementById("inputShopZip")).disabled = true;
+    (<HTMLInputElement>document.getElementById("inputShopState")).disabled = true;
     console.log(this.firstName);
     this.obj={
       "firstName": this.firstName,
@@ -138,13 +149,22 @@ export class UserdetailsComponent implements OnInit {
       "offerIdList":this.offerIdList,
       "timestamp": this.timestamp
     }
+    console.log(this.obj);
     this.userdata.putProfile(this.obj).subscribe((res) =>{
-
     }, (error) =>{
-
-
     })
-
-
   }
+
+  setShopAddress() {
+    this.shopState = this.state;
+    this.shopZip = this.zip;
+  }
+
+  setCheckboxAddress() {
+    this.shopState = this.state;
+    this.shopZip = this.zip;
+    this.shopStreet = this.street;
+    this.shopCity =  this.city;
+  }
+
 }
