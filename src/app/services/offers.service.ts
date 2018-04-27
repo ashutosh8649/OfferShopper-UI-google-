@@ -9,17 +9,16 @@ import { Offerslist } from './../configs/offers.config';
 export class OffersService {
   private header;
 
-  const options;
+  options:RequestOptions;
 
   constructor(private http: Http) {
     this.header = new Headers();
-    // this.header.append('Content-Type', 'application/json');
     this.header.append('Authorization','String');
-    this.option = new RequestOptions({headers: this.header});
+    this.options = new RequestOptions({headers: this.header});
    }
 
   getOffers(vendorId:string) {
-    return this.http.get(Offerslist.getOfferlistUrl+vendorId+"/offers",this.options)
+    return this.http.get(Offerslist.getOfferlistUrl+vendorId+"/offers")
     .map(data => data.json(),
       (error: any)=>console.log("error in getting data from database"));
   }
