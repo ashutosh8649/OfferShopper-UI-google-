@@ -50,7 +50,7 @@ export class LoginRegisterFrontpageComponent implements OnInit {
   ngOnInit() {
     this.loginForm=new FormGroup({
       username : new FormControl('', [Validators.required, Validators.email]),
-      password : new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
+      password : new FormControl('', [Validators.required]),
     });
     this.form=new FormGroup({
       firstName : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]),

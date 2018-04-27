@@ -26,12 +26,6 @@
                 <label>Password</label>
                 <input type="password" formControlName="password" class="form-control" placeholder="Enter Password">
                  <div *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid" class="alert-msg">
-              <div *ngIf="loginForm.get('password').hasError('minlength')" >
-                Less than 8 digits
-              </div>
-              <div *ngIf="loginForm.get('password').hasError('maxlength')">
-               More than 20 digits
-              </div>
               <div *ngIf="loginForm.get('password').hasError('required')">
                Password is required!
               </div>
