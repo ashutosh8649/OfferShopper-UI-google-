@@ -26,7 +26,7 @@ export class OffersService {
 
   addToCarrybag(offer){
     return this.http.post(Offerslist.postCarrybagUrl, offer, {headers: this.headers})
-     .map(data => data.json(),
+     .map(data => data.status,
    (error: any)=>console.log("error in adding restaurant"));
   }
 
