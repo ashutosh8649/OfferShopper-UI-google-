@@ -54,6 +54,7 @@ export class SearchComponentComponent implements OnInit {
 }
 
   ngOnInit() {
+    
     this.getUserId();
     this.category = 'All';
   }
@@ -157,7 +158,7 @@ export class SearchComponentComponent implements OnInit {
    this.carrybagService.addToCarrybag(carrybagBean).subscribe((res) =>{
      this.messageService.showSuccessToast(this._vcr,"Added");
    },(error) =>{
-
+     this.messageService.showSuccessToast(this._vcr,"Already Added");
    })
  }
 
