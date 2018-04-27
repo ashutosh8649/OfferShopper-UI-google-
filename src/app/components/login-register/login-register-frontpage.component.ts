@@ -221,7 +221,9 @@ registerUser(){
 
   this.registerService.register(body).subscribe((res) =>{
       alert("Link sent to your account for verification");
+      console.log(res);
   }, (res:Response) =>{
+    console.log("In Error");
     console.log(res);
     if(res.status==401 || res.status==409){
       alert("Username already exists");
