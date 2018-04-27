@@ -117,21 +117,16 @@ export class AddOfferComponent implements OnInit {
 		})
 
 		let carryBagObj={
-			"userId"  :this.User.userId,
+	
 			"offerId" :this.User.offerId,
-			"offerImage":"image to be sent by vendor",
+			"offerImage":"image_url",
 			"offerTitle" :this.offerTitle,
-			"dateOfAnnouncement" :this.User.dateOfAnnouncement,
 			"offerOriginalPrice" :this.originalPrice,
 			"offerDiscount" :this.discount,
 			"offerValidity" :this.offerValidity,
-			"vendorId":this.User.userId,
-			"imageURL":"image_url"
+			"vendorId":this.User.userId
 
 		}
-
-
-
 		this.addOfferService.putOffersInCarryBag(carryBagObj).subscribe((res) =>{
 			this.getOffers();
 			this.reset();
