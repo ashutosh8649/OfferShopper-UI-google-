@@ -70,7 +70,7 @@ div a:hover {
 
 .logo {
     font-family: 'Black Han Sans', sans-serif;
-    font-size: 28px;
+    font-size: 2rem;
     color: black;
     padding-left:50px;
 }
@@ -97,4 +97,23 @@ div a:hover {
 .logout{
       padding:10px;
      border: 1px solid #fd4747;
+}
+
+
+ .alert-styling{
+   max-width: 30rem;
+   max-height: 5rem;
+   background: #ca2222;
+   z-index: 1;
+   position: fixed;
+   top: 6rem;
+   opacity: 0.9;
+   color: white;
+   right: 0.8rem;
+}
+
+.alert-content{
+  opacity: 1;
+  font-size: 1rem;
+  color: white;
 }

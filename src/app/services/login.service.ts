@@ -9,16 +9,22 @@ import { Login } from '../configs/login.config';
 @Injectable()
 export class LoginService {
 
-  constructor(private http: Http) { }
+  private header;
 
-  private headers = new Headers({ 'Content-Type': 'application/json'});
+  constructor(private http: Http) {
+    this.header = new Headers();
+    this.header.append('Content-Type', 'application/json');
+    this.header.append('Authorization','String');
+  }
+
 
   loginWithEmailId(username,password){
+    const options = new RequestOptions({headers: this.header});
     let body= {
       "email":username,
       "password":password
     }
-    return this.http.post(Login.loginWIthId, body, {headers: this.headers})
+    return this.http.post(Login.loginWIthId, body, this.options)
     .map((res:Response) => {
       localStorage.setItem("application-token",res.text());
       localStorage.setItem("userId",username);

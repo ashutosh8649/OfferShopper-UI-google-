@@ -119,7 +119,7 @@ export class AddOfferComponent implements OnInit {
 	addOffer(){
 		console.log(this.number);
 		this.obj={
-			"offerId" :"null",
+		//	 "offerId" :"null",
 			"userId"  :this.offers[0].userId,
 			"offerTitle" :this.offerTitle,
 			"offerValidity" :this.offerValidity,
@@ -142,7 +142,7 @@ export class AddOfferComponent implements OnInit {
 	}
 couponValidate()
 {
-	
+
 	this.addOfferService.couponValidateService(this.coupon).subscribe((res) =>{
 
 		debugger
@@ -164,13 +164,13 @@ couponValidate()
 			this.addOfferService.changeFlag(obj).subscribe((res) =>{
 				let responseMessage = res;
 				alert(responseMessage);
-				
-	
+
+
 			}, (error) =>{
-	
+
 			})
 		}
-	
+
 	}
 	, (error) =>{console.log("error");
 })
