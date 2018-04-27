@@ -90,18 +90,17 @@
            <div class="form-group">
                 <label>Re-enter Password</label>
                 <input type="password" formControlName="rePassword" class="form-control" placeholder="Password">
-                           <div *ngIf="registerForm.get('rePassword').touched && registerForm.get('rePassword').errors">
-         <div class="alert-msg" *ngIf="registerForm.get('rePassword').errors.required">
+                           <div *ngIf="registerForm.get('rePassword').touched && registerForm.get('rePassword').errors" class="alert-msg" >
+         <div *ngIf="registerForm.get('rePassword').errors.required" class="text-white" >
            Confirm password is required
          </div>
-         <div class="alert-msg" *ngIf="registerForm.get('rePassword').errors.notEquivalent">The new password and confirm password do not match
+         <div *ngIf="registerForm.get('rePassword').errors.notEquivalent" class="text-white" >The new password and confirm password do not match
          </div>
        </div>
 
                  </div>
               <div class="form-group">
-                <!-- <input type="checkbox" value="isVendor" name="isVendor"  (click)="onSelect()" [disabled]="registerForm.invalid"> -->
-                <label><a [routerLink]="['/','vendor-register']"> Register As Vendor </a></label>
+                <input type="checkbox" name="isVendor" [routerLink]="['/','vendor-register']" [disabled]="registerForm.invalid">Register as Vendor
               </div>
               <button type="submit" class="btn btn-secondary" [disabled]="registerForm.invalid" (click)="registerUser()">Submit</button>
             </form>

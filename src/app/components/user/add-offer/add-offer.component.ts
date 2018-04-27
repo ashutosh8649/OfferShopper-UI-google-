@@ -139,7 +139,7 @@ export class AddOfferComponent implements OnInit {
 	addOffer(){
 		console.log(this.number);
 		this.obj={
-			"offerId" :"null",
+
 			"userId"  :this.offers[0].userId,
 			"offerTitle" :this.offerTitle,
 			"offerValidity" :this.offerValidity,
@@ -153,11 +153,13 @@ export class AddOfferComponent implements OnInit {
 			"offerTerms" :this.offerTerms,
 			"keywords" :this.keywords
 		}
+		console.log(this.obj);
 		this.addOfferService.addNewOffer(this.obj).subscribe((res) =>{
 			this.getOffers();
-
+			console.log(res);
 		}, (error) =>{
-
+			console.log("Error:");
+			console.log(error);
 		})
 	}
 couponValidate()

@@ -1,30 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { SubscribeService } from '../../../services/subscribe.service';
+import { AuthorizationService } from '../../../services/authorization.service';
 
 @Component({
   selector: 'app-subscription-list',
   templateUrl: './subscription-list.component.html',
   styleUrls: ['./subscription-list.component.css'],
-  providers:[SubscribeService]
+  providers:[SubscribeService,AuthorizationService]
 })
 
 export class SubscriptionListComponent implements OnInit {
   User:any={};
-
-  constructor(private subscribeService:SubscribeService ) { }
-
-  ngOnInit() {
-    this.getAllSubscriptions();
-  }
+  public userInfo : any;
+  public user : any;
   public subscribeServiceList=[];
 
-  getAllSubscriptions(){
-    this.subscribeService.getAllDetails().subscribe((res) =>{
+  
+  constructor(private subscribeService:SubscribeService,
+  private authorizationService:AuthorizationService) { }
+
+    getUserId() {
+    this.authorizationService.getUserId().subscribe((res) =>{
+      this.userInfo = res.text().split(',');
+      this.user = this.userInfo[2];
+    this.getAllSubscriptions(this.user);
+    }, (error) =>{
+    })
+  }
+
+  ngOnInit() {
+    this.getUserId();
+  }
+  getAllSubscriptions(user){
+    console.log(user);
+    this.subscribeService.getAllDetails(user).subscribe((res) =>{
      console.log(res);
      this.subscribeServiceList=res;
     },
      (error) =>{
-        alert(error + "deleting restaurant does not works");
+        alert(error + "does not work");
       })
   }
 
@@ -32,7 +46,7 @@ export class SubscriptionListComponent implements OnInit {
   deleteSubscriptions(userId,vendorId){
     this.subscribeService.deleteSubscriptionsById(userId,vendorId).subscribe((res) =>{
     	console.log("calling get after delete");
-    	this.getAllSubscriptions();
+    	this.getAllSubscriptions(userId);
       }, (error) =>{
         alert(error + "deleting restaurant does not works");
       })

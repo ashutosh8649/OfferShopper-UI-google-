@@ -9,7 +9,12 @@ export class SearchBarComponent implements OnInit {
 
   constructor() { }
 
+  public query : string;
+  public category : string;
+
+
   ngOnInit() {
+    this.category="All";
   }
 
 }
