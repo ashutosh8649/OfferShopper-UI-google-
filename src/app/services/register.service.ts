@@ -9,7 +9,8 @@ import {Register} from '../configs/register.config';
 @Injectable()
 export class RegisterService {
 
-  constructor(private http: Http) { }
+
+  constructor(private http: Http) {  }
 
   private headers = new Headers({ 'Content-Type': 'application/json'});
 

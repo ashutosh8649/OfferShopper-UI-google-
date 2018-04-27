@@ -7,24 +7,24 @@ import { Offerslist } from './../configs/offers.config';
 
 @Injectable()
 export class OffersService {
-  private header;
 
+  private header;
   options:RequestOptions;
 
   constructor(private http: Http) {
     this.header = new Headers();
-    this.header.append('Authorization','String');
+    this.header.append('Authorization',localStorage.getItem("application-token"));
     this.options = new RequestOptions({headers: this.header});
    }
 
   getOffers(vendorId:string) {
-    return this.http.get(Offerslist.getOfferlistUrl+vendorId+"/offers")
+    return this.http.get(Offerslist.getOfferlistUrl+vendorId+"/offers", this.options)
     .map(data => data.json(),
       (error: any)=>console.log("error in getting data from database"));
   }
 
   getAddress(street,city,state,zip){
-    return this.http.get(Offerslist.getAddressUrl+street+city+state+zip+"&key="+"AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ")
+    return this.http.get(Offerslist.getAddressUrl+street+city+state+zip+"&key="+"AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ", this.options)
     .map(data => data.json(),
       (error: any)=>console.log("error in getting data from database"));
   }

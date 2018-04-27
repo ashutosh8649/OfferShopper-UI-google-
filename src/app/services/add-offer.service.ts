@@ -7,32 +7,37 @@ import {AddOfferConfig} from '../configs/add-offer-config';
 @Injectable()
 export class AddOfferService {
 
-	  private headers = new Headers({ 'Content-Type': 'application/json'});
+	private header;
+  options:RequestOptions;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+		this.header = new Headers();
+		this.header.append('Authorization', localStorage.getItem("application-token"));
+		this.options = new RequestOptions({headers: this.header});
+	}
 
   getOffersList(){
-    return this.http.get(AddOfferConfig.getURL+"megha@gmail.com/offers")
+    return this.http.get(AddOfferConfig.getURL+"megha@gmail.com/offers", this.options)
     .map(data => data.json(),
     (error: any)=>console.log("error in getting data from database"));
 
   }
 
 deleteOffer(offerId) {
-  	return this.http.delete(AddOfferConfig.deleteOfferURL+offerId, { headers: this.headers })
+  	return this.http.delete(AddOfferConfig.deleteOfferURL+offerId,this.options)
     .map(data => data.status,
     (error: any)=>console.log(error + "error in deleting offer"));
   }
 
   updateOffer(offerId) {
-  	return this.http.put(AddOfferConfig.updateOfferURL+offerId, { headers: this.headers })
+  	return this.http.put(AddOfferConfig.updateOfferURL+offerId, this.options)
     .map(data => data.status,
     (error: any)=>console.log(error + "error in deleting offer"));
   }
 
   putOffer(obj){
 
-   return this.http.put(AddOfferConfig.updateOfferURL+obj.offerId,obj, {headers: this.headers})
+   return this.http.put(AddOfferConfig.updateOfferURL+obj.offerId,obj, this.options)
     .map(data => data.json(),
   (error: any)=>console.log("error"));
  }

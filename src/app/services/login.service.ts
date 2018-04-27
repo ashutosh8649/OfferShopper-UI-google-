@@ -14,7 +14,7 @@ export class LoginService {
   constructor(private http: Http) {
     this.header = new Headers();
     this.header.append('Content-Type', 'application/json');
-    this.header.append('Authorization','String');
+    this.header.append('Authorization',localStorage.getItem("application-token"));
   }
 
 

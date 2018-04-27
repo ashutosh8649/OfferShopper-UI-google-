@@ -8,16 +8,18 @@ import {Carrybag} from './../configs/carrybag.config';
 export class CarrybagService {
 
   private userInfo;
+  private header;
+  options:RequestOptions;
 
-  constructor(
-    private http: Http
-) { }
+  constructor(private http: Http) {
+   this.header = new Headers();
+   this.header.append('Authorization', localStorage.getItem("application-token"));
+   this.options = new RequestOptions({headers: this.header});
+  }
 
-
-  private headers = new Headers({ 'Content-Type': 'application/json'});
 
   getCarrybaglist(userId){
-    return this.http.get("http://10.151.61.122:9004/bag/userId/"+userId)
+    return this.http.get("http://10.151.61.122:9004/bag/userId/"+userId, this.options)
     .map(data => data.json(),
     (error: any)=>console.log("error in getting data from database"));
 
@@ -25,36 +27,33 @@ export class CarrybagService {
 
 
   deleteCarrybag(offerId,userId) {
-  	return this.http.delete(Carrybag.deleteCarryBagUrl+"userId/"+userId+"/offerId/"+offerId, { headers: this.headers })
+  	return this.http.delete(Carrybag.deleteCarryBagUrl+"userId/"+userId+"/offerId/"+offerId, this.options)
     .map(data => data.status,
     (error: any)=>console.log(error + "error in deleting offer"));
   }
 
 
   newCouponGenerate(obj){
-
-    return this.http.post(Carrybag.generateCouponUrl,obj, {headers: this.headers})
+    return this.http.post(Carrybag.generateCouponUrl,obj, this.options)
      .map(data => data.json(),
    (error: any)=>console.log("error"));
  }
 
  validateCoupon(userId,offerId){
-
   return this.http.get(Carrybag.getCouponIdUrl+"userId/"+userId+"/offerId/"+offerId)
   .map(data => data.json(),
   (error: any)=>console.log("error in getting data from database"));
- 
 }
 
 updateFeedback(obj){
-  return this.http.post(Carrybag.addCommentUrl, obj, {headers: this.headers})
+  return this.http.post(Carrybag.addCommentUrl, obj, this.options)
   .map(data => data.json(),
   (error: any)=>console.log("error in getting data from database"));
 }
 
 
   addToCarrybag(offer){
-    return this.http.post(Carrybag.postCarrybagUrl, offer, {headers: this.headers})
+    return this.http.post(Carrybag.postCarrybagUrl, offer, this.options)
      .map(data => data.status,
    (error: any)=>console.log("error"));
   }
