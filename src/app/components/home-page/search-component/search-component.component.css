@@ -2,6 +2,7 @@
   height: 32rem;
 }
 
+
 #search {
   text-align: center;
   position: absolute;
@@ -54,11 +55,15 @@ ul{
 }
 
 .search-btn{
+<<<<<<< HEAD
   width:4rem;
   height: 3rem;
   margin-left: 0px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
+=======
+  width:40px;
+>>>>>>> a190259846709d068543c3281f2faad701690c20
 }
 
 .dropdown-item {

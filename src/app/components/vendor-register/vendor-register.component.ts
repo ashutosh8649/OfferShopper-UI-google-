@@ -12,6 +12,45 @@ export class VendorRegisterComponent implements OnInit {
   fb: FormBuilder;
   form:FormGroup;
 
+  filter = false;
+
+
+  states=['Andaman and Nicobar Islands',
+'Andhra Pradesh',
+'Arunachal Pradesh',
+'Assam',
+'Bihar',
+'Chandigarh',
+'Chhattisgarh',
+'Dadra and Nagar Haveli',
+'Daman and Diu',
+'Delhi',
+'Goa',
+'Gujarat',
+'Haryana',
+'Himachal Pradesh',
+'Jammu and Kashmir',
+'Jharkhand',
+'Karnataka',
+'Kerala',
+'Lakshadweep',
+'Madhya Pradesh',
+'Maharashtra',
+'Manipur',
+'Meghalaya',
+'Mizoram',
+'Nagaland',
+'Odisha',
+'Puducherry',
+'Punjab',
+'Rajasthan',
+'Sikkim',
+'Tamil Nadu',
+'Telangana',
+'Tripura',
+'Uttar Pradesh',
+'Uttarakhand',
+'West Bengal'];
   constructor(
     @Inject(FormBuilder)  fb: FormBuilder,
     private registerService:RegisterService,
@@ -30,13 +69,14 @@ export class VendorRegisterComponent implements OnInit {
       gender : new FormControl(''),
       address : new FormControl(''),
       city : new FormControl('',Validators.pattern('[a-zA-Z][a-zA-Z]+')),
-      state : new FormControl('',Validators.pattern('[a-zA-Z][a-zA-Z]+')),
+      state : new FormControl(''),
       zip : new FormControl('', [Validators.pattern('[0-9]*')]),
       vendorAddress : new FormControl('', [Validators.required]),
       vendorCity : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]),
-      vendorState : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]),
+      vendorState : new FormControl('', [Validators.required]),
       vendorZip : new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
-      vendorContact : new FormControl('', [Validators.required, Validators.pattern('[0-9]*'),Validators.minLength(10),Validators.maxLength(11)])
+      vendorContact : new FormControl('', [Validators.required, Validators.pattern('[0-9]*'),Validators.minLength(10),Validators.maxLength(11)]),
+      sameAddress: new  FormControl('')
     });
   }
 
@@ -100,7 +140,29 @@ export class VendorRegisterComponent implements OnInit {
 
       }
     });
+  }
 
+
+  setAddress(){
+if( this.form.get('sameAddress').value==false){
+    if(this.form.get('city').value=="" || this.form.get('state').value=="" ||  this.form.get('address').value=="" || this.form.get('zip').value==""){
+    alert("Address not properly entered");
+    }
+    else{
+      let city= this.form.get('city').value;
+       let state= this.form.get('state').value;
+        let street= this.form.get('address').value;
+        let zipCode=this.form.get('zip').value;
+
+  this.form.patchValue({
+    vendorAddress:  street,
+    vendorCity: city,
+    vendorState:  state,
+    vendorZip: zipCode
+  });
+
+    }
+}
   }
 
 }

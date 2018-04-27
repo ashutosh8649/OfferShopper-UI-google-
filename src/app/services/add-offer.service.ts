@@ -56,4 +56,11 @@ changeFlag(obj) {
   (error: any)=>console.log("error"));
 }
 
+putOffersInCarryBag(obj){
+  return this.http.put(AddOfferConfig.updateOffersInCarryBag,obj, {headers: this.headers})
+  .map(data => data.json(),
+(error: any)=>console.log("error"));
+}
+
+
 }

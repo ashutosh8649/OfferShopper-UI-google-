@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     /*let id = this.route.snapshot.params['id'];
-    this.sub=id;*/
+    this.userList=id;*/
     this.route.paramMap.subscribe(params => {
       this.userList = params.get('param');
       this.isLogin();

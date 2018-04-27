@@ -106,7 +106,8 @@ export class AddOfferComponent implements OnInit {
 			"offerRating" :this.User.offerRating,
 			"offerCategories" :this.offerCategories,
 			"offerTerms" :this.offerTerms,
-			"keywords" :this.keywords
+			"keywords" :this.keywords,
+			"imageURL":"image_url"
 		}
 		this.addOfferService.putOffer(this.obj).subscribe((res) =>{
 			this.getOffers();
@@ -114,12 +115,31 @@ export class AddOfferComponent implements OnInit {
 		}, (error) =>{
 
 		})
+
+		let carryBagObj={
+	
+			"offerId" :this.User.offerId,
+			"offerImage":"image_url",
+			"offerTitle" :this.offerTitle,
+			"offerOriginalPrice" :this.originalPrice,
+			"offerDiscount" :this.discount,
+			"offerValidity" :this.offerValidity,
+			"vendorId":this.User.userId
+
+		}
+		this.addOfferService.putOffersInCarryBag(carryBagObj).subscribe((res) =>{
+			this.getOffers();
+			this.reset();
+		}, (error) =>{
+
+		})
+
 	}
 
 	addOffer(){
 		console.log(this.number);
 		this.obj={
-			"offerId" :"null",
+
 			"userId"  :this.offers[0].userId,
 			"offerTitle" :this.offerTitle,
 			"offerValidity" :this.offerValidity,
@@ -133,11 +153,13 @@ export class AddOfferComponent implements OnInit {
 			"offerTerms" :this.offerTerms,
 			"keywords" :this.keywords
 		}
+		console.log(this.obj);
 		this.addOfferService.addNewOffer(this.obj).subscribe((res) =>{
 			this.getOffers();
-
+			console.log(res);
 		}, (error) =>{
-
+			console.log("Error:");
+			console.log(error);
 		})
 	}
 couponValidate()
