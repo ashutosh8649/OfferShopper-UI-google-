@@ -33,6 +33,8 @@ export class AddOfferComponent implements OnInit {
 	obj={};
 	User:any={};
 
+	date = new Date();
+
 	constructor(private addOfferService: AddOfferService) { }
 
 	ngOnInit()
@@ -137,11 +139,11 @@ export class AddOfferComponent implements OnInit {
 	}
 
 	addOffer(){
-		console.log(this.number);
+		let time = "T"+this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+"Z";
 		this.obj={
 			"userId"  :this.offers[0].userId,
 			"offerTitle" :this.offerTitle,
-			"offerValidity" :this.offerValidity,
+			"offerValidity" :this.offerValidity+time,
 			"dateOfAnnouncement" :this.offers[0].dateOfAnnouncement,
 			"address" :this.offers[0].address,
 			"offerDescription" :this.offerDescription,
@@ -155,6 +157,7 @@ export class AddOfferComponent implements OnInit {
 		console.log(this.obj);
 		this.addOfferService.addNewOffer(this.obj).subscribe((res) =>{
 			this.getOffers();
+			console.log("Success:");
 			console.log(res);
 		}, (error) =>{
 			console.log("Error:");
