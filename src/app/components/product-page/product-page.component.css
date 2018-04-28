@@ -11,5 +11,33 @@
 }
 
 img {
-	height: 650px;
+	max-height: 650px;
+}
+
+.text-poiret {
+	font-family: 'Poiret One', cursive;
+}
+
+.title {
+	font-size: 2rem;
+}
+
+.description {
+	font-family: 'Quicksand', sans-serif;
+	color:gray;
+	font-size: 1rem;
+}
+
+.price {
+	color:gray;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.back-arrow {
+	font-size: 0.8rem;
+}
+
+.btn-add {
+	background:black;
+	color:white;
 }

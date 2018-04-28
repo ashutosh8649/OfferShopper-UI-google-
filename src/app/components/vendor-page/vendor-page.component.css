@@ -85,3 +85,7 @@ del {
 agm-map {
   height: 182px;
 }
+
+#subscribe {
+	height: 3rem;
+}

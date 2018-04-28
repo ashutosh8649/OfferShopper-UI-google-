@@ -18,6 +18,7 @@ export class UserService {
 
 
   getProfile(userId:string){
+    console.log(localStorage.getItem("application-token"));
   return this.http.get(UserData.userUrl+userId, this.options)
   .map(data => data.json(),
   (error: any)=>console.log("error in getting data from database"));

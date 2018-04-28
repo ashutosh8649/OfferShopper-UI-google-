@@ -3,6 +3,9 @@ import{UserService} from './../../../services/user.service';
 import {FormsModule} from '@angular/forms';
 import { AuthorizationService } from '../../../services/authorization.service';
 
+import {States} from '../../../configs/state.config';
+import {Cities} from '../../../configs/cities.config';
+
 @Component({
   selector: 'app-userdetails',
   templateUrl: './userdetails.component.html',
@@ -12,7 +15,9 @@ import { AuthorizationService } from '../../../services/authorization.service';
 export class UserdetailsComponent implements OnInit {
 
   constructor(private userdata:UserService,
-      private authorizationService: AuthorizationService) { }
+    private authorizationService: AuthorizationService) { }
+  states= States.states;
+  cities=Cities.citiesName;
   data:any;
   firstName:string;
   lastName:string;

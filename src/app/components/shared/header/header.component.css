@@ -21,12 +21,7 @@
          font-size: 1rem;
      }
  }
-
-.dot {
-    /* color: lightcoral; */
-    color:#fd4747;
-    font-size:45px;
-}
+/*
 
 #logo:hover {
     transform: scale(5,5);
@@ -91,12 +86,12 @@ div a:hover {
 }
 
 .active {
-    border: 1px solid #fd4747;
+    border: 1px solid #018b8b;
 }
 
 .logout{
       padding:10px;
-     border: 1px solid #fd4747;
+     border: 1px solid #018b8b;
      cursor: pointer;
 }
 
@@ -104,7 +99,7 @@ div a:hover {
  .alert-styling{
    max-width: 30rem;
    max-height: 5rem;
-   background: #ca2222;
+   background: #fd4747;
    z-index: 1;
    position: fixed;
    top: 6rem;
@@ -117,4 +112,4 @@ div a:hover {
   opacity: 1;
   font-size: 1rem;
   color: white;
-}
+} */ 

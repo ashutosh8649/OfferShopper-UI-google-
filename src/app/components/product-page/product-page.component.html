@@ -1,17 +1,23 @@
-<div class="container-fluid">
-	<div class="row align-items-center">
-		<aside class="col-sm-12 col-md-4 col-lg-5">
+<div>
+	<div class="container-fluid mb-5">
+	<div class="row align-items-top pt-4 mt-1">
+		<aside class="col-sm-12 col-md-12 col-lg-12 ml-5">
+				<a [routerLink]="['/homepage']"><font class="description"><font class="back-arrow"><</font> Back</font></a>
+		</aside>
+	</div>
+	<div class="row align-items-top pt-4 mt-1">
+		<aside class="col-sm-12 col-md-4 col-lg-4 ml-5">
 			<!-- Offer Images -->
 			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img class="d-block w-100" src="../../../assets/product-3.jpg" alt="First slide">
+						<img class="d-block w-100" src="../../../assets/product-01.jpg" alt="First slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" src="../../../assets/product-2.jpg" alt="Second slide">
+						<img class="d-block w-100" src="../../../assets/product-02.jpg" alt="Second slide">
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" src="../../../assets/product-3.jpg" alt="Third slide">
+						<img class="d-block w-100" src="../../../assets/product-03.jpg" alt="Second slide">
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -24,65 +30,55 @@
 				</a>
 			</div>
 			<!-- End of Offer Images-->
-
 		</aside>
 
-		<div class="col-sm-12 col-md-8 col-lg-7">
-			<li class="list-group-item">
-				<label class="text-heading">Title:</label>
-				<span class="text-lead">{{productName}}</span>
-			</li>
-
-			<li class="list-group-item">
-				<label class="text-heading">Description:</label>
-				<span class="text-lead">{{productDescription}}</span>
-			</li>
-
-			<li class="list-group-item">
+		<div class="col-sm-12 col-md-8 col-lg-6 ml-5">
+			<div class="row">
+				<span class="text-lead text-poiret title"><b>{{productName}}</b></span>
+			</div>
+			<div class="row mt-2">
+				<span class="text-lead text-poiret description"><blockquote class="text-justify">{{productDescription}}</blockquote></span>
+			</div>
+			<div class="row">
 				<label class="text-heading mx-2">Original Price:</label>
-				<span class="text-lead">Rs. {{productOriginalPrice}}</span>
+				<span class="text-lead text-poiret price">Rs. {{productOriginalPrice}}</span>
 				<label class="text-heading mx-2 ml-5">Discount</label>
-				<span class="text-lead">{{productDiscount}}%</span>
-			</li>
-
-			<li class="list-group-item">
+				<span class="text-lead text-poiret">{{productDiscount}}%</span>
+			</div>
+			<div class="row">
 				<label class="text-heading">Seller Name: </label>
-				<span class="text-lead">{{productSeller}}</span>
-			</li>
-
-			<li class="list-group-item">
+				<span class="text-lead text-poiret">{{productSeller}}</span>
+			</div>
+			<div class="row">
 				<label class="text-heading">Validity: </label>
-				<span class="text-lead">{{productValidity | date}}</span>
-			</li>
+				<span class="text-lead text-poiret">{{productValidity | date}}</span>
+			</div>
+			<div *ngIf="user">
+					<div class="row">
+						<!-- Button to add to wishlist-->
+						<input class="btn btn-primary col-3 mx-3 btn-add" (click)="addToWishlist(offer)" type="button" value="Add to Wishlist">
+						<!-- End of button to add to widhlist-->
 
+						<!-- Button to add to carrybag-->
+						<input class="btn btn-primary col-3 mx-3 btn-add" (click)="addToCarrybag(offer)" type="button" value="Add to Carrybag">
+						<!-- End of button to add to carrybag-->
+				</div>
+			</div>
+		</div>
+
+		<div *ngIf="!user">
+			<div class="container-fluid mt-1 mb-3">
+				<div class="row">
+					<!-- Button to add to wishlist-->
+					<input class="btn btn-primary col-3 mx-3" [routerLink]="['/login']" type="button" value="Add to Wishlist">
+					<!-- End of button to add to widhlist-->
+
+					<!-- Button to add to carrybag-->
+					<input class="btn btn-primary col-3 mx-3" [routerLink]="['/login']" type="button" value="Add to Carrybag">
+					<!-- End of button to add to carrybag-->
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-
-<div *ngIf="user">
-	<div class="container-fluid mt-1 mb-3">
-		<div class="row">
-			<!-- Button to add to wishlist-->
-			<input class="btn btn-primary col-2 mx-3" (click)="addToWishlist(offer)" type="button" value="Add to Wishlist">
-			<!-- End of button to add to widhlist-->
-
-			<!-- Button to add to carrybag-->
-			<input class="btn btn-primary col-2 mx-3" (click)="addToCarrybag(offer)" type="button" value="Add to Carrybag">
-			<!-- End of button to add to carrybag-->
-		</div>
-	</div>
-</div>
-
-<div *ngIf="!user">
-	<div class="container-fluid mt-1 mb-3">
-		<div class="row">
-			<!-- Button to add to wishlist-->
-			<input class="btn btn-primary col-2 mx-3" [routerLink]="['/login']" type="button" value="Add to Wishlist">
-			<!-- End of button to add to widhlist-->
-
-			<!-- Button to add to carrybag-->
-			<input class="btn btn-primary col-2 mx-3" [routerLink]="['/login']" type="button" value="Add to Carrybag">
-			<!-- End of button to add to carrybag-->
-		</div>
-	</div>
 </div>
