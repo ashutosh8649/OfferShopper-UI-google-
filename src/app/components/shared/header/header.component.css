@@ -97,6 +97,7 @@ div a:hover {
 .logout{
       padding:10px;
      border: 1px solid #fd4747;
+     cursor: pointer;
 }
 
 
