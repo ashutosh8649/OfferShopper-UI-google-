@@ -37,7 +37,6 @@ export class AuthorizationService {
 
 	logout() {
 		localStorage.removeItem("application-token");
-		localStorage.removeItem("userId");
 	}
 
 	// authorization() {

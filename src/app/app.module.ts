@@ -45,6 +45,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { ShopPageComponent } from './components/home-page/shop-page/shop-page.component';
 import { SeachResultsComponent } from './components/home-page/shop-page/seach-results/seach-results.component';
 import { SearchBarComponent } from './components/home-page/shop-page/search-bar/search-bar.component';
+import { HelpComponent } from './components/help/help.component';
 
 const appRoutes:Routes=[
 
@@ -59,7 +60,8 @@ const appRoutes:Routes=[
  /* { path:'vendorInfo',component: VendorPageComponent},*/
   { path:'vendorInfo/:id',component: VendorPageComponent},
   { path:'token/:id',component: UpdatePasswordComponent},
-    { path:'verifyToken/user/:id',component: VerifyEmailComponent},
+  { path:'help/:id',component: HelpComponent},
+  { path:'verifyToken/user/:id',component: VerifyEmailComponent},
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
   { path:'search/:id1/:id2',component: ShopPageComponent},
@@ -92,7 +94,8 @@ const appRoutes:Routes=[
     VendorRegisterComponent,
     ShopPageComponent,
     SeachResultsComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    HelpComponent
   ],
   imports: [
     IonRangeSliderModule,
