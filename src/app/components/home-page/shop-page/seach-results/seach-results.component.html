@@ -46,8 +46,16 @@
         </div>
         <div class="col-md-2 d-none d-md-block offer-center">
           {{result.offerRating}}
-          <button class="btn btn-dark my-2 my-sm-0 container-button" type="button">Add to Carry Bag</button>
+          <div *ngIf="user; else elseBlock">
+          <button class="btn btn-dark my-2 my-sm-0 container-button" type="button" (click)="addToCarrybag(result)">Add to Carry Bag</button>
+          <button class="btn btn-dark my-2 my-sm-0 container-button" type="button" (click)="addToWishlist(result)">Add To WishList</button>
           <button class="btn btn-dark my-2 my-sm-0 container-button" [routerLink]="['/', 'vendorInfo',result.userId]" type="button">{{result.address.name}}</button>
+          </div>
+          <ng-template #elseBlock>
+          <button class="btn btn-dark my-2 my-sm-0 container-button" type="button" (click)="notLogin()">Add to Carry Bag</button>
+          <button class="btn btn-dark my-2 my-sm-0 container-button" type="button" (click)="notLogin()">Add To WishList</button>
+          <button class="btn btn-dark my-2 my-sm-0 container-button" [routerLink]="['/', 'vendorInfo',result.userId]" type="button">{{result.address.name}}</button>
+          </ng-template>
         </div>
       </div>
     </div>

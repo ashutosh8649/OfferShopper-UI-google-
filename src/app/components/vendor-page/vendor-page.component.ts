@@ -115,6 +115,7 @@ export class VendorPageComponent implements OnInit {
   }
 
   addToWishlist(offer1) {
+    console.log(offer1);
     let wishlistBean = {
       "userId":this.user,
       "offerId":offer1.offerId,

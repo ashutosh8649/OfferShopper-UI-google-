@@ -29,6 +29,7 @@ private authorizationService: AuthorizationService
   }
 
   addToWishlist(offer){
+    console.log(offer);
     return this.http.post(Wishlist.postWishlistUrl, offer, this.options)
      .map(data => data.status,
    (error: any)=>console.log("error in adding restaurant"));

@@ -27,7 +27,7 @@ export class CarrybagService {
 
 
   deleteCarrybag(offerId,userId) {
-  	return this.http.delete(Carrybag.deleteCarryBagUrl+"userId/"+userId+"/offerId/"+offerId, this.options)
+  	return this.http.delete(Carrybag.deleteCarryBagUrl+userId+"/offerId/"+offerId, this.options)
     .map(data => data.status,
     (error: any)=>console.log(error + "error in deleting offer"));
   }
