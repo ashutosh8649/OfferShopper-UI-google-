@@ -24,7 +24,7 @@
 
 .dot {
     /* color: lightcoral; */
-    color:#fd4747;
+    color:#018b8b;
     font-size:45px;
 }
 
@@ -87,23 +87,23 @@ div a:hover {
 }
 
 .text-pride {
-    color: #fd4747;
+    color: #018b8b;
 }
 
 .active {
-    border: 1px solid #fd4747;
+    border: 1px solid #018b8b;
 }
 
 .logout{
       padding:10px;
-     border: 1px solid #fd4747;
+     border: 1px solid #018b8b;
 }
 
 
  .alert-styling{
    max-width: 30rem;
    max-height: 5rem;
-   background: #ca2222;
+   background: #fd4747;
    z-index: 1;
    position: fixed;
    top: 6rem;
