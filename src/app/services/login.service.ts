@@ -27,7 +27,6 @@ export class LoginService {
     return this.http.post(Login.loginWIthId, body, options)
     .map((res:Response) => {
       localStorage.setItem("application-token",res.text());
-      localStorage.setItem("userId",username);
     },
     (error: any)=>console.log("error in calling register service"));
   }
