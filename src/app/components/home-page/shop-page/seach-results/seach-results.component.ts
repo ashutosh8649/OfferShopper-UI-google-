@@ -37,10 +37,10 @@ export class SeachResultsComponent implements OnInit {
 
 	addToWishlist(offer1) {
 		console.log(offer1);
-		console.log(offer1._id);
+		console.log(offer1.offerId);
     let wishlistBean = {
       "userId":this.user,
-      "offerId":offer1._id,
+      "offerId":offer1.offerId,
       "offerTitle":offer1.offerTitle,
       "offerOriginalPrice":offer1.originalPrice,
       "offerDiscount":offer1.discount,
