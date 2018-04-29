@@ -56,6 +56,7 @@ export class ProductPageComponent implements OnInit {
  searchProduct(){
    this.productDetailService.searchProduct(this.vendorId)
    .subscribe((res) =>{
+     
      this.offer=res[0];
      this.productName=res[0].offerTitle;
      this.productDescription=res[0].offerDescription;

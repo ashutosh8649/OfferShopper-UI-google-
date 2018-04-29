@@ -31,10 +31,10 @@
                 <img class="card-img" src="../../../assets/image.jpg" alt="Card image">
               </div>
           </div>
-          <div class="col-md-5 col-sm-4 col-6 d-none d-sm-block offer-center">
+          <div class="col-md-5 col-sm-4 col-6 d-none d-sm-block offer-center" [routerLink]="['/', 'product',offerList.userId, offerList.offerId]">
             <b>{{offerList.offerTitle}}</b>
           </div>
-          <div class="col-md-5 col-sm-4 mt-4 pl-2 col-6 d-block d-sm-none">
+          <div class="col-md-5 col-sm-4 mt-4 pl-2 col-6 d-block d-sm-none" [routerLink]="['/', 'product',offerList.userId, offerList.offerId]">
             <b>{{offerList.offerTitle}}</b>
             <br/>
             <div class="offer-deleted-price-small">MRP:<del>₹{{offerList.offerOriginalPrice}}</del></div>
