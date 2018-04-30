@@ -56,6 +56,7 @@ export class CarrybagComponent implements OnInit {
     
     this.carrybagService.getCarrybaglist(this.userId).subscribe((res) =>{
       this.carryBagOffers = res;
+      //console.log(this.carryBagOffers);
      
       }, (error) =>{console.log("error");
       })
@@ -70,30 +71,32 @@ export class CarrybagComponent implements OnInit {
   }
 
 
-  couponGenerate(userId,offerId){
+  couponGenerate(userId,offerId,vendorId){
     
-    this.carrybagService.validateCoupon(userId,offerId).subscribe((res) =>{
+    this.carrybagService.checkCouponExistence(userId,offerId).subscribe((res) =>{
       let data=res;
- 
+      
       if(data.userId==null){
-      let user=this.carryBagOffers.find(ele=>ele.offerId===offerId);
-      this.couponId=Math.floor(Math.random()*100000);
+     // let user=this.carryBagOffers.find(ele=>ele.offerId===offerId);
+     // this.couponId=Math.floor(Math.random()*100000);
       
       this.obj={
-                  "couponId" :this.couponId,
-                  "userId"  :user.userId,
-                  "offerId" :user.offerId,
+                 // "couponId" :this.couponId,
+                  "userId"  :userId,
+                  "offerId" :offerId,
+                  "vendorId" :vendorId,
                   "vendorValidationFlag" : false,
-                  "rating" :0,
+                  "rating" :0.0,
                   "feedback" :null
                 } 
                 this.carrybagService.newCouponGenerate(this.obj).subscribe((res) =>{
-  
+                  debugger
+                  this.couponId=res.couponId;
                 }, (error) =>{
           
                 })
               }
-              else{
+              else {
                 this.couponId=data.couponId;
               }
     }, (error) =>{console.log("error");
@@ -106,7 +109,7 @@ export class CarrybagComponent implements OnInit {
 
   addfeedback() {
 
-    this.carrybagService.validateCoupon(this.currentUserId,this.currentOfferId).subscribe((res) =>{
+    this.carrybagService.checkCouponExistence(this.currentUserId,this.currentOfferId).subscribe((res) =>{
       
       let data=res;
       
@@ -143,7 +146,7 @@ export class CarrybagComponent implements OnInit {
     this.currentOfferId=offerId;
     this.currentUserId=userId;
 
-    this.carrybagService.validateCoupon(userId,offerId).subscribe((res) =>{
+    this.carrybagService.checkCouponExistence(userId,offerId).subscribe((res) =>{
       
 
       let data=res;
@@ -153,7 +156,11 @@ export class CarrybagComponent implements OnInit {
         this.myModal.nativeElement.click();
         //this.flag=true;
 
-        }  else  {
+        } else if (data.feedback==null&&data.vendorValidationFlag==false)  {
+          alert("please verify your coupon through vendor");
+        }
+        
+        else  {
           this.flag=false;
           alert("feedback already exists");
           }
