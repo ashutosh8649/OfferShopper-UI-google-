@@ -66,7 +66,7 @@ const appRoutes:Routes=[
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
   { path:'search/:id1/:id2',component: ShopPageComponent},
-    { path:'search',component: ShopPageComponent}
+  { path:'search',component: ShopPageComponent}
 ]
 
 @NgModule({
