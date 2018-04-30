@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
 
 	logout(){
 		this.authorizationService.logout();
-		window.location.assign("/homepage");
+    this.isLogin();
 	}
 
 	getUserId() {

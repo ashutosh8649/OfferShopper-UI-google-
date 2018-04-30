@@ -24,7 +24,7 @@ export class OffersService {
   }
 
   getAddress(street,city,state,zip){
-    return this.http.get(Offerslist.getAddressUrl+street+city+state+zip+"&key="+"AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ", this.options)
+    return this.http.get(Offerslist.getAddressUrl+street+city+state+zip+"&key="+"AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ")
     .map(data => data.json(),
       (error: any)=>console.log("error in getting data from database"));
   }
