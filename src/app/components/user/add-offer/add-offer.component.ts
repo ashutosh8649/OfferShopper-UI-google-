@@ -132,7 +132,7 @@ export class AddOfferComponent implements OnInit {
 
 		})
 
-		let carryBagObj={
+		/*let carryBagObj={
 
 			"offerId" :this.User.offerId,
 			"offerImage":"image_url",
@@ -142,13 +142,13 @@ export class AddOfferComponent implements OnInit {
 			"offerValidity" :this.offerValidity,
 			"vendorId":this.User.userId
 
-		}
-		this.addOfferService.putOffersInCarryBag(carryBagObj).subscribe((res) =>{
+		}*/
+		/*this.addOfferService.putOffersInCarryBag(carryBagObj).subscribe((res) =>{
 			this.getOffers(this.userId);
 			this.reset();
 		}, (error) =>{
 
-		})
+		})*/
 
 	}
 
