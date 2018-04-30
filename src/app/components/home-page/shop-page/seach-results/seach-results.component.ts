@@ -67,6 +67,7 @@ export class SeachResultsComponent implements OnInit {
 		this.offersService.addToCarrybag(carrybagBean).subscribe((res) =>{
 			this.messageService.showSuccessToast(this._vcr,"Added to CarryBag");
 		},(error) =>{
+			this.messageService.showSuccessToast(this._vcr,"Already Added");
 		})
 	}
 

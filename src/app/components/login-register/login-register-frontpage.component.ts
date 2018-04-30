@@ -5,6 +5,7 @@ import {registerDetails} from './registerDetails';
 import {LoginService} from '../../services/login.service';
 import {RegisterService} from '../../services/register.service';
 import {vendorDetails} from './vendorDetails';
+// import {NavbarComponent} from './header/navbar';
 
 @Component({
   selector: 'app-login-register-frontpage',
@@ -104,7 +105,8 @@ export class LoginRegisterFrontpageComponent implements OnInit {
     }
 
     this.loginService.loginWithEmailId(username,result).subscribe((res) =>{
-      window.location.assign("/homepage");
+      // window.location.assign("/homepage");
+      // NavbarComponent.isLogin();
     }, (res:Response) =>{
       if(res.status==401){
         alert("Unauthorized User");

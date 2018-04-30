@@ -46,6 +46,7 @@ import { ShopPageComponent } from './components/home-page/shop-page/shop-page.co
 import { SeachResultsComponent } from './components/home-page/shop-page/seach-results/seach-results.component';
 import { SearchBarComponent } from './components/home-page/shop-page/search-bar/search-bar.component';
 import { HelpComponent } from './components/help/help.component';
+import { LocationService } from './services/location.service';
 
 const appRoutes:Routes=[
 
@@ -65,7 +66,7 @@ const appRoutes:Routes=[
   //{path:'',redirectTo:'/sidebar' ,pathMatch:'full'},
   //{path:'**',redirectTo:'/sidebar' ,pathMatch:'full'}
   { path:'search/:id1/:id2',component: ShopPageComponent},
-    { path:'search',component: ShopPageComponent}
+  { path:'search',component: ShopPageComponent}
 ]
 
 @NgModule({
@@ -112,7 +113,7 @@ const appRoutes:Routes=[
      apiKey: 'AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ'
    })
   ],
-  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, VerifyEmailService,UpdatePasswordService],
+  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, VerifyEmailService,UpdatePasswordService, LocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
