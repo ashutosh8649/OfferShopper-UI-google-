@@ -38,7 +38,7 @@ export class AddOfferService {
 
   putOffer(obj){
 
-   return this.http.put(AddOfferConfig.updateOfferURL+obj.offerId,obj, this.options)
+   return this.http.put(AddOfferConfig.updateOfferURL+obj.userId,obj, this.options)
     .map(data => data.json(),
   (error: any)=>console.log("error"));
  }
