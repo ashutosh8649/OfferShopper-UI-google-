@@ -28,6 +28,7 @@ export class ProductsListComponent implements OnInit {
     this.offersService.getOffers("pooja@gmail.com")
     .subscribe((res) =>{
       this.offers=res;
+      console.log(res);
      },(error) =>{
     });
 }
