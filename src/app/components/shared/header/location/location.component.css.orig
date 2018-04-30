@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-#_location {
-	font-family: initial;
-=======
 .location{
 	background-color: #018b8b;
 	text-align:center;
->>>>>>> 64490def0a391c454f63fc3b781582765e85ded6
 }

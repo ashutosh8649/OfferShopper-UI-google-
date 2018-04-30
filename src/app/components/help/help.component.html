@@ -1,12 +1,14 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-3">
-			<h4><a [routerLink]="['/help', 'FAQs']">FAQs</a></h4>
-			<h4><a [routerLink]="['/help', 'T&C']">Terms and Conditions</a></h4>
+		<div class="col-3 help-sidebar border-right">
+			<a [routerLink]="['/help', 'FAQs']">FAQs</a>
+			<hr/>
+			<a [routerLink]="['/help', 'terms']">Terms and Conditions</a>
+			<hr/>
 		</div>
-		<div class="col-9">
+		<div class="col-9 help-content">
 			<div [ngSwitch]="helpOption">
-				<div *ngSwitchCase="'T&C'">
+				<div *ngSwitchCase="'terms'">
 					<h1>Terms and Conditions</h1>
 					<h3>Operating Agreement</h3>
 					<p>This Agreement contains the complete terms and conditions that apply to an individual's or entity's participation in the Offer Shopper Affiliate Program (the "Program"). As used in this Agreement, "we", "us", or "our" means Offer Shopper Internet Private Limited or any of our affiliate; parent; or group companies and our successors and assigns, as the case may be, and "you" means the applicant. Offer Shopper Site means, collectively, the Offer Shopper.com website, the Offer Shopper mobile website and the Offer Shopper mobile applications. "Your site" means your website where you will link to the Offer Shopper Site (and which you will identify in your Program application). Save for our obligation to pay referral fees under Section 4, which may be performed solely by us, we may cause any of our obligations under this Agreement to be fulfilled by any of our Affiliates (defined below), on our behalf.</p>

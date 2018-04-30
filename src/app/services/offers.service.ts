@@ -15,7 +15,7 @@ export class OffersService {
     this.header = new Headers();
     this.header.append('Authorization',localStorage.getItem("application-token"));
     this.options = new RequestOptions({headers: this.header});
-   }
+  }
 
   getOffers(vendorId:string) {
     return this.http.get(Offerslist.getOfferlistUrl+vendorId+"/offers", this.options)
@@ -31,8 +31,8 @@ export class OffersService {
 
   addToCarrybag(offer){
     return this.http.post(Offerslist.postCarrybagUrl, offer, this.options)
-     .map(data => data.status,
-   (error: any)=>console.log("error in adding restaurant"));
+    .map(data => data.status,
+      (error: any)=>console.log("error in adding restaurant"));
   }
 
 
