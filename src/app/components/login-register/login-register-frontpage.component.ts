@@ -1,11 +1,11 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {FormGroup, FormControl, Validators,FormBuilder} from '@angular/forms';
+import {Router} from '@angular/router';
 import {loginDetails} from './loginDetails';
 import {registerDetails} from './registerDetails';
 import {LoginService} from '../../services/login.service';
 import {RegisterService} from '../../services/register.service';
 import {vendorDetails} from './vendorDetails';
-// import {NavbarComponent} from './header/navbar';
 
 @Component({
   selector: 'app-login-register-frontpage',
@@ -33,11 +33,13 @@ export class LoginRegisterFrontpageComponent implements OnInit {
   form:FormGroup;
   tempPassword:String;
   isAlredyExist:boolean=false;
+  status: boolean = false;
 
   constructor(
     @Inject(FormBuilder)  fb: FormBuilder,
     private loginService:LoginService,
     private registerService:RegisterService,
+    private router:Router
     ) {
     this.fb=fb;
     this.registerForm=this.fb.group({
@@ -105,8 +107,10 @@ export class LoginRegisterFrontpageComponent implements OnInit {
     }
 
     this.loginService.loginWithEmailId(username,result).subscribe((res) =>{
-      // window.location.assign("/homepage");
-      // NavbarComponent.isLogin();
+      this.loginService.isLoggedin.subscribe(status => {this.status = status;console.log(status+"In loggin component")});
+      if(this.status==true){
+        this.router.navigate(['/homepage']);
+      }
     }, (res:Response) =>{
       if(res.status==401){
         alert("Unauthorized User");
