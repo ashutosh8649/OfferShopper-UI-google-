@@ -1,6 +1,7 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild, ContentChild } from '@angular/core';
 import { CarrybagService } from '../../../services/carrybag.service';
 import { AuthorizationService } from '../../../services/authorization.service';
+import { MockNgModuleResolver } from '@angular/compiler/testing';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { AuthorizationService } from '../../../services/authorization.service';
 })
 export class CarrybagComponent implements OnInit {
   @ViewChild('myModal')myModal;
+  @ViewChild('coupModal')coupModal;
   couponId:any;
   //userId:String="megha@gmail.com"
   currentUserId:String;
@@ -72,15 +74,12 @@ export class CarrybagComponent implements OnInit {
 
 
   couponGenerate(userId,offerId,vendorId){
-    
-    this.carrybagService.checkCouponExistence(userId,offerId).subscribe((res) =>{
+      this.carrybagService.checkCouponExistence(userId,offerId).subscribe((res) =>{
       let data=res;
-      
-      if(data.userId==null){
+       if(data.userId==null){
      // let user=this.carryBagOffers.find(ele=>ele.offerId===offerId);
      // this.couponId=Math.floor(Math.random()*100000);
-      
-      this.obj={
+       this.obj={
                  // "couponId" :this.couponId,
                   "userId"  :userId,
                   "offerId" :offerId,
@@ -90,22 +89,19 @@ export class CarrybagComponent implements OnInit {
                   "feedback" :null
                 } 
                 this.carrybagService.newCouponGenerate(this.obj).subscribe((res) =>{
-                  debugger
+                  
                   this.couponId=res.couponId;
+                  this.coupModal.nativeElement.click();
                 }, (error) =>{
-          
-                })
-              }
+                  })
+                }
               else {
                 this.couponId=data.couponId;
+                this.coupModal.nativeElement.click();
               }
     }, (error) =>{console.log("error");
       })
-
-
-
-
-          }
+ }
 
   addfeedback() {
 

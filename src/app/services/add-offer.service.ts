@@ -69,4 +69,11 @@ putOffersInCarryBag(obj){
 }
 
 
+getShopAddress(userId) {
+  return this.http.get(AddOfferConfig.getVendorDetailURL+userId, this.options)
+  .map(data => data.json(),
+  (error: any)=>console.log("error in getting data from database"));
+}
+
+
 }

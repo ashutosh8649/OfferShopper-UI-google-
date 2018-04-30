@@ -6,4 +6,5 @@ export class AddOfferConfig {
 	public static validateCouponUrl="http://10.151.61.152:8765/api/feedback-database-service/os/getfeedback/couponId/";
 	public static couponFlagChangedUrl="http://10.151.61.152:8765/api/feedback-database-service/os/addfeedback/comment";
 	public static updateOffersInCarryBag="http://10.151.61.152:8765/api/carry-bag-database-service/bag/update";
+	public static getVendorDetailURL="http://10.151.61.152:8765/api/uservendor-activity-service/userdata/";
 }
