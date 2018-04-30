@@ -47,7 +47,7 @@
 			</div>
 			<div class="row">
 				<label class="text-heading">Seller Name: </label>
-				<span class="text-lead text-poiret">{{productSeller}}</span>
+				<button class="btn btn-success" [routerLink]="['/', 'vendorInfo',this.productSeller]" >{{productSeller}}</button>
 			</div>
 			<div class="row">
 				<label class="text-heading">Validity: </label>

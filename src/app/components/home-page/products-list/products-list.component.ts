@@ -27,8 +27,7 @@ export class ProductsListComponent implements OnInit {
     .subscribe((res) =>{
       this.offers=res;
       console.log(res);
-      console.log(this.offers);
-    },(error) =>{
+     },(error) =>{
     });
   }
 }
