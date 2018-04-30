@@ -1,16 +1,23 @@
-.card-img-top {
-	width: 350px;
-	height: 350px;
-}
-
-.originalPrice {
-	text-decoration: line-through;
-}
-    
 .card-w{
 	cursor: pointer;
 	max-width: 22rem;
 	min-width: 22rem;
 	min-height: 28rem;
 	max-height: 28rem;
+}
+
+.card-img {
+	position: relative;
+}
+
+.card-rating {
+	border-radius: 0px 5px 0px 0px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.offer-deleted-price {
+	color: #999;
+	font-size: 14px;
 }

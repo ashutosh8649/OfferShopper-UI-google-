@@ -40,7 +40,7 @@
         <ul class="profile mb-0">
           <div *ngIf="login">
             <li class="pt-2">
-              <a [routerLink]="['/user', 'userdetails']"><i class="far fa-user"></i></a>
+              <a [routerLink]="['/user', 'userdetails']"><span class="pr-3">{{user}}</span><i class="far fa-user"></i></a>
             </li>
           </div>
           <div *ngIf="!login">
@@ -49,7 +49,7 @@
             </li>
           </div>
           <li *ngIf="!login" class="nav-item dropdown ml-3">
-            <a class="nav-link dropdown-toggle ml-2" [routerLink]="['/login']" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle m-0" [routerLink]="['/login']" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-shopping-cart"></i>
             </a>
             <div *ngIf="login" class="dropdown-menu m-0 p-0 justify-content-left" aria-labelledby="navbarDropdownMenuLink">
@@ -58,7 +58,7 @@
             </div>
           </li>
           <li *ngIf="login" class="nav-item dropdown ml-3">
-            <a class="nav-link dropdown-toggle ml-2" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle m-0 px-2" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-shopping-cart"></i>
             </a>
             <div class="dropdown-menu m-0 p-0 justify-content-left" aria-labelledby="navbarDropdownMenuLink">
@@ -68,7 +68,7 @@
           </li>
           <div *ngIf="login">
             <li class="nav-text">
-              <a class="text-dark font-weight-bold logout" (click)="logout()">Logout</a>
+              <a class="text-dark font-weight-bold logout" (click)="logout()" routerLink="/homepage">Logout</a>
             </li>
           </div>
         </ul>
