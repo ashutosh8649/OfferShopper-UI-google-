@@ -3,13 +3,15 @@ import { AuthorizationService } from '../../../../services/authorization.service
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import{Location} from '@angular/common';
+import { LoginService } from '../../../../services/login.service';
 
 @Component({
 	selector: 'app-navbar',
 	templateUrl: './navbar.component.html',
 	styleUrls: ['./navbar.component.css'],
-	providers:[ AuthorizationService ]
+	providers:[ AuthorizationService, LoginService ]
 })
+
 export class NavbarComponent implements OnInit {
 
 	private login:boolean = false;
@@ -22,7 +24,8 @@ export class NavbarComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		private authorizationService: AuthorizationService,
-		private location:Location
+		private location:Location,
+		private loginService: LoginService
 		) { 
 		console.log(this.router.url);
 
@@ -31,10 +34,14 @@ export class NavbarComponent implements OnInit {
 
 
 	ngOnInit() {
+		this.loginService.isLoggedin.subscribe(status => {
+			console.log(status+"worked")
+		});
 		this.isLogin();
 	}
 
 	isLogin(){
+		// this.loginService.isLoggedin.subscribe(status => console.log(status+"worked"));
 		this.login = this.authorizationService.isLogin();
 		this.getUserId();
 	}
@@ -42,6 +49,7 @@ export class NavbarComponent implements OnInit {
 	logout(){
 		this.authorizationService.logout();
 		this.isLogin();
+		this.loginService.logout();
 	}
 
 	getUserId() {

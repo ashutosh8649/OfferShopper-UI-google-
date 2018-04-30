@@ -105,7 +105,8 @@ export class VendorPageComponent implements OnInit {
   subscribe(){
     let subscribeBean={
       "userId":this.user,
-      "vendorId":this.vendorId
+      "vendorId":this.vendorId,
+      "shopName":this.shopName,
     }
     console.log(subscribeBean);
     this.subscribeService.addToSubscriptionList(subscribeBean).subscribe((res) =>{
