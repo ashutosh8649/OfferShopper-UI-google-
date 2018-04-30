@@ -37,10 +37,10 @@ export class SeachResultsComponent implements OnInit {
 
 	addToWishlist(offer1) {
 		console.log(offer1);
-		console.log(offer1._id);
+		console.log(offer1.offerId);
     let wishlistBean = {
       "userId":this.user,
-      "offerId":offer1._id,
+      "offerId":offer1.offerId,
       "offerTitle":offer1.offerTitle,
       "offerOriginalPrice":offer1.originalPrice,
       "offerDiscount":offer1.discount,
@@ -56,7 +56,6 @@ export class SeachResultsComponent implements OnInit {
 	addToCarrybag(offer) {
 		let carrybagBean = {
 			"userId":this.user,
-
 			"offerId":offer.offerId,
 			"offerTitle":offer.offerTitle,
 			"offerOriginalPrice":offer.originalPrice,
@@ -68,6 +67,7 @@ export class SeachResultsComponent implements OnInit {
 		this.offersService.addToCarrybag(carrybagBean).subscribe((res) =>{
 			this.messageService.showSuccessToast(this._vcr,"Added to CarryBag");
 		},(error) =>{
+			this.messageService.showSuccessToast(this._vcr,"Already Added");
 		})
 	}
 
