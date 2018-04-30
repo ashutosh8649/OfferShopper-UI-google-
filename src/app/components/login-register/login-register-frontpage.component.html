@@ -1,6 +1,3 @@
-
-
-
   <!--Login-register-front-page-->
   <div class="py-5 loginContainer" [hidden]="IsNotHidden">
     <div class="container">
@@ -34,7 +31,7 @@
               <div class="form-group">
                 <a class="text-pride" routerLink="/forgot-password">Forgot Password</a>
               </div>
-              <button type="button" class="btn btn-secondary" [disabled]="loginForm.invalid" (click)="login()"  [routerLink]="['/homepage']">Login</button>
+              <button type="button" class="btn btn-secondary" [disabled]="loginForm.invalid" (click)="login()">Login</button>
             </form>
           </div>
         </div>

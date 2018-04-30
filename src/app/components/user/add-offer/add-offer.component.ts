@@ -31,7 +31,7 @@ export class AddOfferComponent implements OnInit {
 	offerRating:any;
 	coupon:number;
 	public userInfo;
-
+	shopAddress:any;
 
 	obj={};
 	User:any={};
@@ -42,8 +42,9 @@ export class AddOfferComponent implements OnInit {
 		private authorizationService: AuthorizationService) { }
 
 	ngOnInit()
-	{
+	{	
 		this.getUserId();
+	
 	}
 
 
@@ -63,7 +64,6 @@ export class AddOfferComponent implements OnInit {
 		this.addOfferService.getOffersList(userId).subscribe((res) =>{
 
 			this.offers = res;
-			//console.log(this.offers);
 		}
 		, (error) =>{console.log("error");
 	})
@@ -152,22 +152,29 @@ export class AddOfferComponent implements OnInit {
 
 	}
 
+	getOffer(){
+		this.addOfferService.getShopAddress(this.userId).subscribe((res) =>{
+			this.shopAddress=res.shopAddress;
+			this.addOffer();
+		}, (error) =>{
+			console.log(error);
+		})
+
+	}
+
 	addOffer(){
-		
 		let time = "T"+this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+"Z";
-		//console.log(this.date.getHours);
-		//let time =this.date.getTime().toLocaleString();
-		//let todaytime=this.date.toTimeString;
-		//debugger
+
+	//	console.log(this.shopAddress);
 		this.obj={
 			"userId"  :this.userId,
 			"offerTitle" :this.offerTitle,		
 			//"offerValidity" :this.offerValidity+time,
-			//"offerValidity" :this.offerValidity+"T03:4:24.375",
 			"offerValidity" :"2018-04-24T04:34:31.660Z",
 			//"dateOfAnnouncement" :this.offers[0].dateOfAnnouncement,
 			"dateOfAnnouncement" :"2018-04-24T04:34:31.660Z",
-			"address" :this.offers[0].address,
+			//"address" :this.offers[0].address,
+			"address" :this.shopAddress,
 			"offerDescription" :this.offerDescription,
 			"originalPrice" :this.originalPrice,
 			"discount" :this.discount,
@@ -177,16 +184,19 @@ export class AddOfferComponent implements OnInit {
 			"keywords" :this.keywords
 
 		}
-		//console.log(this.obj);
+				
 		this.addOfferService.addNewOffer(this.obj).subscribe((res) =>{
 			this.getOffers(this.userId);
+			//debugger
 			//console.log("Success:");
 			//console.log(res);
 		}, (error) =>{
 			console.log("Error:");
 			console.log(error);
 		})
+
 	}
+
 couponValidate()
 {
 	
