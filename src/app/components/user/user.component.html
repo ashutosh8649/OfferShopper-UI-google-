@@ -1,23 +1,49 @@
 <div class="user-sidebar border-right d-flex justify-content-center">
   <ul class="nav nav-pills flex-column ">
-    <li class="btn d-flex justify-content-center border-bottom" [routerLink]="['/user', 'userdetails']" style="vertical-align:middle">
-      <span>Personal Information</span>
+    <li class="text-center" [routerLink]="['/user', 'userdetails']">
+      <div *ngIf="userList=='userdetails'" class="active">
+        Personal Information
+      </div>
+      <div *ngIf="userList!='userdetails'">
+        Personal Information
+      </div>
     </li>
-    <li class="btn d-flex justify-content-center border-bottom" [routerLink]="['/user', 'carrybag']">
-      Carry Bag
+    <li class="text-center" [routerLink]="['/user', 'carrybag']">
+      <div *ngIf="userList=='carrybag'" class="active">
+        Carry Bag
+      </div>
+      <div *ngIf="userList!='carrybag'">
+        Carry Bag
+      </div>
     </li>
-    <li class="btn d-flex justify-content-center border-bottom" [routerLink]="['/user', 'wishlist']">
-      Wish List
+    <li class="text-center" [routerLink]="['/user', 'wishlist']">
+      <div *ngIf="userList=='wishlist'" class="active">
+        Wish List
+      </div>
+      <div *ngIf="userList!='wishlist'">
+        Wish List
+      </div>
     </li>
-    <li class="btn d-flex justify-content-center border-bottom" [routerLink]="['/user', 'subscriptionlist']">
-      Subscriptions
+    <li class="text-center" [routerLink]="['/user', 'subscriptionlist']">
+      <div *ngIf="userList=='subscriptionlist'" class="active">
+        Subscriptions
+      </div>
+      <div *ngIf="userList!='subscriptionlist'">
+        Subscriptions
+      </div>
     </li>
-    <li *ngIf="role=='vendor'" class="btn d-flex justify-content-center border-bottom" [routerLink]="['/user', 'add-offer']">
-      Add Offers
+    <li *ngIf="role=='vendor'" class="text-center" [routerLink]="['/user', 'add-offer']">
+      <div *ngIf="userList=='add-offer'" class="active">
+        Add Offers
+      </div>
+      <div *ngIf="userList!='add-offer'">
+        Add Offers
+      </div>      
     </li>
-    <li *ngIf="role=='customer'" class="btn d-flex justify-content-center border-bottom" [routerLink]="['/user', 'userdetails']">
+    <li *ngIf="role=='customer'" class="text-center" [routerLink]="['/user', 'userdetails']">
       Be a Seller
     </li>
+    {{active}}
   </ul>
 </div>
 <div class="user-content">

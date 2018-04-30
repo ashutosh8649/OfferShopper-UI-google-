@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../../../../services/authorization.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import{Location} from '@angular/common';
 
 @Component({
 	selector: 'app-navbar',
@@ -14,11 +16,18 @@ export class NavbarComponent implements OnInit {
 	private token:any;
 	private userId: string;
 	private user: string;
+	private active;
 
 	constructor(
+		private route: ActivatedRoute,
 		private router: Router,
-		private authorizationService: AuthorizationService
-		) { }
+		private authorizationService: AuthorizationService,
+		private location:Location
+		) { 
+		console.log(this.router.url);
+
+		console.log(location.prepareExternalUrl(location.path()));
+	}
 
 
 	ngOnInit() {
@@ -32,7 +41,7 @@ export class NavbarComponent implements OnInit {
 
 	logout(){
 		this.authorizationService.logout();
-    this.isLogin();
+		this.isLogin();
 	}
 
 	getUserId() {

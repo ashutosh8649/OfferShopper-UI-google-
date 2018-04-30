@@ -11,10 +11,10 @@ import { AuthorizationService } from '../../services/authorization.service';
 })
 export class UserComponent implements OnInit {
 
-  public userList;
-  public login;
-  public userInfo;
-  public role;
+  private userList;
+  private login;
+  private userInfo;
+  private role;
 
   constructor(
     private route: ActivatedRoute,
