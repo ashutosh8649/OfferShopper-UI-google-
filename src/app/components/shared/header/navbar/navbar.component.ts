@@ -3,17 +3,17 @@ import { AuthorizationService } from '../../../../services/authorization.service
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+	selector: 'app-navbar',
+	templateUrl: './navbar.component.html',
+	styleUrls: ['./navbar.component.css'],
 	providers:[ AuthorizationService ]
 })
 export class NavbarComponent implements OnInit {
 
-  login:boolean = false;
-	token:any;
-	userId: string;
-	userInfo: any = [];
+	private login:boolean = false;
+	private token:any;
+	private userId: string;
+	private user: string;
 
 	constructor(
 		private router: Router,
@@ -37,7 +37,9 @@ export class NavbarComponent implements OnInit {
 
 	getUserId() {
 		this.authorizationService.getUserId().subscribe((res:any) =>{
-			//this.userInfo = res.text().split(',');
+			this.userId = (res.text().split(','))[2];
+			this.user = (this.userId.split('@'))[0];
+			console.log(this.user);
 		}, (error) =>{
 		})
 	}
