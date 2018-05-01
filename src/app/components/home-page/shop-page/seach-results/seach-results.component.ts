@@ -10,6 +10,7 @@ export class SeachResultsComponent implements OnInit {
   constructor() { }
 
   @Input() results;
+ 
 
   ngOnInit() {
   }

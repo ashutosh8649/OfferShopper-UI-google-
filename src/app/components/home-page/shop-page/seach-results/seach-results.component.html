@@ -1,4 +1,4 @@
-<div *ngIf="results; else noResultsFound" >
+<div *ngIf="results"> <!-- elseBlock not working-->
   <div class="container mb-2 description-container mt-4">
     <div class="row">
       <div class="col-md-3 col-sm-4 col-6">
@@ -28,7 +28,7 @@
         </div>
         <!-- doubt about router link -->
         <div class="col-md-2 col-sm-4 col-6 d-none d-sm-block offer-center">
-          <b [routerLink]="['/', 'product',result.userId, result.offerId]">{{result.offerTitle}}</b>
+          <b [routerLink]="['/', 'product',result.userId, result.offerId]">{{result.id}}{{result.offerTitle}}</b>
         </div>
         <div class="col-md-2 col-sm-4 mt-4 pl-2 col-6 d-block d-sm-none">
           <br/>
