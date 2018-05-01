@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../../../../services/authorization.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { LoginService } from '../../../../services/login.service';
 
@@ -18,7 +19,6 @@ export class NavbarComponent implements OnInit {
 	private userId: string;
 	private user: string;
 	private url: string;
-	private status: string;
 
 	constructor(
 		private router: Router,
@@ -36,8 +36,7 @@ export class NavbarComponent implements OnInit {
 
 	isLogin(){
 		this.loginService.isLoggedin.subscribe(status => {
-			this.status = status;
-			this.login = this.authorizationService.isLogin();
+			this.login = status;
 			this.getUserId();
 		});
 	}
