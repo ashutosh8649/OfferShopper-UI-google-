@@ -16,7 +16,5 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
 		let time = "T"+this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+"Z";
-    console.log("System Time:2020-09-07"+time);
-    console.log("Required Time: 2018-04-24T04:34:31.660Z");
   }
 }

@@ -11,10 +11,7 @@ import {vendorDetails} from './vendorDetails';
   selector: 'app-login-register-frontpage',
   templateUrl: './login-register-frontpage.component.html',
   styleUrls: ['./login-register-frontpage.component.css'],
-  providers:[
-  LoginService,
-  RegisterService
-  ]
+  providers:[ RegisterService ]
 })
 export class LoginRegisterFrontpageComponent implements OnInit {
 
@@ -107,10 +104,17 @@ export class LoginRegisterFrontpageComponent implements OnInit {
     }
 
     this.loginService.loginWithEmailId(username,result).subscribe((res) =>{
-      this.loginService.isLoggedin.subscribe(status => {this.status = status;console.log(status+"In loggin component")});
-      if(this.status==true){
-        this.router.navigate(['/homepage']);
-      }
+      console.log("Login component success");
+      this.loginService.isLoggedin.subscribe(status => {
+        // alert(status);
+        this.status = status;
+        console.log(status+"In loggin component");
+        if(this.status==true){
+          this.router.navigate(['/homepage']);
+        }
+      });
+
+
     }, (res:Response) =>{
       if(res.status==401){
         alert("Unauthorized User");
