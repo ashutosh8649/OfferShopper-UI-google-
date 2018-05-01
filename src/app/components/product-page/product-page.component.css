@@ -40,4 +40,11 @@ img {
 .btn-add {
 	background:black;
 	color:white;
+	border:none;
+}
+
+
+.vendor {
+	color: #018b8b;
+	cursor: pointer
 }
