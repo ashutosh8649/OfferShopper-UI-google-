@@ -40,6 +40,7 @@ img {
 .btn-add {
 	background:black;
 	color:white;
+	border:none;
 }
 
 .vendor {

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../../../../services/authorization.service';
 import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
-import{Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { LoginService } from '../../../../services/login.service';
 
 @Component({
@@ -18,18 +17,15 @@ export class NavbarComponent implements OnInit {
 	private token:any;
 	private userId: string;
 	private user: string;
-	private active;
+	private url: string;
 
 	constructor(
-		private route: ActivatedRoute,
 		private router: Router,
 		private authorizationService: AuthorizationService,
 		private location:Location,
 		private loginService: LoginService
 		) { 
-		console.log(this.router.url);
-
-		console.log(location.prepareExternalUrl(location.path()));
+		router.events.subscribe((data:any) => { this.url = data.url; });		
 	}
 
 
