@@ -1,6 +1,7 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild, ContentChild } from '@angular/core';
 import { CarrybagService } from '../../../services/carrybag.service';
 import { AuthorizationService } from '../../../services/authorization.service';
+import { MockNgModuleResolver } from '@angular/compiler/testing';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { AuthorizationService } from '../../../services/authorization.service';
 })
 export class CarrybagComponent implements OnInit {
   @ViewChild('myModal')myModal;
+  @ViewChild('coupModal')coupModal;
   couponId:any;
   //userId:String="megha@gmail.com"
   currentUserId:String;
@@ -53,57 +55,56 @@ export class CarrybagComponent implements OnInit {
 
 
   getCarrybag() {
+    
     this.carrybagService.getCarrybaglist(this.userId).subscribe((res) =>{
       this.carryBagOffers = res;
-    }, (error) =>{console.log("error");
+            console.log(this.carryBagOffers);     
+      }, (error) =>{console.log("error");
       })
   }
-  deleteOffer(offerId){
-    this.carrybagService.deleteCarrybag(offerId,this.userId).subscribe((res) =>{
+  deleteOffer(userId, offerId){
+   // debugger
+    this.carrybagService.deleteCarrybag(offerId,userId).subscribe((res) =>{
     	this.getCarrybag();
       }, (error) =>{
-        alert(error + "deleting restaurant does not works");
+        alert(error + "deletion not working");
       })
   }
 
 
-  couponGenerate(userId,offerId){
-    
-    this.carrybagService.validateCoupon(userId,offerId).subscribe((res) =>{
+  couponGenerate(userId,offerId,vendorId){
+      this.carrybagService.checkCouponExistence(userId,offerId).subscribe((res) =>{
       let data=res;
- 
-      if(data.userId==null){
-      let user=this.carryBagOffers.find(ele=>ele.offerId===offerId);
-      this.couponId=Math.floor(Math.random()*100000);
-      
-      this.obj={
-                  "couponId" :this.couponId,
-                  "userId"  :user.userId,
-                  "offerId" :user.offerId,
+       if(data.userId==null){
+     // let user=this.carryBagOffers.find(ele=>ele.offerId===offerId);
+     // this.couponId=Math.floor(Math.random()*100000);
+       this.obj={
+                 // "couponId" :this.couponId,
+                  "userId"  :userId,
+                  "offerId" :offerId,
+                  "vendorId" :vendorId,
                   "vendorValidationFlag" : false,
-                  "rating" :0,
+                  "rating" :0.0,
                   "feedback" :null
                 } 
                 this.carrybagService.newCouponGenerate(this.obj).subscribe((res) =>{
-  
+                  
+                  this.couponId=res.couponId;
+                  this.coupModal.nativeElement.click();
                 }, (error) =>{
-          
-                })
-              }
-              else{
+                  })
+                }
+              else {
                 this.couponId=data.couponId;
+                this.coupModal.nativeElement.click();
               }
     }, (error) =>{console.log("error");
       })
-
-
-
-
-          }
+ }
 
   addfeedback() {
 
-    this.carrybagService.validateCoupon(this.currentUserId,this.currentOfferId).subscribe((res) =>{
+    this.carrybagService.checkCouponExistence(this.currentUserId,this.currentOfferId).subscribe((res) =>{
       
       let data=res;
       
@@ -140,7 +141,7 @@ export class CarrybagComponent implements OnInit {
     this.currentOfferId=offerId;
     this.currentUserId=userId;
 
-    this.carrybagService.validateCoupon(userId,offerId).subscribe((res) =>{
+    this.carrybagService.checkCouponExistence(userId,offerId).subscribe((res) =>{
       
 
       let data=res;
@@ -150,7 +151,11 @@ export class CarrybagComponent implements OnInit {
         this.myModal.nativeElement.click();
         //this.flag=true;
 
-        }  else  {
+        } else if (data.feedback==null&&data.vendorValidationFlag==false)  {
+          alert("please verify your coupon through vendor");
+        }
+        
+        else  {
           this.flag=false;
           alert("feedback already exists");
           }

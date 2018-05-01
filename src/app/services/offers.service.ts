@@ -8,12 +8,17 @@ import { Offerslist } from './../configs/offers.config';
 @Injectable()
 export class OffersService {
 
-  constructor(private http: Http) { }
+  private header;
+  options:RequestOptions;
 
-  private headers = new Headers({ 'Content-Type': 'application/json'});
+  constructor(private http: Http) {
+    this.header = new Headers();
+    this.header.append('Authorization',localStorage.getItem("application-token"));
+    this.options = new RequestOptions({headers: this.header});
+  }
 
   getOffers(vendorId:string) {
-    return this.http.get(Offerslist.getOfferlistUrl+vendorId+"/offers")
+    return this.http.get(Offerslist.getOfferlistUrl+vendorId+"/offers", this.options)
     .map(data => data.json(),
       (error: any)=>console.log("error in getting data from database"));
   }
@@ -25,9 +30,9 @@ export class OffersService {
   }
 
   addToCarrybag(offer){
-    return this.http.post(Offerslist.postCarrybagUrl, offer, {headers: this.headers})
-     .map(data => data.status,
-   (error: any)=>console.log("error in adding restaurant"));
+    return this.http.post(Offerslist.postCarrybagUrl, offer, this.options)
+    .map(data => data.status,
+      (error: any)=>console.log("error in adding restaurant"));
   }
 
 

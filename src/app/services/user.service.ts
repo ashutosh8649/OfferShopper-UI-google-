@@ -7,17 +7,25 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserService {
 
- constructor(private http: Http) { }
- private headers = new Headers({ 'Content-Type': 'application/json'});
+  private header;
+  options:RequestOptions;
+
+ constructor(private http: Http) {
+   this.header = new Headers();
+   this.header.append('Authorization',localStorage.getItem("application-token"));
+   this.options = new RequestOptions({headers: this.header});
+ }
+
 
   getProfile(userId:string){
-  return this.http.get(UserData.userUrl+userId)
+    console.log(localStorage.getItem("application-token"));
+  return this.http.get(UserData.userUrl+userId, this.options)
   .map(data => data.json(),
   (error: any)=>console.log("error in getting data from database"));
 }
 
  putProfile(obj){
-  return this.http.put(UserData.updateUrl,obj, {headers: this.headers})
+  return this.http.put(UserData.updateUrl,obj, this.options)
    .map(data => data.json(),
  (error: any)=>console.log("error"));
 }

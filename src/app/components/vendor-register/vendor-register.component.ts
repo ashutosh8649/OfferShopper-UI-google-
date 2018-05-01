@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {FormGroup, FormControl, Validators,FormBuilder} from '@angular/forms';
 import {RegisterService} from '../../services/register.service';
+import {States} from '../../configs/state.config';
+import {Cities} from '../../configs/cities.config';
 
 @Component({
   selector: 'app-vendor-register',
@@ -15,43 +17,9 @@ export class VendorRegisterComponent implements OnInit {
   filter = false;
 
 
-  states=['Andaman and Nicobar Islands',
-'Andhra Pradesh',
-'Arunachal Pradesh',
-'Assam',
-'Bihar',
-'Chandigarh',
-'Chhattisgarh',
-'Dadra and Nagar Haveli',
-'Daman and Diu',
-'Delhi',
-'Goa',
-'Gujarat',
-'Haryana',
-'Himachal Pradesh',
-'Jammu and Kashmir',
-'Jharkhand',
-'Karnataka',
-'Kerala',
-'Lakshadweep',
-'Madhya Pradesh',
-'Maharashtra',
-'Manipur',
-'Meghalaya',
-'Mizoram',
-'Nagaland',
-'Odisha',
-'Puducherry',
-'Punjab',
-'Rajasthan',
-'Sikkim',
-'Tamil Nadu',
-'Telangana',
-'Tripura',
-'Uttar Pradesh',
-'Uttarakhand',
-'West Bengal'];
-  constructor(
+  states= States.states;
+cities=Cities.citiesName;
+ constructor(
     @Inject(FormBuilder)  fb: FormBuilder,
     private registerService:RegisterService,
   ) {
@@ -68,11 +36,11 @@ export class VendorRegisterComponent implements OnInit {
       DOB : new FormControl(''),
       gender : new FormControl(''),
       address : new FormControl(''),
-      city : new FormControl('',Validators.pattern('[a-zA-Z][a-zA-Z]+')),
+      city : new FormControl(''),
       state : new FormControl(''),
       zip : new FormControl('', [Validators.pattern('[0-9]*')]),
       vendorAddress : new FormControl('', [Validators.required]),
-      vendorCity : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]),
+      vendorCity : new FormControl('', [Validators.required]),
       vendorState : new FormControl('', [Validators.required]),
       vendorZip : new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
       vendorContact : new FormControl('', [Validators.required, Validators.pattern('[0-9]*'),Validators.minLength(10),Validators.maxLength(11)]),

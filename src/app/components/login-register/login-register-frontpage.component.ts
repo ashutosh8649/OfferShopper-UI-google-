@@ -1,5 +1,6 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {FormGroup, FormControl, Validators,FormBuilder} from '@angular/forms';
+import {Router} from '@angular/router';
 import {loginDetails} from './loginDetails';
 import {registerDetails} from './registerDetails';
 import {LoginService} from '../../services/login.service';
@@ -32,11 +33,13 @@ export class LoginRegisterFrontpageComponent implements OnInit {
   form:FormGroup;
   tempPassword:String;
   isAlredyExist:boolean=false;
+  status: boolean = false;
 
   constructor(
     @Inject(FormBuilder)  fb: FormBuilder,
     private loginService:LoginService,
     private registerService:RegisterService,
+    private router:Router
     ) {
     this.fb=fb;
     this.registerForm=this.fb.group({
@@ -50,7 +53,7 @@ export class LoginRegisterFrontpageComponent implements OnInit {
   ngOnInit() {
     this.loginForm=new FormGroup({
       username : new FormControl('', [Validators.required, Validators.email]),
-      password : new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
+      password : new FormControl('', [Validators.required]),
     });
     this.form=new FormGroup({
       firstName : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]),
@@ -104,7 +107,10 @@ export class LoginRegisterFrontpageComponent implements OnInit {
     }
 
     this.loginService.loginWithEmailId(username,result).subscribe((res) =>{
-      window.location.assign("/homepage");
+      this.loginService.isLoggedin.subscribe(status => {this.status = status;console.log(status+"In loggin component")});
+      if(this.status==true){
+        this.router.navigate(['/homepage']);
+      }
     }, (res:Response) =>{
       if(res.status==401){
         alert("Unauthorized User");

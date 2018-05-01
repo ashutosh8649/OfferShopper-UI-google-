@@ -96,17 +96,19 @@
   
             <div class="col-sm-4 form-group">
               <label>State</label>
-                           <select name=slist formControlName="state" class="form-control" id="state">
+      <select name=slist formControlName="state" class="form-control" id="state">
    <option value="">----Select State------</option>
     <option *ngFor="let state of states" value={{state}}>{{ state }}</option>
 </select>
                </div>
                          <div class="col-sm-4 form-group">
               <label>City</label>
-              <input type="text" placeholder="Enter City Name Here.." formControlName="city" class="form-control" id="City"> <div *ngIf="form.get('city').touched && form.get('city').invalid" class="alert-msg">
-              <div *ngIf="form.get('city').hasError('pattern')">
-               City invalid!
-              </div></div></div>
+             
+  <select name=slist formControlName="city" class="form-control" id="state">
+   <option value="">----Select City------</option>
+    <option *ngFor="let city of cities" value={{city}}>{{ city }}</option>
+    </select>
+            </div>
             <div class="col-sm-4 form-group">
               <label>Zip</label>
               <input type="text" placeholder="Enter Zip Code Here.." formControlName="zip" class="form-control" id="ZipCode">
@@ -149,13 +151,13 @@
             </div>
                 <div class="col-sm-4 form-group">
               <label>City</label>
-              <input type="text" placeholder="Enter City Name Here.." formControlName="vendorCity" class="form-control" id="VendorCity">
+               <select name=slist formControlName="vendorCity" class="form-control" id="state">
+   <option value="">----Select City------</option>
+    <option *ngFor="let city of cities" value={{city}}>{{ city }}</option>
+</select>
                   <div *ngIf="form.get('vendorCity').touched && form.get('vendorCity').invalid" class="alert-msg">
               <div *ngIf="form.get('vendorCity').hasError('required')">
                 City is required!
-              </div>
-              <div *ngIf="form.get('vendorCity').hasError('pattern')">
-                Invalid City!
               </div>
             </div>
              </div>

@@ -9,27 +9,35 @@ import { AuthorizationService } from './authorization.service';
 @Injectable()
 export class WishlistService {
 
+
+    private header;
+    options:RequestOptions;
+
   constructor(
     private http: Http,
 private authorizationService: AuthorizationService
-  ) { }
+  ) {
+    this.header = new Headers();
+    this.header.append('Authorization',localStorage.getItem("application-token"));
+    this.options = new RequestOptions({headers: this.header});
+  }
 
-  private headers = new Headers({ 'Content-Type': 'application/json'});
   getWishlist(userId){
-    return this.http.get(Wishlist.getWishlistUrl+userId)
+    return this.http.get(Wishlist.getWishlistUrl+userId, this.options)
     .map(data => data.json(),
     (error: any)=>console.log("error in getting data from database"));
   }
 
   addToWishlist(offer){
-    return this.http.post(Wishlist.postWishlistUrl, offer, {headers: this.headers})
+    console.log(offer);
+    return this.http.post(Wishlist.postWishlistUrl, offer, this.options)
      .map(data => data.status,
-   (error: any)=>console.log("error in adding restaurant"));
+   (error: any)=>console.log("error in adding wishlist"));
   }
 
 
   deleteRestaurant(offerId,userId) {
-  	return this.http.delete(Wishlist.deleteWishlistUrl+offerId+"/"+userId, { headers: this.headers })
+  	return this.http.delete(Wishlist.deleteWishlistUrl+offerId+"/"+userId, this.options)
     .map(data => data.status,
       (error: any)=>console.log(error + "error in deleting offer"));
   }

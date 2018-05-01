@@ -28,7 +28,7 @@
         </div>
         <!-- doubt about router link -->
         <div class="col-md-2 col-sm-4 col-6 d-none d-sm-block offer-center">
-          <b [routerLink]="['/', 'product',result.userId, result.offerId]">{{result.id}}{{result.offerTitle}}</b>
+          <b class="offertitle" [routerLink]="['/', 'product',result.userId, result.offerId]">{{result.offerTitle}}</b>
         </div>
         <div class="col-md-2 col-sm-4 mt-4 pl-2 col-6 d-block d-sm-none">
           <br/>
@@ -46,8 +46,16 @@
         </div>
         <div class="col-md-2 d-none d-md-block offer-center">
           {{result.offerRating}}
-          <button class="btn btn-dark my-2 my-sm-0 container-button" type="button">Add to Carry Bag</button>
+          <div *ngIf="user; else elseBlock">
+          <button class="btn btn-success my-2 my-sm-0 container-button" type="button" (click)="addToCarrybag(result)"><i class="fa fa-cart-plus" aria-hidden="true"></i> Carry Bag</button>
+          <button class="btn btn-success my-2 my-sm-0 container-button" type="button" (click)="addToWishlist(result)"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Wishlist</button>
           <button class="btn btn-dark my-2 my-sm-0 container-button" [routerLink]="['/', 'vendorInfo',result.userId]" type="button">{{result.address.name}}</button>
+          </div>
+          <ng-template #elseBlock>
+          <button class="btn btn-success my-2 my-sm-0 container-button" type="button" (click)="notLogin()"><i class="fa fa-cart-plus" aria-hidden="true"></i> Carry Bag</button>
+          <button class="btn btn-success my-2 my-sm-0 container-button" type="button" (click)="notLogin()"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Wishlist</button>
+          <button class="btn btn-dark my-2 my-sm-0 container-button" [routerLink]="['/', 'vendorInfo',result.userId]" type="button">{{result.address.name}}</button>
+          </ng-template>
         </div>
       </div>
     </div>

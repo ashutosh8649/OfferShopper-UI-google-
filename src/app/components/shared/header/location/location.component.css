@@ -1,4 +1,8 @@
-.location{
-	background-color: red;
-	text-align:center;
+
+#_location {
+	font-family: initial;
+}
+
+.text-pride {
+    background: #018b8b;
 }
