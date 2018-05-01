@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../../../../services/authorization.service';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
 import { ActivatedRoute } from '@angular/router';
-=======
->>>>>>> 89318376c1dfa01009a351c1832fcebf6b3a7f63
 import { Location } from '@angular/common';
 import { LoginService } from '../../../../services/login.service';
 
@@ -40,10 +37,9 @@ export class NavbarComponent implements OnInit {
 	isLogin(){
 		this.loginService.isLoggedin.subscribe(status => {
 			this.status = status;
-			this.isLogin();
+			this.login = this.authorizationService.isLogin();
+			this.getUserId();
 		});
-		this.login = this.authorizationService.isLogin();
-		this.getUserId();
 	}
 
 	logout(){
