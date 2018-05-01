@@ -1,12 +1,29 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
 	<div class="row">
-		<div class="col-3 help-sidebar border-right">
-			<a [routerLink]="['/help', 'FAQs']">FAQs</a>
+		<div class="col-3 help-sidebar border-right"> -->
+			<!-- <a class="active" *ngIf="helpOption=='FAQs'" [routerLink]="['/help', 'FAQs']">FAQs</a>
+			<a *ngIf="helpOption!='FAQs'" [routerLink]="['/help', 'FAQs']">FAQs</a>
 			<hr/>
-			<a [routerLink]="['/help', 'terms']">Terms and Conditions</a>
-			<hr/>
+			<a class="active" *ngIf="helpOption=='terms'" [routerLink]="['/help', 'terms']">Terms and Conditions</a>
+			<a *ngIf="helpOption!='terms'" [routerLink]="['/help', 'terms']">Terms and Conditions</a>
+			<hr/> -->
+			<div class="help-sidebar border-right d-flex justify-content-center mt-2">
+			<ul class="nav nav-pills flex-column ">
+				<li class="text-center active" *ngIf="helpOption=='FAQs'" [routerLink]="['/help', 'FAQs']">
+					FAQs
+				</li>
+				<li class="text-center border-bottom py-2" *ngIf="helpOption!='FAQs'" [routerLink]="['/help', 'FAQs']">
+					FAQs
+				</li>
+				<li class="text-center active" *ngIf="helpOption=='terms'" [routerLink]="['/help', 'terms']">
+					Terms and Conditions
+				</li>
+				<li class="text-center border-bottom py-2" *ngIf="helpOption!='terms'" [routerLink]="['/help', 'terms']">
+					Terms and Conditions
+				</li>				
+			</ul>
 		</div>
-		<div class="col-9 help-content">
+		<div class="help-content pl-2">
 			<div [ngSwitch]="helpOption">
 				<div *ngSwitchCase="'terms'">
 					<h1>Terms and Conditions</h1>
@@ -66,5 +83,3 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</div>

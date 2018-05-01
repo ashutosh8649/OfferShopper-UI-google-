@@ -11,5 +11,14 @@
 
 	.active {
 		border: 1px solid #018b8b;
+		/*padding-left: 10px;
+		padding-right: 10px;*/
+		padding-top: 5px;
+		padding-bottom: 5px;
+		width: 210px;
 	}
+}
+
+.user-sidebar li {
+	cursor: pointer;
 }

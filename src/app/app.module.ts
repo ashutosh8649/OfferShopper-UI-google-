@@ -47,6 +47,7 @@ import { SeachResultsComponent } from './components/home-page/shop-page/seach-re
 import { SearchBarComponent } from './components/home-page/shop-page/search-bar/search-bar.component';
 import { HelpComponent } from './components/help/help.component';
 import { LocationService } from './services/location.service';
+import { LoginService } from './services/login.service';
 
 const appRoutes:Routes=[
 
@@ -113,7 +114,7 @@ const appRoutes:Routes=[
      apiKey: 'AIzaSyBeSuJbAPirjvZ0mEDxd-g05P5_f6gkAlQ'
    })
   ],
-  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, VerifyEmailService,UpdatePasswordService, LocationService],
+  providers: [UserService, WishlistService, CarrybagService, SearchService, OffersService, AuthorizationService, VerifyEmailService,UpdatePasswordService, LocationService,  LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

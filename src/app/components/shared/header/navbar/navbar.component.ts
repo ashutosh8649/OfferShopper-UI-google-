@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../../../../services/authorization.service';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 import { ActivatedRoute } from '@angular/router';
-import{Location} from '@angular/common';
+=======
+>>>>>>> 89318376c1dfa01009a351c1832fcebf6b3a7f63
+import { Location } from '@angular/common';
 import { LoginService } from '../../../../services/login.service';
 
 @Component({
 	selector: 'app-navbar',
 	templateUrl: './navbar.component.html',
 	styleUrls: ['./navbar.component.css'],
-	providers:[ AuthorizationService, LoginService ]
+	providers:[ AuthorizationService ]
 })
 
 export class NavbarComponent implements OnInit {
@@ -18,30 +21,27 @@ export class NavbarComponent implements OnInit {
 	private token:any;
 	private userId: string;
 	private user: string;
-	private active;
+	private url: string;
 
 	constructor(
-		private route: ActivatedRoute,
 		private router: Router,
 		private authorizationService: AuthorizationService,
 		private location:Location,
 		private loginService: LoginService
-		) { 
-		console.log(this.router.url);
-
-		console.log(location.prepareExternalUrl(location.path()));
+		) {
+		router.events.subscribe((data:any) => { this.url = data.url; });
 	}
 
 
 	ngOnInit() {
-		this.loginService.isLoggedin.subscribe(status => {
-			console.log(status+"worked")
-		});
 		this.isLogin();
 	}
 
 	isLogin(){
-		// this.loginService.isLoggedin.subscribe(status => console.log(status+"worked"));
+		this.loginService.isLoggedin.subscribe(status => {
+			this.status = status;
+			this.isLogin();
+		});
 		this.login = this.authorizationService.isLogin();
 		this.getUserId();
 	}

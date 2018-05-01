@@ -11,14 +11,17 @@ export class HomePageComponent implements OnInit {
 
   constructor() {}
 
+  date = new Date();
   token:any;
+
   ngOnInit() {
+		let time = "T"+this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+"Z";
   }
 
   public results : any;
   public offers : any;
 
-  getResultsFromSearch(event) : void { 
+  getResultsFromSearch(event) : void {
     //storing searchresults
     this.results = event.products;
   }
