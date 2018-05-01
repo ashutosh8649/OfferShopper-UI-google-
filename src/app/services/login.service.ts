@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response, RequestOptions, Headers ,URLSearchParams} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
@@ -11,7 +11,7 @@ import { Login } from '../configs/login.config';
 export class LoginService {
 
   private header;
-  public isLoggedin = new BehaviorSubject<boolean>(false);
+  public isLoggedin = new EventEmitter<boolean>();
 
   constructor(private http: Http) {
     this.header = new Headers();
@@ -29,14 +29,13 @@ export class LoginService {
     return this.http.post(Login.loginWIthId, body, options)
     .map((res:Response) => {
       console.log("Login Success");
-      this.isLoggedin.next(true);
-      console.log(this.isLoggedin.value);
+      this.isLoggedin.emit(true);
       localStorage.setItem("application-token",res.text());
     },
     (error: any)=>console.log("error in calling register service"));
   }
 
   logout() {
-      this.isLoggedin.next(false);
+      this.isLoggedin.emit(false);
     }
 }
