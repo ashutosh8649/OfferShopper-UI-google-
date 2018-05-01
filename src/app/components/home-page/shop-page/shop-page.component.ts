@@ -93,7 +93,6 @@ export class ShopPageComponent implements OnInit {
 
   //whenever filter is changed
   onMyChange(event) {
-    console.log(event.from);
     this.results.filter((results)=> (parseInt(results.discount) > event.from && parseInt(results.discount) < event.to));
   }
 
