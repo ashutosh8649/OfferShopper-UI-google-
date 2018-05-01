@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { LocationService } from '../../../../services/location.service';
-import { Cities}  from '../../../../configs/cities.config'
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
@@ -12,14 +11,9 @@ export class LocationComponent implements OnInit {
 
 
 constructor(private locationService: LocationService) { }
-// array of Cities
-cities = Cities.citiesName;
-selected:any="Gurgaon";
-obj ={a:"Delhi"}
-fav(selected){
-   this.obj.a=selected;
-}
 
+
+@Input() obj={a:"Delhi"};
 getlocation(){
 var varobj=this.obj;
 let locationService=this.locationService;
@@ -60,10 +54,6 @@ get(varobj);
 
 
  ngOnInit(){
-    this.cities.sort(function(a,b){
-    return a.localeCompare(b);
-   });
-
     var value:String=localStorage.getItem("loc");
       if(value){
         if(value.trim()=="Gurugram".trim())
