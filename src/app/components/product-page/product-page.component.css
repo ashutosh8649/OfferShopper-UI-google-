@@ -40,13 +40,8 @@ img {
 .btn-add {
 	background:black;
 	color:white;
+	border:none;
 }
-/* .btn-primary
-{
-	background-color: black;
-	color: white;
-
-} */
 
 .vendor {
 	color: #018b8b;
