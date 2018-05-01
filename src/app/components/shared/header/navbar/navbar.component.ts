@@ -35,10 +35,17 @@ export class NavbarComponent implements OnInit {
 	}
 
 	isLogin(){
+		if(localStorage.getItem("application-token")){
+			console.log("Success");
+			this.login = true;
+		} else{
+			this.login = false;
+		}
 		this.loginService.isLoggedin.subscribe(status => {
 			this.login = status;
 			this.getUserId();
 		});
+			this.getUserId();
 	}
 
 	logout(){
@@ -56,4 +63,8 @@ export class NavbarComponent implements OnInit {
 		})
 	}
 
+	loadUserprofile(){
+		this.isLogin();
+		this.router.navigate(['/user/userdetails']);
+		}
 }
