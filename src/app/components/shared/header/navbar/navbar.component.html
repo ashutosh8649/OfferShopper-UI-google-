@@ -23,24 +23,38 @@
     <div class="col-8 d-flex  justify-content-center">
       <div class="collapse navbar-collapse justify-content-center " id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-0 mb-0 mt-2 mt-lg-0 justify-self-center">
-          <li class="nav-item nav-text ml-3">
-            <a class="nav-link text-dark active" routerLink="/homepage">Home<span class="sr-only">(current)</span></a>
+          <li class="nav-item nav-text ml-3">            
+            <a class="nav-link text-dark active" *ngIf="url=='/homepage'" routerLink="/homepage">
+              Home
+              <span class="sr-only">(current)</span>
+            </a>
+            <a class="nav-link text-dark" *ngIf="url!='/homepage'" routerLink="/homepage">    
+              Home
+              <span class="sr-only">(current)</span>
+            </a>
           </li>
           <li class="nav-item nav-text">
-            <a class="nav-link" routerLink="/search"><font class="text-pride">Shop</font></a>
+            <a class="nav-link active" *ngIf="url=='/search'" routerLink="/search">
+              <font class="text-pride">
+                Shop
+              </font>
+            </a>
+            <a class="nav-link" *ngIf="url!='/search'" routerLink="/search">
+              <font class="text-pride">
+                Shop
+              </font>
+            </a>
           </li>
           <li class="nav-item nav-text">
-            <a class="nav-link text-dark" routerLink="/help/FAQs">FAQ</a>
+            <a class="nav-link text-dark active" *ngIf="url=='/help/FAQs'" routerLink="/help/FAQs">
+                FAQ
+            </a>
+            <a class="nav-link text-dark" *ngIf="url!='/help/FAQs'" routerLink="/help/FAQs">
+                FAQ
+            </a>
           </li>
         </ul>
-        <!-- <div class="list-group navbar-nav mr-0 mb-0 mt-2 mt-lg-0" id="list-tab" role="tablist">
-          <
-          <a class="list-group-item list-group-item-action active" data-toggle="list" routerLink="/homepage" role="tab">Home</a>
-          <a class="list-group-item list-group-item-action" data-toggle="list" routerLink="/search" role="tab">Shop</a>
-          <a class="list-group-item list-group-item-action" data-toggle="list" routerLink="/homepage" role="tab">Contact</a>
-        </div> -->
       </div>
-
       <div class="large mt-2">
         <ul class="profile mb-0">
           <div *ngIf="login">

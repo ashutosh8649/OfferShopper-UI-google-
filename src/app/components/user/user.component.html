@@ -1,49 +1,38 @@
-<div class="user-sidebar border-right d-flex justify-content-center">
+<div class="user-sidebar border-right d-flex justify-content-center mt-2">
   <ul class="nav nav-pills flex-column ">
-    <li class="text-center" [routerLink]="['/user', 'userdetails']">
-      <div *ngIf="userList=='userdetails'" class="active">
-        Personal Information
-      </div>
-      <div *ngIf="userList!='userdetails'">
-        Personal Information
-      </div>
+    <li class="text-center active" *ngIf="userList=='userdetails'" [routerLink]="['/user', 'userdetails']">
+      Personal Information
     </li>
-    <li class="text-center" [routerLink]="['/user', 'carrybag']">
-      <div *ngIf="userList=='carrybag'" class="active">
-        Carry Bag
-      </div>
-      <div *ngIf="userList!='carrybag'">
-        Carry Bag
-      </div>
+    <li class="text-center border-bottom py-2" *ngIf="userList!='userdetails'" [routerLink]="['/user', 'userdetails']">
+      Personal Information
     </li>
-    <li class="text-center" [routerLink]="['/user', 'wishlist']">
-      <div *ngIf="userList=='wishlist'" class="active">
-        Wish List
-      </div>
-      <div *ngIf="userList!='wishlist'">
-        Wish List
-      </div>
+    <li class="text-center active" *ngIf="userList=='carrybag'" [routerLink]="['/user', 'carrybag']">
+      Carry Bag
     </li>
-    <li class="text-center" [routerLink]="['/user', 'subscriptionlist']">
-      <div *ngIf="userList=='subscriptionlist'" class="active">
-        Subscriptions
-      </div>
-      <div *ngIf="userList!='subscriptionlist'">
-        Subscriptions
-      </div>
+    <li class="text-center border-bottom py-2" *ngIf="userList!='carrybag'" [routerLink]="['/user', 'carrybag']">
+      Carry Bag
     </li>
-    <li *ngIf="role=='vendor'" class="text-center" [routerLink]="['/user', 'add-offer']">
-      <div *ngIf="userList=='add-offer'" class="active">
-        Add Offers
-      </div>
-      <div *ngIf="userList!='add-offer'">
-        Add Offers
-      </div>      
+    <li class="text-center active" *ngIf="userList=='wishlist'" [routerLink]="['/user', 'wishlist']">
+      Wish List
     </li>
-    <li *ngIf="role=='customer'" class="text-center" [routerLink]="['/user', 'userdetails']">
+    <li class="text-center border-bottom py-2" *ngIf="userList!='wishlist'" [routerLink]="['/user', 'wishlist']">
+      Wish List
+    </li>
+    <li class="text-center active" *ngIf="userList=='subscriptionlist'" [routerLink]="['/user', 'subscriptionlist']">
+      Subscriptions
+    </li>
+    <li class="text-center border-bottom py-2" *ngIf="userList!='subscriptionlist'" [routerLink]="['/user', 'subscriptionlist']">
+      Subscriptions
+    </li>
+    <li *ngIf="role=='vendor' && userList=='add-offer'" class="text-center active" [routerLink]="['/user', 'add-offer']">
+      Add Offers    
+    </li>
+    <li *ngIf="role=='vendor' && userList!='add-offer'" class="text-center border-bottom py-2" [routerLink]="['/user', 'add-offer']">
+      Add Offers   
+    </li>
+    <li *ngIf="role=='customer'" class="text-center border-bottom py-2" [routerLink]="['/user', 'userdetails']">
       Be a Seller
     </li>
-    {{active}}
   </ul>
 </div>
 <div class="user-content">
