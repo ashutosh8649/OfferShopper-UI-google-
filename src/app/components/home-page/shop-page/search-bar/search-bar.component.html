@@ -17,3 +17,10 @@
     </nav>
   </div>
 </div>
+
+<!-- associating data list with the search query -->
+<datalist id="suggestions">
+  <option *ngFor="let result of results| slice:0:9">
+    {{result}}
+  </option>
+</datalist>

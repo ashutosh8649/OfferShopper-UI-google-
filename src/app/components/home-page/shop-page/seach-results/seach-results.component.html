@@ -1,5 +1,42 @@
-<div *ngIf="results; else noResultsFound" >
-  <div class="container mb-2 description-container mt-4">
+<div class="container-fluid" *ngIf="results; else noResultsFound" >
+  <div class="row">
+    <div class="col-md-4 card-group mb-3" *ngFor=" let result of results | paginate:{itemsPerPage : 6, currentPage : p}">
+      {{productPrice(result.originalPrice,result.discount)}}
+      <div class="card">
+        <div class="card-img">
+          <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
+          <div class="card-rating bg-white border-bottom px-2 py-1">
+            Rating <span>|</span> {{result.offerRating}}
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-heading">{{result.offerTitle}}</h5>
+          <p class="card-text text-lead ">
+            <span class="border border-danger rounded px-2 py-1 mb-3">{{result.discount}}% off</span>
+            <br/>
+            <span class="offer-deleted-price">MRP:<del>₹{{result.originalPrice}}</del></span>
+            <span>₹{{priceAfterDiscount}}</span>
+          </p>
+          <button class="btn btn-dark my-2 my-sm-0 container-button" [routerLink]="['/', 'vendorInfo',result.userId]" type="button">{{result.address.name}}</button>
+        </div>
+        <div class="card-footer text-right">
+          <div *ngIf="user; else elseBlock">
+            <button class="btn btn-success my-2 my-sm-0 container-button" type="button" (click)="addToCarrybag(result)"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+            <button class="btn btn-success my-2 my-sm-0 container-button" type="button" (click)="addToWishlist(result)"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>            
+          </div>
+          <ng-template #elseBlock>
+            <button class="btn btn-success my-2 my-sm-0 container-button" type="button" (click)="notLogin()"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+            <button class="btn btn-success my-2 my-sm-0 container-button" type="button" (click)="notLogin()"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>            
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
+
+
+  <!-- <div class="container mb-2 description-container mt-4">
     <div class="row">
       <div class="col-md-3 col-sm-4 col-6">
       </div>
@@ -25,8 +62,7 @@
           <div class="card display-offer-image bg-white border-0">
             <img class="card-img" src="../../../../assets/image-not-found.jpg" alt="Card image">
           </div>
-        </div>
-        <!-- doubt about router link -->
+        </div>        
         <div class="col-md-2 col-sm-4 col-6 d-none d-sm-block offer-center">
           <b class="offertitle" [routerLink]="['/', 'product',result.userId, result.offerId]">{{result.offerTitle}}</b>
         </div>
@@ -63,3 +99,40 @@
 
   <pagination-controls (pageChange)="p=$event"></pagination-controls>
 </div>
+
+ -->
+
+
+
+
+
+
+
+<!-- <div class="container mt-5" *ngIf="offers">
+  <div class="row">
+    <div class="col-4 card-group mb-3" *ngFor="let offer of offers">
+      {{productPrice(offer.originalPrice,offer.discount)}}
+      <div class="card">
+        <span [routerLink]="['/', 'product',offer.userId,offer._id]">
+          <div class="card-img">
+            <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
+            <div class="card-rating bg-white border-bottom px-2 py-1">
+              Rating <span>|</span> {{offer.offerRating}}
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-heading">{{offer.offerTitle}}</h5>
+            <p class="card-text text-lead ">
+              <span class="border border-danger rounded px-2 py-1 mb-3">{{offer.discount}}% off</span>
+              <br/>
+              <span class="offer-deleted-price">MRP:<del>₹{{offer.originalPrice}}</del></span>
+              <span>₹{{priceAfterDiscount}}</span>
+            </p>
+            <p class="card-text "><small class="text-muted">Last updated 45 mins ago</small></p>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- </div> -->
