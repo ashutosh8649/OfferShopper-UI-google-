@@ -37,10 +37,9 @@ export class NavbarComponent implements OnInit {
 	isLogin(){
 		this.loginService.isLoggedin.subscribe(status => {
 			this.status = status;
-			this.isLogin();
+			this.login = this.authorizationService.isLogin();
+			this.getUserId();
 		});
-		this.login = this.authorizationService.isLogin();
-		this.getUserId();
 	}
 
 	logout(){
