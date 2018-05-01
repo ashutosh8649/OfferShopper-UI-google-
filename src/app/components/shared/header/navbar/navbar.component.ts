@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../../../../services/authorization.service';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
+import { ActivatedRoute } from '@angular/router';
+=======
+>>>>>>> 89318376c1dfa01009a351c1832fcebf6b3a7f63
 import { Location } from '@angular/common';
 import { LoginService } from '../../../../services/login.service';
 
@@ -8,7 +12,7 @@ import { LoginService } from '../../../../services/login.service';
 	selector: 'app-navbar',
 	templateUrl: './navbar.component.html',
 	styleUrls: ['./navbar.component.css'],
-	providers:[ AuthorizationService, LoginService ]
+	providers:[ AuthorizationService ]
 })
 
 export class NavbarComponent implements OnInit {
@@ -24,20 +28,20 @@ export class NavbarComponent implements OnInit {
 		private authorizationService: AuthorizationService,
 		private location:Location,
 		private loginService: LoginService
-		) { 
-		router.events.subscribe((data:any) => { this.url = data.url; });		
+		) {
+		router.events.subscribe((data:any) => { this.url = data.url; });
 	}
 
 
 	ngOnInit() {
-		this.loginService.isLoggedin.subscribe(status => {
-			console.log(status+"worked")
-		});
 		this.isLogin();
 	}
 
 	isLogin(){
-		// this.loginService.isLoggedin.subscribe(status => console.log(status+"worked"));
+		this.loginService.isLoggedin.subscribe(status => {
+			this.status = status;
+			this.isLogin();
+		});
 		this.login = this.authorizationService.isLogin();
 		this.getUserId();
 	}
