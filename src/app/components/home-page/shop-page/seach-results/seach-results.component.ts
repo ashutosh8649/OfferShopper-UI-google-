@@ -12,7 +12,8 @@ import { OffersService } from '../../../../services/offers.service';
 export class SeachResultsComponent implements OnInit {
 	public userInfo : any;
 	public user : any;
-
+	private priceAfterDiscount;
+	
 	@Input() results;
 
 	constructor(private wishlistService:WishlistService,
@@ -35,23 +36,27 @@ export class SeachResultsComponent implements OnInit {
 		})
 	}
 
+	productPrice(offerOriginalPrice,offerDiscount){
+		this.priceAfterDiscount = (offerOriginalPrice)*(1-(offerDiscount)/100);
+	}
+
 	addToWishlist(offer1) {
 		console.log(offer1);
 		console.log(offer1.offerId);
-    let wishlistBean = {
-      "userId":this.user,
-      "offerId":offer1.offerId,
-      "offerTitle":offer1.offerTitle,
-      "offerOriginalPrice":offer1.originalPrice,
-      "offerDiscount":offer1.discount,
-      "offerImage":"abcd",
-      "offerValidity":offer1.offerValidity
-    }
-    this.wishlistService.addToWishlist(wishlistBean).subscribe((res) =>{
-      this.messageService.showSuccessToast(this._vcr,"Added");
-    },(error) =>{
-    })
-  }
+		let wishlistBean = {
+			"userId":this.user,
+			"offerId":offer1.offerId,
+			"offerTitle":offer1.offerTitle,
+			"offerOriginalPrice":offer1.originalPrice,
+			"offerDiscount":offer1.discount,
+			"offerImage":"abcd",
+			"offerValidity":offer1.offerValidity
+		}
+		this.wishlistService.addToWishlist(wishlistBean).subscribe((res) =>{
+			this.messageService.showSuccessToast(this._vcr,"Added");
+		},(error) =>{
+		})
+	}
 
 	addToCarrybag(offer) {
 		let carrybagBean = {

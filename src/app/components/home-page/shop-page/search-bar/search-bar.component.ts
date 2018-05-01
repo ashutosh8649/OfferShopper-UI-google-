@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+import { SearchService } from '../../../../services/search.service';
+
 
 @Component({
   selector: 'app-search-bar',
@@ -7,14 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() { }
+  public query : string = "";
+  public category : string = "";
 
-  public query : string;
-  public category : string;
+  public results:any=[];
 
+  flag :boolean;
+  searchTerm$ = new Subject<string>();
+
+
+  constructor(private searchService: SearchService) {
+    if(this.searchTerm$){
+      this.searchService.search(this.searchTerm$)
+        .subscribe(res => {
+          this.results = res;
+          if(res!="default")
+          {
+            this.flag=true;
+         }
+          else{
+            this.flag=false;
+          }
+        });
+    }
+   }
 
   ngOnInit() {
     this.category="All";
   }
+
 
 }
