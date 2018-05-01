@@ -38,7 +38,7 @@ export class AddOfferService {
 
   putOffer(obj){
 
-   return this.http.put(AddOfferConfig.updateOfferURL+obj.offerId,obj, this.options)
+   return this.http.put(AddOfferConfig.updateOfferURL+obj.userId,obj, this.options)
     .map(data => data.json(),
   (error: any)=>console.log("error"));
  }
@@ -66,6 +66,13 @@ putOffersInCarryBag(obj){
   return this.http.put(AddOfferConfig.updateOffersInCarryBag,obj, this.options)
   .map(data => data.json(),
 (error: any)=>console.log("error"));
+}
+
+
+getShopAddress(userId) {
+  return this.http.get(AddOfferConfig.getVendorDetailURL+userId, this.options)
+  .map(data => data.json(),
+  (error: any)=>console.log("error in getting data from database"));
 }
 
 
