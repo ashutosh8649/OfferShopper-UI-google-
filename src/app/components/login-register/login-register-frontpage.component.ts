@@ -104,13 +104,14 @@ export class LoginRegisterFrontpageComponent implements OnInit {
     }
 
     this.loginService.loginWithEmailId(username,result).subscribe((res) =>{
+      console.log("Login component success");
       this.loginService.isLoggedin.subscribe(status => {
         // alert(status);
-        // this.status = status;
+        this.status = status;
         console.log(status+"In loggin component");
-        // if(this.status==true){
+        if(this.status==true){
           this.router.navigate(['/homepage']);
-        // }
+        }
       });
 
 

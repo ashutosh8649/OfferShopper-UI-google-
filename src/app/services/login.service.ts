@@ -26,11 +26,11 @@ export class LoginService {
       "email":username,
       "password":password
     }
-    return this.http.post(Login.loginWIthId, body, options)
+    return this.http.post(Login.loginWIthId, body)
     .map((res:Response) => {
-      console.log("Login Success");
-      this.isLoggedin.emit(true);
       localStorage.setItem("application-token",res.text());
+      this.isLoggedin.emit(true);
+      return res;
     },
     (error: any)=>console.log("error in calling register service"));
   }
