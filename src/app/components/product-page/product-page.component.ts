@@ -106,8 +106,9 @@ export class ProductPageComponent implements OnInit {
      "offerValidity":offer1.offerValidity
    }
    this.wishlistService.addToWishlist(wishlistBean).subscribe((res) =>{
-     this.messageService.showSuccessToast(this._vcr,"Added");
+     this.messageService.showSuccessToast(this._vcr,"Added in wishlist");
    },(error) =>{
+     this.messageService.showErrorToast(this._vcr,"Already added to wishlist");
    })
  }
 
@@ -123,8 +124,9 @@ export class ProductPageComponent implements OnInit {
      "vendorId":offer1.userId
    }
    this.carrybagService.addToCarrybag(carrybagBean).subscribe((res) =>{
+     this.messageService.showSuccessToast(this._vcr,"Added in carrybag");
    },(error) =>{
-     this.messageService.showSuccessToast(this._vcr,"Added");
+     this.messageService.showErrorToast(this._vcr,"Already added to carrybag");
    })
  }
 }
