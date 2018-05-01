@@ -132,24 +132,6 @@ export class AddOfferComponent implements OnInit {
 
 		})
 
-		/*let carryBagObj={
-
-			"offerId" :this.User.offerId,
-			"offerImage":"image_url",
-			"offerTitle" :this.offerTitle,
-			"offerOriginalPrice" :this.originalPrice,
-			"offerDiscount" :this.discount,
-			"offerValidity" :this.offerValidity,
-			"vendorId":this.User.userId
-
-		}*/
-		/*this.addOfferService.putOffersInCarryBag(carryBagObj).subscribe((res) =>{
-			this.getOffers(this.userId);
-			this.reset();
-		}, (error) =>{
-
-		})*/
-
 	}
 
 	getOffer(){
@@ -184,9 +166,6 @@ export class AddOfferComponent implements OnInit {
 
 		this.addOfferService.addNewOffer(this.obj).subscribe((res) =>{
 			this.getOffers(this.userId);
-			//debugger
-			//console.log("Success:");
-			//console.log(res);
 		}, (error) =>{
 			console.log("Error:");
 			console.log(error);
