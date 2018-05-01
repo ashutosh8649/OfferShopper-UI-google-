@@ -41,3 +41,8 @@ img {
 	background:black;
 	color:white;
 }
+
+.vendor {
+	color: #018b8b;
+	cursor: pointer
+}

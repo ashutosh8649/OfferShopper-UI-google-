@@ -25,3 +25,7 @@
 .card-rating span {
 	color: #999;
 }
+
+.card:hover {
+	cursor: pointer;
+}

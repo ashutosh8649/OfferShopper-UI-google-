@@ -26,6 +26,7 @@ export class ProductsListComponent implements OnInit {
     this.searchService.searchProductsCategoryOnly("clothing")
     .subscribe((res) =>{
       this.offers=res;
+      console.log("homepage");
       console.log(res);
      },(error) =>{
     });
