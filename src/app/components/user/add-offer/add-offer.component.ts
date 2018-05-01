@@ -42,9 +42,9 @@ export class AddOfferComponent implements OnInit {
 		private authorizationService: AuthorizationService) { }
 
 	ngOnInit()
-	{	
+	{
 		this.getUserId();
-	
+
 	}
 
 
@@ -164,16 +164,15 @@ export class AddOfferComponent implements OnInit {
 
 	addOffer(){
 		let time = "T"+this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+"Z";
-
-	//	console.log(this.shopAddress);
+		// console.log(this.shopAddress);
+		time = this.offerValidity+time;
+		console.log("dateOfAnnouncement: "+this.offers[0].dateOfAnnouncement);
+		console.log("Expected format: 2018-04-24T04:34:31.660Z");
 		this.obj={
 			"userId"  :this.userId,
-			"offerTitle" :this.offerTitle,		
-			//"offerValidity" :this.offerValidity+time,
-			"offerValidity" :"2018-04-24T04:34:31.660Z",
-			//"dateOfAnnouncement" :this.offers[0].dateOfAnnouncement,
-			"dateOfAnnouncement" :"2018-04-24T04:34:31.660Z",
-			//"address" :this.offers[0].address,
+			"offerTitle" :this.offerTitle,
+			"offerValidity" :time,
+			"dateOfAnnouncement" :this.offers[0].dateOfAnnouncement+"0Z",
 			"address" :this.shopAddress,
 			"offerDescription" :this.offerDescription,
 			"originalPrice" :this.originalPrice,
@@ -184,7 +183,7 @@ export class AddOfferComponent implements OnInit {
 			"keywords" :this.keywords
 
 		}
-				
+
 		this.addOfferService.addNewOffer(this.obj).subscribe((res) =>{
 			this.getOffers(this.userId);
 			//debugger
@@ -199,11 +198,11 @@ export class AddOfferComponent implements OnInit {
 
 couponValidate()
 {
-	
+
 	this.addOfferService.couponValidateService(this.coupon,this.userId).subscribe((res) =>{
 
 		let couponData = res;
-		
+
 		if(couponData==null) {
 			alert("wrong coupon entered");
 		}
@@ -219,7 +218,7 @@ couponValidate()
 			this.addOfferService.changeFlag(obj).subscribe((res) =>{
 				alert("coupon verified");
 
-				
+
 
 
 			}, (error) =>{
