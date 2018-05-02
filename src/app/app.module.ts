@@ -48,12 +48,13 @@ import { SearchBarComponent } from './components/shop-page/search-bar/search-bar
 import { HelpComponent } from './components/help/help.component';
 import { LocationService } from './services/location.service';
 import { LoginService } from './services/login.service';
+import { BeASellerComponent } from './components/user/be-a-seller/be-a-seller.component';
 
 const appRoutes:Routes=[
 
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
   { path: 'homepage', component: HomePageComponent },
-  { path:'user/:param',component:UserComponent },
+  { path:'user/:id',component:UserComponent },
   { path:'login',component:LoginRegisterFrontpageComponent },
   { path:'vendor-register',component:VendorRegisterComponent },
   { path:'product/:id',component: ProductPageComponent},
@@ -98,7 +99,8 @@ const appRoutes:Routes=[
     ShopPageComponent,
     SeachResultsComponent,
     SearchBarComponent,
-    HelpComponent
+    HelpComponent,
+    BeASellerComponent
   ],
   imports: [
     IonRangeSliderModule,

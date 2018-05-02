@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
     /*let id = this.route.snapshot.params['id'];
     this.userList=id;*/
     this.route.paramMap.subscribe(params => {
-      this.userList = params.get('param');
+      this.userList = params.get('id');
       this.isLogin();
     });
   }
@@ -49,10 +49,10 @@ export class UserComponent implements OnInit {
     })
   }
 
-  setRestaurantlist(event) {
+  changeSidebarVender(event) {
     if(event) {
-      console.log("be a seller changed");
       this.getUserId();
+      this.router.navigate(['/user/add-offer']); 
     }
   }
 }
