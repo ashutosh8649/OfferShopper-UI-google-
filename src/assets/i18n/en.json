@@ -1,0 +1,32 @@
+{
+  "HOME": {
+    "SELECT": "Change language"
+  },
+  "FOOTER": {
+    "GETINTOUCH": "Get in touch",
+    "CONTACT": "Any questions? Let us know on mail: offershopper@gmail.com, or call us on (+91) 9078563412.",
+    "CATEGORIES": {
+        "CATEGORY": "Categories",
+        "SPORTS": "Sports",
+        "CLOTHES": "Clothes",
+        "FOOD": "Food"
+    },
+    "LINKS": {
+        "LINK": "Links",
+        "SEARCH": "Search",
+        "ABOUT": "About",
+        "CONTACT": "Contact"
+    },
+    "HELP": {
+        "HELP": "Help",
+        "TC": "T&C",
+        "FAQ": "FAQ"
+    },
+    "REACHUS": "Want To reach us?",
+    "COPYRIGHT": {
+        "FIRST": "Copyright © 2018 All rights reserved. | Made with  ",
+        "SECOND": "; by",
+        "THIRD": "OfferShopper"
+    }
+  }
+}

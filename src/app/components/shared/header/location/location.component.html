@@ -1,4 +1,4 @@
-<div class="nav justify-content-center">
+<div class="nav justify-content-between">
   <button  id="_location1" type="button"  data-toggle="modal" data-target="#Modal" class= " btn btn-light search-btn">
     <img class="locationimg" src= "http://flaticons.net/icons/Miscellaneous/Maps.png"> {{obj.a}}
   </button>
@@ -28,4 +28,14 @@
 </div>
 </div>
 </div>
+<div class="lang">
+  <label class="text-lead">
+    {{ 'HOME.SELECT' | translate }}
+    <select #langSelect (change)="translate.use(langSelect.value)">
+    <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+    </select>
+  </label>
+  </div>
 </div>
+
+

@@ -35,3 +35,21 @@
 {
 	font-family: 'Julius Sans One', sans-serif;
 }
+
+.text-heading {
+    text-decoration: bold;
+    text-transform: capitalize;
+    font-family: 'Holtwood One SC', serif;
+    color: white;
+    font-size: 18px;
+}
+
+.text-lead {
+    font-family: 'Julius Sans One', sans-serif;
+    color: lavender;
+    font-size: 13px;
+}
+
+.lang {
+	float: right
+}
