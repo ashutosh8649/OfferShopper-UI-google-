@@ -1,9 +1,8 @@
 <div class="container mt-5" *ngIf="offers">
   <div class="row">
-    <div class="col-4 card-group mb-3" *ngFor="let offer of offers">
+    <div class="col-lg-4 col-md-6 card-group mb-3" *ngFor="let offer of offers">
       {{productPrice(offer.originalPrice,offer.discount)}}
-      <div class="card">
-        <span [routerLink]="['/', 'product',offer.userId,offer._id]">
+      <div class="card" [routerLink]="['/', 'product',offer.userId,offer._id]">
           <div class="card-img">
             <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
             <div class="card-rating bg-white border-bottom px-2 py-1">
@@ -17,10 +16,11 @@
               <br/>
               <span class="offer-deleted-price">MRP:<del>₹{{offer.originalPrice}}</del></span>
               <span>₹{{priceAfterDiscount}}</span>
-            </p>
-            <p class="card-text "><small class="text-muted">Last updated 45 mins ago</small></p>
+            </p>            
           </div>
-        </span>
+          <div class="card-footer py-1">
+            <small class="text-muted">Last updated: {{offer.dateOfAnnouncement | date}}</small>
+          </div>
       </div>
     </div>
   </div>

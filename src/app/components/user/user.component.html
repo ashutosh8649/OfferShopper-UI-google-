@@ -25,10 +25,10 @@
       Subscriptions
     </li>
     <li *ngIf="role=='Vendor' && userList=='add-offer'" class="text-center active" [routerLink]="['/user', 'add-offer']">
-      Add Offers
+      Add Offers    
     </li>
     <li *ngIf="role=='Vendor' && userList!='add-offer'" class="text-center border-bottom py-2" [routerLink]="['/user', 'add-offer']">
-      Add Offers
+      Add Offers   
     </li>
     <li *ngIf="role=='Customer'" class="text-center border-bottom py-2" [routerLink]="['/user', 'userdetails']">
       Be a Seller
@@ -38,7 +38,7 @@
 <div class="user-content">
   <div [ngSwitch]="userList">
     <div *ngSwitchCase="'userdetails'">
-      <app-userdetails></app-userdetails>
+      <app-userdetails (success)="setRestaurantlist($event)"></app-userdetails>
     </div>
     <div *ngSwitchCase="'carrybag'">
       <app-carrybag></app-carrybag>

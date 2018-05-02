@@ -153,15 +153,22 @@ export class AddOfferComponent implements OnInit {
 		let seconds = "";
 		if(this.date.getMinutes() < 10){
 			minutes = "0"+this.date.getMinutes().toString();
+		} else{
+			minutes = this.date.getMinutes().toString();	
 		}
 		if(this.date.getHours() < 10){
 			hours = "0"+this.date.getHours().toString();
+		} else{
+			hours = this.date.getHours().toString();
 		}
 		if(this.date.getSeconds() < 10){
 			seconds = "0"+this.date.getSeconds().toString();
+		} else{
+			seconds = this.date.getSeconds().toString();
 		}
 		let time = "T"+hours+":"+minutes+":"+seconds+"Z";
 		time = this.offerValidity+time;
+		console.log("Exspected time:"+time);
 		this.obj={
 			"userId"  :this.userId,
 			"offerTitle" :this.offerTitle,
