@@ -4,6 +4,10 @@
     font-size:45px;
 }
 
+.loggedIn-name {
+  cursor: pointer;
+}
+
 #logo:hover {
     transform: scale(5,5);
 }

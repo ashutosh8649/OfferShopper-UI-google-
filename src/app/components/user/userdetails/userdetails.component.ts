@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import{UserService} from './../../../services/user.service';
 import {FormsModule} from '@angular/forms';
 import { AuthorizationService } from '../../../services/authorization.service';
@@ -13,6 +13,8 @@ import {Cities} from '../../../configs/cities.config';
   providers:[ AuthorizationService ]
 })
 export class UserdetailsComponent implements OnInit {
+
+  @Output() success = new EventEmitter<any>();
 
   constructor(private userdata:UserService,
     private router: Router,
@@ -56,7 +58,7 @@ export class UserdetailsComponent implements OnInit {
   getUserId() {
     this.authorizationService.getUserId().subscribe((res) =>{
       if(res.text() == "UnAuthorized"){
-			     this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
       }
       this.userInfo = res.text().split(',');
       this.userId = this.userInfo[2];
@@ -126,8 +128,7 @@ export class UserdetailsComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("inputShopCity")).disabled = true;
     (<HTMLInputElement>document.getElementById("inputShopZip")).disabled = true;
     (<HTMLInputElement>document.getElementById("inputShopState")).disabled = true;
-    console.log(this.firstName);
-    this.obj={
+    let obj={
       "firstName": this.firstName,
       "lastName": this.lastName,
       "password": this.password,
@@ -158,8 +159,13 @@ export class UserdetailsComponent implements OnInit {
       "offerIdList":this.offerIdList,
       "timestamp": this.timestamp
     }
-    console.log(this.obj);
-    this.userdata.putProfile(this.obj).subscribe((res) =>{
+    console.log(obj);
+    this.userdata.putProfile(obj).subscribe((res) =>{
+      if(obj.shopAddress.name && obj.shopAddress.street && obj.shopAddress.city && obj.shopAddress.state && obj.shopAddress.zipCode) {
+        this.userdata.convertToVendor(obj).subscribe((res) => {
+          this.success.emit(true);
+        }, (error) =>{})        
+      }
     }, (error) =>{
     })
   }

@@ -48,4 +48,11 @@ export class UserComponent implements OnInit {
     }, (error) =>{
     })
   }
+
+  setRestaurantlist(event) {
+    if(event) {
+      console.log("be a seller changed");
+      this.getUserId();
+    }
+  }
 }

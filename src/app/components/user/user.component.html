@@ -38,7 +38,7 @@
 <div class="user-content">
   <div [ngSwitch]="userList">
     <div *ngSwitchCase="'userdetails'">
-      <app-userdetails></app-userdetails>
+      <app-userdetails (success)="setRestaurantlist($event)"></app-userdetails>
     </div>
     <div *ngSwitchCase="'carrybag'">
       <app-carrybag></app-carrybag>
