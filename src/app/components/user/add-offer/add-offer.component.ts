@@ -35,6 +35,7 @@ export class AddOfferComponent implements OnInit {
 
 	obj={};
 	toRedis={};
+	toSoundex={};
 	User:any={};
 
 	date = new Date();
@@ -175,8 +176,18 @@ export class AddOfferComponent implements OnInit {
 		this.toRedis={
 				 "keywords":this.keywords 
 				}
-			 this.addOfferService.addToRedis(this.toRedis).subscribe((res) =>{ }, (error) =>{
+			this.addOfferService.addToRedis(this.toRedis).subscribe((res) =>{ }, (error) =>{
 			  })
+
+		this.toSoundex={
+				"offerTitle" : this.offerTitle,
+				"offerCategories" : this.offerCategories,
+				"keywords" : this.keywords
+		}
+			this.addOfferService.addToSoundex(this.toSoundex).subscribe((res) =>{ 
+			}, (error) =>{
+				alert("not added to soundex");
+			})				   
 
 	}
 
