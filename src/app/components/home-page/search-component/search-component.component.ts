@@ -66,7 +66,7 @@ export class SearchComponentComponent implements OnInit {
    addToCarrybag(offer1) {
    let carrybagBean = {
      "userId":this.user,
-     "offerId":offer1._id,
+     "offerId":offer1.offerId,
      "offerTitle":offer1.offerTitle,
      "offerOriginalPrice":offer1.originalPrice,
      "offerDiscount":offer1.discount,

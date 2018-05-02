@@ -69,6 +69,8 @@ export class SeachResultsComponent implements OnInit {
 			"offerValidity":offer.offerValidity,
 			"vendorId":offer.userId
 		}
+		console.log(offer.offerId);
+		console.log(carrybagBean);
 		this.offersService.addToCarrybag(carrybagBean).subscribe((res) =>{
 			this.messageService.showSuccessToast(this._vcr,"Added to CarryBag");
 		},(error) =>{
