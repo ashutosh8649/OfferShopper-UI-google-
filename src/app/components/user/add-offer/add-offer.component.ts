@@ -147,10 +147,21 @@ export class AddOfferComponent implements OnInit {
 	}
 
 	addOffer(){
-		let time = "T"+this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+"Z";
+		this.date = new Date();
+		let minutes = this.date.getMinutes();
+		if(minutes < 10){
+			minutes = "0"+minutes;
+		}
+		let hours = this.date.getHours();
+		if(hours < 10){
+			hours = "0"+hours;
+		}
+		let seconds = this.date.getSeconds();
+		if(seconds < 10){
+			seconds = "0"+seconds;
+		}
+		let time = "T"+hours+":"+minutes+":"+seconds+"Z";
 		time = this.offerValidity+time;
-		console.log("dateOfAnnouncement: "+this.offers[0].dateOfAnnouncement);
-		console.log("Expected format: 2018-04-24T04:34:31.660Z");
 		this.obj={
 			"userId"  :this.userId,
 			"offerTitle" :this.offerTitle,
@@ -174,7 +185,7 @@ export class AddOfferComponent implements OnInit {
 		})
 
 		this.toRedis={
-				 "keywords":this.keywords 
+				 "keywords":this.keywords
 				}
 			this.addOfferService.addToRedis(this.toRedis).subscribe((res) =>{ }, (error) =>{
 			  })
@@ -184,10 +195,10 @@ export class AddOfferComponent implements OnInit {
 				"offerCategories" : this.offerCategories,
 				"keywords" : this.keywords
 		}
-			this.addOfferService.addToSoundex(this.toSoundex).subscribe((res) =>{ 
+			this.addOfferService.addToSoundex(this.toSoundex).subscribe((res) =>{
 			}, (error) =>{
 				alert("not added to soundex");
-			})				   
+			})
 
 	}
 
