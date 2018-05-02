@@ -1,8 +1,27 @@
-
-#_location {
-	font-family: initial;
+#_location1
+{
+	font-family: 'Poiret One', cursive;
+	text-transform: uppercase;
+	letter-spacing: 0.25rem;
+	font-weight: bold;
+	font-variant-caps: titling-case;
+	color:white;
+	border:none;
+	background-color: transparent;
 }
 
-.text-pride {
-    background: #018b8b;
+.nav {
+    background: black;
+}
+.locationimg
+{
+	height: 1rem;
+	width: 1rem;
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+#Modallabel
+{
+	font-family: 'Julius Sans One', sans-serif;
 }
