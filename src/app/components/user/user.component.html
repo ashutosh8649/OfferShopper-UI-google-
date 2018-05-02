@@ -24,13 +24,13 @@
     <li class="text-center border-bottom py-2" *ngIf="userList!='subscriptionlist'" [routerLink]="['/user', 'subscriptionlist']">
       Subscriptions
     </li>
-    <li *ngIf="role=='vendor' && userList=='add-offer'" class="text-center active" [routerLink]="['/user', 'add-offer']">
-      Add Offers    
+    <li *ngIf="role=='Vendor' && userList=='add-offer'" class="text-center active" [routerLink]="['/user', 'add-offer']">
+      Add Offers
     </li>
-    <li *ngIf="role=='vendor' && userList!='add-offer'" class="text-center border-bottom py-2" [routerLink]="['/user', 'add-offer']">
-      Add Offers   
+    <li *ngIf="role=='Vendor' && userList!='add-offer'" class="text-center border-bottom py-2" [routerLink]="['/user', 'add-offer']">
+      Add Offers
     </li>
-    <li *ngIf="role=='customer'" class="text-center border-bottom py-2" [routerLink]="['/user', 'userdetails']">
+    <li *ngIf="role=='Customer'" class="text-center border-bottom py-2" [routerLink]="['/user', 'userdetails']">
       Be a Seller
     </li>
   </ul>

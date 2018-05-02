@@ -34,6 +34,8 @@ export class AddOfferComponent implements OnInit {
 	shopAddress:any;
 
 	obj={};
+	toRedis={};
+	toSoundex={};
 	User:any={};
 
 	date = new Date();
@@ -145,10 +147,21 @@ export class AddOfferComponent implements OnInit {
 	}
 
 	addOffer(){
-		let time = "T"+this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+"Z";
+		this.date = new Date();
+		let minutes = "";
+		let hours = "";
+		let seconds = "";
+		if(this.date.getMinutes() < 10){
+			minutes = "0"+this.date.getMinutes().toString();
+		}
+		if(this.date.getHours() < 10){
+			hours = "0"+this.date.getHours().toString();
+		}
+		if(this.date.getSeconds() < 10){
+			seconds = "0"+this.date.getSeconds().toString();
+		}
+		let time = "T"+hours+":"+minutes+":"+seconds+"Z";
 		time = this.offerValidity+time;
-		console.log("dateOfAnnouncement: "+this.offers[0].dateOfAnnouncement);
-		console.log("Expected format: 2018-04-24T04:34:31.660Z");
 		this.obj={
 			"userId"  :this.userId,
 			"offerTitle" :this.offerTitle,
@@ -170,6 +183,22 @@ export class AddOfferComponent implements OnInit {
 			console.log("Error:");
 			console.log(error);
 		})
+
+		this.toRedis={
+				 "keywords":this.keywords
+				}
+			this.addOfferService.addToRedis(this.toRedis).subscribe((res) =>{ }, (error) =>{
+			  })
+
+		this.toSoundex={
+				"offerTitle" : this.offerTitle,
+				"offerCategories" : this.offerCategories,
+				"keywords" : this.keywords
+		}
+			this.addOfferService.addToSoundex(this.toSoundex).subscribe((res) =>{
+			}, (error) =>{
+				alert("not added to soundex");
+			})
 
 	}
 

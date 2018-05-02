@@ -1,8 +1,8 @@
 import { Component, OnInit, Input,ViewContainerRef  } from '@angular/core';
-import { AuthorizationService } from '../../../../services/authorization.service';
-import { MessageService } from '../../../../services/message.service';
-import { WishlistService } from '../../../../services/wishlist.service';
-import { OffersService } from '../../../../services/offers.service';
+import { AuthorizationService } from '../../../services/authorization.service';
+import { MessageService } from '../../../services/message.service';
+import { WishlistService } from '../../../services/wishlist.service';
+import { OffersService } from '../../../services/offers.service';
 @Component({
 	selector: 'app-seach-results',
 	templateUrl: './seach-results.component.html',
