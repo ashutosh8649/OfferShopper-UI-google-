@@ -42,9 +42,9 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 import { VerifyEmailService } from './services/verify-email.service';
 import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { ShopPageComponent } from './components/home-page/shop-page/shop-page.component';
-import { SeachResultsComponent } from './components/home-page/shop-page/seach-results/seach-results.component';
-import { SearchBarComponent } from './components/home-page/shop-page/search-bar/search-bar.component';
+import { ShopPageComponent } from './components/shop-page/shop-page.component';
+import { SeachResultsComponent } from './components/shop-page/seach-results/seach-results.component';
+import { SearchBarComponent } from './components/shop-page/search-bar/search-bar.component';
 import { HelpComponent } from './components/help/help.component';
 import { LocationService } from './services/location.service';
 import { LoginService } from './services/login.service';

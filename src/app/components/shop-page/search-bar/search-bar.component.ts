@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { SearchService } from '../../../../services/search.service';
+import { SearchService } from '../../../services/search.service';
 
 
 @Component({

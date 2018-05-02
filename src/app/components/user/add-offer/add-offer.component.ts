@@ -34,6 +34,7 @@ export class AddOfferComponent implements OnInit {
 	shopAddress:any;
 
 	obj={};
+	toRedis={};
 	User:any={};
 
 	date = new Date();
@@ -170,6 +171,12 @@ export class AddOfferComponent implements OnInit {
 			console.log("Error:");
 			console.log(error);
 		})
+
+		this.toRedis={
+				 "keywords":this.keywords 
+				}
+			 this.addOfferService.addToRedis(this.toRedis).subscribe((res) =>{ }, (error) =>{
+			  })
 
 	}
 
