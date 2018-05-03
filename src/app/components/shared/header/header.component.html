@@ -8,7 +8,7 @@
     </div>
     <!--         this is for body for dropdown to select city-->
     <div class="modal-body">
-   <select class="dropdown btn btn-light dropdown-toggle " [(ngModel)]="selected.a">
+   <select class="dropdown btn btn-light dropdown-toggle " [(ngModel)]="tempselected.a">
        <option *ngFor=" let city of cities" value={{city}}>{{city}}</option>
      </select><br>      
       <img src="https://image.flaticon.com/icons/png/128/181/181427.png" class="maincities" alt="Delhi">
@@ -17,13 +17,13 @@
       <img src="https://cdn2.iconfinder.com/data/icons/heritage-places-indian-cities-1/100/charminar-hyderabad-islamic-landmark-heritage-architecture-structure-building-india-31cd05bb425a180a-256.png" class="maincities" alt="Hyderabad"><br>
       <span class="maincitiestext">Delhi</span>
       <span class="maincitiestext">Chandigarh</span>
-      <span class="maincitiestext">Mumbai</span>
-      <span class="maincitiestext">Hyderabad</span>
-   </div>
+      <span class="maincitiestext1">Mumbai</span>
+       <span class="maincitiestext">Hyderabad</span>
+    </div>
    <div class="modal-footer">
     <span>
-      <button type="button" class="btn btn-default " data-dismiss="modal">Continue</button>
-      <button type="button" class="btn btn-dark " data-dismiss="modal"  (click)="fav(selected)">Skip</button>         
+      <button type="button" class="btn btn-default " data-dismiss="modal" (click)="fav(tempselected)" >Continue</button>
+      <button type="button" class="btn btn-dark " data-dismiss="modal" >Skip</button>          
     </span>
   </div>
 </div>
