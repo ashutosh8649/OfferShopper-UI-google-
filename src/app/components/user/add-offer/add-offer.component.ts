@@ -202,6 +202,7 @@ export class AddOfferComponent implements OnInit {
 				"offerCategories" : this.offerCategories,
 				"keywords" : this.keywords
 		}
+		debugger
 			this.addOfferService.addToSoundex(this.toSoundex).subscribe((res) =>{
 			}, (error) =>{
 				alert("not added to soundex");
