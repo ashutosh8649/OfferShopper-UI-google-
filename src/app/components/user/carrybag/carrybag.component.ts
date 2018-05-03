@@ -79,7 +79,11 @@ export class CarrybagComponent implements OnInit {
  couponGenerate(userId,offerId,vendorId){
    this.carrybagService.checkCouponExistence(userId,offerId).subscribe((res) =>{
      let data=res;
-     if(data.userId==null){
+     if(data.userId==null&&userId==vendorId) {
+       alert("you cannot generate your own coupon");
+     }
+
+     else if (data.userId==null&&userId!=vendorId) {
      // let user=this.carryBagOffers.find(ele=>ele.offerId===offerId);
      // this.couponId=Math.floor(Math.random()*100000);
      this.obj={
