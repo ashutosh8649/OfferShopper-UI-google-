@@ -1,8 +1,8 @@
 import { Component, OnInit, Input,ViewContainerRef  } from '@angular/core';
-import { AuthorizationService } from '../../../../services/authorization.service';
-import { MessageService } from '../../../../services/message.service';
-import { WishlistService } from '../../../../services/wishlist.service';
-import { OffersService } from '../../../../services/offers.service';
+import { AuthorizationService } from '../../../services/authorization.service';
+import { MessageService } from '../../../services/message.service';
+import { WishlistService } from '../../../services/wishlist.service';
+import { OffersService } from '../../../services/offers.service';
 @Component({
 	selector: 'app-seach-results',
 	templateUrl: './seach-results.component.html',
@@ -53,8 +53,14 @@ export class SeachResultsComponent implements OnInit {
 			"offerValidity":offer1.offerValidity
 		}
 		this.wishlistService.addToWishlist(wishlistBean).subscribe((res) =>{
-			this.messageService.showSuccessToast(this._vcr,"Added");
-		},(error) =>{
+			this.messageService.showSuccessToast(this._vcr,"Added in Wishlist");
+		},(res:Response) =>{
+			if(res.status==409){
+				this.messageService.showErrorToast(this._vcr,"Already in Wishlist");
+			}
+			else if(res.status==400){
+				this.messageService.showErrorToast(this._vcr,"Service Not Found");
+			}
 		})
 	}
 
@@ -69,10 +75,17 @@ export class SeachResultsComponent implements OnInit {
 			"offerValidity":offer.offerValidity,
 			"vendorId":offer.userId
 		}
+		console.log(offer.offerId);
+		console.log(carrybagBean);
 		this.offersService.addToCarrybag(carrybagBean).subscribe((res) =>{
 			this.messageService.showSuccessToast(this._vcr,"Added to CarryBag");
-		},(error) =>{
-			this.messageService.showSuccessToast(this._vcr,"Already Added");
+		},(res:Response) =>{
+			if(res.status==409){
+				this.messageService.showErrorToast(this._vcr,"Already in CarryBag");
+			}
+			else if(res.status==400){
+				this.messageService.showErrorToast(this._vcr,"Service Not Found");
+			}
 		})
 	}
 

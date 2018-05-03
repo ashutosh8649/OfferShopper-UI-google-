@@ -1,9 +1,9 @@
 .card-w{
 	cursor: pointer;
-	max-width: 18rem;
-	min-width: 18rem;
-	min-height: 22rem;
-	max-height: 22rem;
+	max-width: 22rem;
+	min-width: 22rem;
+	min-height: 28rem;
+	max-height: 28rem;
 }
 
 .card-img {
@@ -26,6 +26,11 @@
 	color: #999;
 }
 
-.card:hover {
-	cursor: pointer;
+.card-footer-button-group {
+	width: 100%
+}
+
+.card-footer-button-group button {
+	width: 50%;
+	border-radius: 4px !important;
 }

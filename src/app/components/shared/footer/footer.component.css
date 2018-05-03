@@ -45,9 +45,7 @@ a {
 .nm-t{
     margin-top: -35px;
 }
-.footer-terms {
+
+li {
     cursor: pointer;
-}
-.footer-FAQ {
-    cursor: pointer;   
 }

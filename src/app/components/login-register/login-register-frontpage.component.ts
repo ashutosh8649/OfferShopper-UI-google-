@@ -164,7 +164,7 @@ registerVendor(){
     "lastName":  this.form.get('lastName').value,
     "mobileNo":  this.form.get('contact').value,
     "password":  resultPassword,
-    "role":      "vendor",
+    "role":      "Vendor",
     "shopAddress": {
       "city": this.form.get('vendorCity').value,
       "state": this.form.get('vendorState').value,
@@ -216,7 +216,7 @@ registerUser(){
   let body={
     "email": this.registerForm.get('username').value,
     "password":  resultPassword,
-    "role":      "customer"
+    "role":      "Customer"
   };
 
   this.registerService.register(body).subscribe((res) =>{

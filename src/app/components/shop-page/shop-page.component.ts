@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SearchService } from '../../../services/search.service';
-import { Product } from '../../../configs/product.config';
+import { SearchService } from '../../services/search.service';
+import { Product } from '../../configs/product.config';
 
 @Component({
   selector: 'app-shop-page',
