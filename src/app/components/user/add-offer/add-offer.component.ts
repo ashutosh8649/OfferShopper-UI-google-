@@ -151,6 +151,10 @@ export class AddOfferComponent implements OnInit {
 		let minutes = "";
 		let hours = "";
 		let seconds = "";
+		let day = "";
+		let month = "";
+		let year = "";
+		
 		if(this.date.getMinutes() < 10){
 			minutes = "0"+this.date.getMinutes().toString();
 		} else{
@@ -166,14 +170,29 @@ export class AddOfferComponent implements OnInit {
 		} else{
 			seconds = this.date.getSeconds().toString();
 		}
-		let time = "T"+hours+":"+minutes+":"+seconds+"Z";
-		time = this.offerValidity+time;
-		console.log("Exspected time:"+time);
+		
+		if(this.date.getDate() < 10) {
+			day = "0"+this.date.getDate().toString();
+		} else {
+			day = this.date.getDate().toString();		
+		}
+		if(this.date.getMonth() < 10) {
+			month = "0"+this.date.getMonth().toString();
+		} else {
+			month = this.date.getMonth().toString();
+		}
+		year = this.date.getFullYear().toString();
+		
+		let time = "T"+hours+":"+minutes+":"+seconds;
+		let datetime = year+"-"+month+"-"+day+time;
+		//2014-01-01T10:10:30
+		console.log("Validity"+this.offerValidity+time);
+		console.log("Announcement"+datetime);
 		this.obj={
 			"userId"  :this.userId,
 			"offerTitle" :this.offerTitle,
-			"offerValidity" :time,
-			"dateOfAnnouncement" :this.offers[0].dateOfAnnouncement+"0Z",
+			"offerValidity" :this.offerValidity+time,
+			"dateOfAnnouncement" :"2014-01-01T10:10:30",
 			"address" :this.shopAddress,
 			"offerDescription" :this.offerDescription,
 			"originalPrice" :this.originalPrice,
