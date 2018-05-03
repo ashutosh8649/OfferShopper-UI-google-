@@ -11,6 +11,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class LocationComponent implements OnInit {
  
 constructor(private locationService: LocationService, public translate: TranslateService) {
+  
+  //translation 
   translate.addLangs(['en', 'hi']);
   translate.setDefaultLang('en');
 
@@ -18,9 +20,7 @@ constructor(private locationService: LocationService, public translate: Translat
   translate.use(browserLang.match(/en|hi/) ? browserLang : 'en');
 }
 
-switchLanguage(language: string) {
-  this.translate.use(language);
-}
+
 
 @Input() obj={a:"Delhi"};
 getlocation(){
