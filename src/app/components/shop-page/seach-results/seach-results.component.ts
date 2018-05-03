@@ -13,7 +13,7 @@ export class SeachResultsComponent implements OnInit {
 	public userInfo : any;
 	public user : any;
 	private priceAfterDiscount;
-	
+
 	@Input() results;
 
 	constructor(private wishlistService:WishlistService,
@@ -37,7 +37,7 @@ export class SeachResultsComponent implements OnInit {
 	}
 
 	productPrice(offerOriginalPrice,offerDiscount){
-		this.priceAfterDiscount = (offerOriginalPrice)*(1-(offerDiscount)/100);
+		this.priceAfterDiscount = Number((offerOriginalPrice)*(1-(offerDiscount)/100)).toFixed(2);
 	}
 
 	addToWishlist(offer1) {
