@@ -67,12 +67,18 @@ export class CarrybagComponent implements OnInit {
   })
   }
   deleteOffer(userId, offerId){
-   // debugger
-   this.carrybagService.deleteCarrybag(offerId,userId).subscribe((res) =>{
+   /*this.carrybagService.deleteCarrybag(offerId,userId).subscribe((res) =>{
      this.getCarrybag();
    }, (error) =>{
      alert(error + "deletion not working");
-   })
+   })*/
+   this.messageService.deleteConfirmation(()=>
+     this.carrybagService.deleteCarrybag(offerId,userId).subscribe((res) =>{
+       this.messageService.showSuccessToast(this._vcr,"Deleted");
+       this.getCarrybag();
+     }, (error) =>{
+       alert(error + "deletion not working");
+     }));
  }
 
 

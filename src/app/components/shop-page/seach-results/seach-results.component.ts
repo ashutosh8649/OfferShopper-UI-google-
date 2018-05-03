@@ -53,8 +53,14 @@ export class SeachResultsComponent implements OnInit {
 			"offerValidity":offer1.offerValidity
 		}
 		this.wishlistService.addToWishlist(wishlistBean).subscribe((res) =>{
-			this.messageService.showSuccessToast(this._vcr,"Added");
-		},(error) =>{
+			this.messageService.showSuccessToast(this._vcr,"Added in Wishlist");
+		},(res:Response) =>{
+			if(res.status==409){
+				this.messageService.showErrorToast(this._vcr,"Already in Wishlist");
+			}
+			else if(res.status==400){
+				this.messageService.showErrorToast(this._vcr,"Service Not Found");
+			}
 		})
 	}
 
@@ -73,8 +79,13 @@ export class SeachResultsComponent implements OnInit {
 		console.log(carrybagBean);
 		this.offersService.addToCarrybag(carrybagBean).subscribe((res) =>{
 			this.messageService.showSuccessToast(this._vcr,"Added to CarryBag");
-		},(error) =>{
-			this.messageService.showSuccessToast(this._vcr,"Already Added");
+		},(res:Response) =>{
+			if(res.status==409){
+				this.messageService.showErrorToast(this._vcr,"Already in CarryBag");
+			}
+			else if(res.status==400){
+				this.messageService.showErrorToast(this._vcr,"Service Not Found");
+			}
 		})
 	}
 
