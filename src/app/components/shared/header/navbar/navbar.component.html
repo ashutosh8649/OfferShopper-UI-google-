@@ -23,52 +23,22 @@
     <div class="col-8 d-flex  justify-content-center">
       <div class="collapse navbar-collapse justify-content-center " id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-0 mb-0 mt-2 mt-lg-0 justify-self-center">
-          <!-- <li class="nav-item nav-text ml-3">
-            <a class="nav-link text-dark active" *ngIf="url=='/homepage'" routerLink="/homepage">
-              {{ 'HEADER.NAVBAR.HOME' | translate }}
-              <span class="sr-only">(current)</span>
-            </a>
-            <a class="nav-link text-dark" *ngIf="url!='/homepage'" routerLink="/homepage">
-              {{ 'HEADER.NAVBAR.HOME' | translate }}
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item nav-text">
-            <a class="nav-link active" *ngIf="url=='/search'" routerLink="/search">
-              <font class="text-pride">
-                  {{ 'HEADER.NAVBAR.SHOP' | translate }}
-              </font>
-            </a>
-            <a class="nav-link" *ngIf="url!='/search'" routerLink="/search">
-              <font class="text-pride">
-                  {{ 'HEADER.NAVBAR.SHOP' | translate }}
-              </font>
-            </a>
-          </li>
-          <li class="nav-item nav-text">
-            <a class="nav-link text-dark active" *ngIf="url=='/help/FAQs'" routerLink="/help/FAQs">
-              {{ 'HEADER.NAVBAR.FAQ' | translate }}
-            </a>
-            <a class="nav-link text-dark" *ngIf="url!='/help/FAQs'" routerLink="/help/FAQs">
-              {{ 'HEADER.NAVBAR.FAQ' | translate }}
-            </a>
-          </li> -->
           <li class="nav-item nav-text ml-3">
             <a class="nav-link text-dark" [ngClass]="{active:url=='/homepage'}" routerLink="/homepage">
-              Home
+              {{ 'HEADER.NAVBAR.HOME' | translate }}
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item nav-text">
             <a class="nav-link" [ngClass]="{active:url=='/search'}" routerLink="/search">
               <font class="text-pride">
-                Shop
+              {{ 'HEADER.NAVBAR.SHOP' | translate }}
               </font>
             </a>
           </li>
           <li class="nav-item nav-text">
             <a class="nav-link text-dark" [ngClass]="{active:url=='/help/FAQs'}" routerLink="/help/FAQs">
-                FAQ
+              {{ 'HEADER.NAVBAR.FAQ' | translate }}
             </a>
           </li>
         </ul>
