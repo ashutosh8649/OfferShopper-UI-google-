@@ -1,5 +1,7 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import { LocationService } from '../../../../services/location.service';
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
@@ -8,9 +10,16 @@ import { LocationService } from '../../../../services/location.service';
 })
 export class LocationComponent implements OnInit {
  
+constructor(private locationService: LocationService, public translate: TranslateService) {
+  
+  //translation 
+  translate.addLangs(['en', 'हिंदी','தமிழ்','తెలుగు']);
+  translate.setDefaultLang('en');
 
+  const browserLang = translate.getBrowserLang();
+  translate.use(browserLang.match(/en|हिंदी|தமிழ்|తెలుగు/) ? browserLang : 'en');
+}
 
-constructor(private locationService: LocationService) { }
 
 
 @Input() obj={a:"Delhi"};

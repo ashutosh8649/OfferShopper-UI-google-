@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cities}  from '../../../configs/cities.config'
+import { Cities}  from '../../../configs/cities.config';
 
 @Component({
 	selector: 'app-header',
@@ -8,7 +8,8 @@ import { Cities}  from '../../../configs/cities.config'
 })
 export class HeaderComponent implements OnInit {
 
-	constructor() { }
+	constructor() {}
+
     cities = Cities.citiesName; 
 
     selected={a:"Delhi"};

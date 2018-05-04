@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { LoginService } from '../../../../services/login.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-navbar',
