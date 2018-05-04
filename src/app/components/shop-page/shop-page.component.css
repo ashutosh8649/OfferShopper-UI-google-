@@ -22,3 +22,8 @@
 .dropdown-item {
   cursor: pointer;
 }
+
+.default-text {
+  size:2rem;
+  text-align: center;
+}
