@@ -6,6 +6,8 @@ import { AuthorizationService } from '../../../services/authorization.service';
 import { MessageService } from '../../../services/message.service';
 import { CarrybagService } from '../../../services/carrybag.service';
 
+//for routing to different pages
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-component',
@@ -18,6 +20,8 @@ export class SearchComponentComponent implements OnInit {
 
   public results:any=[];
 
+  //false only when category is all and user doesnt type a query
+  searchFlag:boolean;
   flag :boolean;
   searchTerm$ = new Subject<string>();
 
@@ -27,8 +31,9 @@ export class SearchComponentComponent implements OnInit {
   public userInfo : any;
   public user : any;
 
-  constructor(private searchService: SearchService,
-      private authorizationService: AuthorizationService,
+  constructor(private router : Router,
+    private searchService: SearchService,
+    private authorizationService: AuthorizationService,
     private messageService:MessageService,
     private _vcr:ViewContainerRef,
     private carrybagService: CarrybagService,) {
@@ -92,4 +97,13 @@ export class SearchComponentComponent implements OnInit {
       document.getElementById("searchButton").click();
   }
 
+  //will redirect to search Component except when category is all and user doesn't input any value
+  redirectToSearch() {
+    if(this.category=="All" && this.query =="") {
+      this.messageService.showErrorToast(this._vcr,"Please select a category or type to search");
+    }
+    else {
+      this.router.navigateByUrl("search/"+this.category+"/"+this.query);
+    }
+    }
 }
