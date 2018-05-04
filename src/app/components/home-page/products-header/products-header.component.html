@@ -1,147 +1,24 @@
-<div class="card-columns p-5">
-  <div class="card card-w" [routerLink]="['/', 'product',offer.userId,offer._id]">
-      <div class="card-img">
-        <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
-        <div class="card-rating bg-white border-bottom px-2 py-1">
-          Rating <span>|</span> {{offer.offerRating}}
+<div class="container mt-5" *ngIf="offers">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 card-group mb-3" *ngFor="let offer of offers">
+      {{productPrice(offer.originalPrice,offer.discount)}}
+      <div class="card card-w text-dark m-5" [routerLink]="['/', 'product',offer.userId,offer._id]">
+        <div class="card-img-overlay">
+          <span class="badge badge-pill badge-info card-discount p-3">{{offer.discount}}% OFF</span>
+        </div>
+        <img class="card-img card-w" src="../../../../assets/card.jpeg" alt="Card image">
+        <div class="card-body card-data">
+          <div class="row">
+            <div class="col-12">
+              <span class="card-heading">{{offer.offerTitle}}</span>
+            </div>
+            <div class="col-12">
+              <span class="card-price">₹<del>{{offer.originalPrice}}</del></span>
+              <span class="card-discounted-price">{{priceAfterDiscount}}</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title text-heading">{{offer.offerTitle}}</h5>
-        <p class="card-text text-lead ">
-          <span class="border border-danger rounded px-2 py-1 mb-3">{{offer.discount}}% off</span>
-          <br/>
-          <span class="offer-deleted-price">MRP:<del>₹{{offer.originalPrice}}</del></span>
-          <span>₹{{priceAfterDiscount}}</span>
-        </p>
-      </div>
-      <div class="card-footer py-1">
-        <small class="text-muted">Last updated: {{offer.dateOfAnnouncement | date}}</small>
-      </div>
-  </div>
-  <div class="card card-w" [routerLink]="['/', 'product',offer.userId,offer._id]">
-      <div class="card-img">
-        <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
-        <div class="card-rating bg-white border-bottom px-2 py-1">
-          Rating <span>|</span> {{offer.offerRating}}
-        </div>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title text-heading">{{offer.offerTitle}}</h5>
-        <p class="card-text text-lead ">
-          <span class="border border-danger rounded px-2 py-1 mb-3">{{offer.discount}}% off</span>
-          <br/>
-          <span class="offer-deleted-price">MRP:<del>₹{{offer.originalPrice}}</del></span>
-          <span>₹{{priceAfterDiscount}}</span>
-        </p>
-      </div>
-      <div class="card-footer py-1">
-        <small class="text-muted">Last updated: {{offer.dateOfAnnouncement | date}}</small>
-      </div>
-  </div>
-  <div class="card card-w" [routerLink]="['/', 'product',offer.userId,offer._id]">
-      <div class="card-img">
-        <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
-        <div class="card-rating bg-white border-bottom px-2 py-1">
-          Rating <span>|</span> {{offer.offerRating}}
-        </div>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title text-heading">{{offer.offerTitle}}</h5>
-        <p class="card-text text-lead ">
-          <span class="border border-danger rounded px-2 py-1 mb-3">{{offer.discount}}% off</span>
-          <br/>
-          <span class="offer-deleted-price">MRP:<del>₹{{offer.originalPrice}}</del></span>
-          <span>₹{{priceAfterDiscount}}</span>
-        </p>
-      </div>
-      <div class="card-footer py-1">
-        <small class="text-muted">Last updated: {{offer.dateOfAnnouncement | date}}</small>
-      </div>
-  </div>
-  <div class="card card-w" [routerLink]="['/', 'product',offer.userId,offer._id]">
-      <div class="card-img">
-        <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
-        <div class="card-rating bg-white border-bottom px-2 py-1">
-          Rating <span>|</span> {{offer.offerRating}}
-        </div>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title text-heading">{{offer.offerTitle}}</h5>
-        <p class="card-text text-lead ">
-          <span class="border border-danger rounded px-2 py-1 mb-3">{{offer.discount}}% off</span>
-          <br/>
-          <span class="offer-deleted-price">MRP:<del>₹{{offer.originalPrice}}</del></span>
-          <span>₹{{priceAfterDiscount}}</span>
-        </p>
-      </div>
-      <div class="card-footer py-1">
-        <small class="text-muted">Last updated: {{offer.dateOfAnnouncement | date}}</small>
-      </div>
-  </div>
-   <div class="card bg-primary text-white text-center p-3">
-      <blockquote class="blockquote mb-0">
-        <p>See more</p>
-      </blockquote>
     </div>
-  <div class="card card-w" [routerLink]="['/', 'product',offer.userId,offer._id]">
-      <div class="card-img">
-        <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
-        <div class="card-rating bg-white border-bottom px-2 py-1">
-          Rating <span>|</span> {{offer.offerRating}}
-        </div>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title text-heading">{{offer.offerTitle}}</h5>
-        <p class="card-text text-lead ">
-          <span class="border border-danger rounded px-2 py-1 mb-3">{{offer.discount}}% off</span>
-          <br/>
-          <span class="offer-deleted-price">MRP:<del>₹{{offer.originalPrice}}</del></span>
-          <span>₹{{priceAfterDiscount}}</span>
-        </p>
-      </div>
-      <div class="card-footer py-1">
-        <small class="text-muted">Last updated: {{offer.dateOfAnnouncement | date}}</small>
-      </div>
-  </div>
-  <div class="card card-w" [routerLink]="['/', 'product',offer.userId,offer._id]">
-      <div class="card-img">
-        <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
-        <div class="card-rating bg-white border-bottom px-2 py-1">
-          Rating <span>|</span> {{offer.offerRating}}
-        </div>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title text-heading">{{offer.offerTitle}}</h5>
-        <p class="card-text text-lead ">
-          <span class="border border-danger rounded px-2 py-1 mb-3">{{offer.discount}}% off</span>
-          <br/>
-          <span class="offer-deleted-price">MRP:<del>₹{{offer.originalPrice}}</del></span>
-          <span>₹{{priceAfterDiscount}}</span>
-        </p>
-      </div>
-      <div class="card-footer py-1">
-        <small class="text-muted">Last updated: {{offer.dateOfAnnouncement | date}}</small>
-      </div>
-  </div>
-  <div class="card card-w" [routerLink]="['/', 'product',offer.userId,offer._id]">
-      <div class="card-img">
-        <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
-        <div class="card-rating bg-white border-bottom px-2 py-1">
-          Rating <span>|</span> {{offer.offerRating}}
-        </div>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title text-heading">{{offer.offerTitle}}</h5>
-        <p class="card-text text-lead ">
-          <span class="border border-danger rounded px-2 py-1 mb-3">{{offer.discount}}% off</span>
-          <br/>
-          <span class="offer-deleted-price">MRP:<del>₹{{offer.originalPrice}}</del></span>
-          <span>₹{{priceAfterDiscount}}</span>
-        </p>
-      </div>
-      <div class="card-footer py-1">
-        <small class="text-muted">Last updated: {{offer.dateOfAnnouncement | date}}</small>
-      </div>
   </div>
 </div>

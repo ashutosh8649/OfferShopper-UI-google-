@@ -4,7 +4,7 @@
    <!-- Modal content-->
    <div class="modal-content">
     <div class="modal-header">
-      <h4 class="modal-title modallabel">Select your City</h4>
+      <h4 class="modal-title modallabel">{{ 'HEADER.LOCATION.CITY' | translate }}</h4>
     </div>
     <!--         this is for body for dropdown to select city-->
     <div class="modal-body">
@@ -15,15 +15,15 @@
       <img src="https://cdn.iconscout.com/public/images/icon/premium/png-256/chandigarh-openhand-monument-architecture-symbol-39a0c693561273cd-256x256.png" class="maincities" alt="Chandigarh">
       <img src="https://image.flaticon.com/icons/png/128/444/444788.png" class="maincities" alt="Mumbai">
       <img src="https://cdn2.iconfinder.com/data/icons/heritage-places-indian-cities-1/100/charminar-hyderabad-islamic-landmark-heritage-architecture-structure-building-india-31cd05bb425a180a-256.png" class="maincities" alt="Hyderabad"><br>
-      <span class="maincitiestext">Delhi</span>
-      <span class="maincitiestext">Chandigarh</span>
-      <span class="maincitiestext1">Mumbai</span>
-       <span class="maincitiestext">Hyderabad</span>
-    </div>
+      <span class="maincitiestext">{{ 'HEADER.LOCATION.CITIES.0' | translate }}</span>
+      <span class="maincitiestext">{{ 'HEADER.LOCATION.CITIES.1' | translate }}</span>
+      <span class="maincitiestext">{{ 'HEADER.LOCATION.CITIES.2' | translate }}</span>
+      <span class="maincitiestext">{{ 'HEADER.LOCATION.CITIES.3' | translate }}</span>
+   </div>
    <div class="modal-footer">
     <span>
-      <button type="button" class="btn btn-default " data-dismiss="modal" (click)="fav(tempselected)" >Continue</button>
-      <button type="button" class="btn btn-dark " data-dismiss="modal" >Skip</button>          
+      <button type="button" class="btn btn-default " data-dismiss="modal">{{ 'HEADER.LOCATION.CONTINUE' | translate }}</button>
+      <button type="button" class="btn btn-dark " data-dismiss="modal"  (click)="fav(selected)">{{ 'HEADER.LOCATION.SKIP' | translate }}</button>         
     </span>
   </div>
 </div>
@@ -32,6 +32,6 @@
 
 
 <div class="sticky-top">
-	<app-location [obj]="selected" (success)="getLocation($event)"></app-location>
+  <app-location [obj]="selected"></app-location>
 	<app-navbar></app-navbar>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cities}  from '../../../configs/cities.config'
+import { Cities}  from '../../../configs/cities.config';
 
 @Component({
 	selector: 'app-header',

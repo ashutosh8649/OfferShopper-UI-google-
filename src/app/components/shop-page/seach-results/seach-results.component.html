@@ -3,19 +3,18 @@
     <div class="col-md-4 card-group mb-3" *ngFor=" let result of results | paginate:{itemsPerPage : 6, currentPage : p}">
       {{productPrice(result.originalPrice,result.discount)}}
       <div class="card">
-        <div class="card-img">
+        <div class="card-img img-hover-cursor" [routerLink]="['/', 'product',result.userId,result._id]">
           <img class="card-img-top" src="../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
           <div class="card-rating bg-white border-bottom px-2 py-1">
             Rating <span>|</span> {{result.offerRating}}
           </div>
         </div>
         <div class="card-body">
-          <h5 class="card-title text-heading">{{result.offerTitle}}</h5>
+          <h5 class="card-title text-heading" [routerLink]="['/', 'product',result.userId,result._id]">{{result.offerTitle}}</h5>
           <p class="card-text text-lead ">
             <span class="border border-danger rounded px-2 py-1 mb-3">{{result.discount}}% off</span>
             <br/>
             <span class="offer-deleted-price">MRP:<del>₹{{result.originalPrice}}</del></span>
-            <!-- {{result.offerId}} -->
             <span>₹{{priceAfterDiscount}}</span>
           </p>
           <button class="btn btn-dark my-2 my-sm-0 container-button" [routerLink]="['/', 'vendorInfo',result.userId]" type="button">{{result.address.name}}</button>

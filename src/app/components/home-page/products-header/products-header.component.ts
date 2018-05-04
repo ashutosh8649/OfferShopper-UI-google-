@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../../../services/search.service';
 
 @Component({
   selector: 'app-products-header',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsHeaderComponent implements OnInit {
 
-  constructor() { }
+  public offers : any;
+  public priceAfterDiscount: any;
+
+  constructor(private searchService : SearchService) { }
 
   ngOnInit() {
+    this.loadOffers();
   }
 
+  productPrice(offerOriginalPrice,offerDiscount){
+    this.priceAfterDiscount = Number((offerOriginalPrice)*(1-(offerDiscount)/100)).toFixed(2);
+  }
+
+  loadOffers(){
+    this.searchService.searchProductsCategoryOnly("clothing")
+    .subscribe((res) =>{
+      this.offers=res;
+      console.log("homepage");
+      console.log(res);
+     },(error) =>{
+    });
+  }
 }
