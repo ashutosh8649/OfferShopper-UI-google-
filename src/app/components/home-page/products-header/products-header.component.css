@@ -19,6 +19,14 @@
 .card-heading {
 	font-size: 0.9rem;
 }
+
+.card-discounted-price {
+	color:red;
+}
+
+
+
+
 /* .card-img {
 	position: relative;
 }
