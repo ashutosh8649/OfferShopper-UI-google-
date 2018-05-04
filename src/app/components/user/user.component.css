@@ -17,6 +17,15 @@
 	.inactive {
 		border-bottom: 1px solid lightgrey;
 	}
+	
+	.active:active,
+	.active:focus,
+	.active.active {
+		background-image: none;
+		outline: 0;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
 }
 
 .user-sidebar li {
