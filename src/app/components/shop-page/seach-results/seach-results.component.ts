@@ -14,7 +14,7 @@ export class SeachResultsComponent implements OnInit {
 	public user : any;
 	private priceAfterDiscount;
 
-	@Input() results;
+	@Input() results = [];
 
 	constructor(private wishlistService:WishlistService,
 		private authorizationService: AuthorizationService,
