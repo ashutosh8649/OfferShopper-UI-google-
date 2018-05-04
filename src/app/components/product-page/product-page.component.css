@@ -15,7 +15,7 @@ img {
 }
 
 .text-poiret {
-	font-family: 'Poiret One', cursive;
+	font-family: 'Poiret One', 'Sree Krushnadevaraya','Suranna','Ramaraja',"Mukta Malar",cursive;
 }
 
 .title {
@@ -23,14 +23,14 @@ img {
 }
 
 .description {
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'Quicksand', 'Sree Krushnadevaraya','Suranna','Ramaraja',"Mukta Malar",sans-serif;
 	color:gray;
 	font-size: 1rem;
 }
 
 .price {
 	color:gray;
-  font-family: 'Julius Sans One', sans-serif;
+  font-family: 'Julius Sans One', 'Sree Krushnadevaraya','Suranna','Ramaraja',"Mukta Malar",sans-serif;
 }
 
 .back-arrow {
