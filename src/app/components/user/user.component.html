@@ -1,6 +1,6 @@
 <div class="user-sidebar border-right d-flex justify-content-center mt-2">
   <ul class="nav nav-pills flex-column ">
-    <li class="text-center active" *ngIf="userList=='userdetails'" [routerLink]="['/user', 'userdetails']">
+   <!--  <li class="text-center active" *ngIf="userList=='userdetails'" [routerLink]="['/user', 'userdetails']">
       Personal Information
     </li>
     <li class="text-center border-bottom py-2" *ngIf="userList!='userdetails'" [routerLink]="['/user', 'userdetails']">
@@ -30,7 +30,28 @@
     <li *ngIf="role=='Vendor' && userList!='add-offer'" class="text-center border-bottom py-2" [routerLink]="['/user', 'add-offer']">
       Add Offers   
     </li>
-    <li *ngIf="role=='Customer'" class="text-center border-bottom py-2" [routerLink]="['/user', 'userdetails']">
+    <li *ngIf="role=='Customer' && userList=='be-a-seller'" class="text-center active" [routerLink]="['/user', 'be-a-seller']">
+      Be a Seller
+    </li>
+    <li *ngIf="role=='Customer' && userList!='be-a-seller'" class="text-center border-bottom py-2" [routerLink]="['/user', 'be-a-seller']">
+      Be a Seller 
+    </li> -->
+    <li class="text-center py-2" [ngClass]="{active:userList=='userdetails', inactive:userList!='userdetails'}" [routerLink]="['/user', 'userdetails']">
+      Personal Information
+    </li>
+    <li class="text-center py-2" [ngClass]="{active:userList=='carrybag', inactive:userList!='carrybag'}" [routerLink]="['/user', 'carrybag']">
+      Carry Bag
+    </li>    
+    <li class="text-center py-2" [ngClass]="{active:userList=='wishlist', inactive:userList!='wishlist'}" [routerLink]="['/user', 'wishlist']">
+      Wish List
+    </li>
+    <li class="text-center py-2" [ngClass]="{active:userList=='subscriptionlist', inactive:userList!='subscriptionlist'}" [routerLink]="['/user', 'subscriptionlist']">
+      Subscriptions
+    </li>
+    <li class="text-center py-2" [ngClass]="{active:userList=='add-offer', inactive:userList!='add-offer'}" *ngIf="role=='Vendor'" [routerLink]="['/user', 'add-offer']">
+      Add Offers    
+    </li>
+    <li class="text-center py-2" [ngClass]="{active:userList=='be-a-seller', inactive:userList!='be-a-seller'}" *ngIf="role=='Customer'" [routerLink]="['/user', 'be-a-seller']">
       Be a Seller
     </li>
   </ul>
@@ -39,7 +60,7 @@
   <div [ngSwitch]="userList">
     <div *ngSwitchCase="'userdetails'">
       <app-userdetails></app-userdetails>
-    </div>
+    </div>    
     <div *ngSwitchCase="'carrybag'">
       <app-carrybag></app-carrybag>
     </div>
@@ -51,6 +72,9 @@
     </div>
     <div *ngSwitchCase="'add-offer'">
       <app-add-offer></app-add-offer>
+    </div>
+    <div *ngSwitchCase="'be-a-seller'">
+      <app-be-a-seller (success)="changeSidebarVender($event)"></app-be-a-seller>
     </div>
   </div>
 </div>

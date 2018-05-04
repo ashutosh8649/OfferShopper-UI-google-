@@ -67,19 +67,29 @@ export class CarrybagComponent implements OnInit {
   })
   }
   deleteOffer(userId, offerId){
-   // debugger
-   this.carrybagService.deleteCarrybag(offerId,userId).subscribe((res) =>{
+   /*this.carrybagService.deleteCarrybag(offerId,userId).subscribe((res) =>{
      this.getCarrybag();
    }, (error) =>{
      alert(error + "deletion not working");
-   })
+   })*/
+   this.messageService.deleteConfirmation(()=>
+     this.carrybagService.deleteCarrybag(offerId,userId).subscribe((res) =>{
+       this.messageService.showSuccessToast(this._vcr,"Deleted");
+       this.getCarrybag();
+     }, (error) =>{
+       alert(error + "deletion not working");
+     }));
  }
 
 
  couponGenerate(userId,offerId,vendorId){
    this.carrybagService.checkCouponExistence(userId,offerId).subscribe((res) =>{
      let data=res;
-     if(data.userId==null){
+     if(data.userId==null&&userId==vendorId) {
+       alert("you cannot generate your own coupon");
+     }
+
+     else if (data.userId==null&&userId!=vendorId) {
      // let user=this.carryBagOffers.find(ele=>ele.offerId===offerId);
      // this.couponId=Math.floor(Math.random()*100000);
      this.obj={

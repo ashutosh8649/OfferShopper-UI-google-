@@ -1,3 +1,24 @@
-<p>
-  products-header works!
-</p>
+<div class="container mt-5" *ngIf="offers">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 card-group mb-3" *ngFor="let offer of offers">
+      {{productPrice(offer.originalPrice,offer.discount)}}
+      <div class="card card-w text-dark m-5" [routerLink]="['/', 'product',offer.userId,offer._id]">
+        <div class="card-img-overlay">
+          <span class="badge badge-pill badge-info card-discount p-3">{{offer.discount}}% OFF</span>
+        </div>
+        <img class="card-img card-w" src="../../../../assets/card.jpeg" alt="Card image">
+        <div class="card-body card-data">
+          <div class="row">
+            <div class="col-12">
+              <span class="card-heading">{{offer.offerTitle}}</span>
+            </div>
+            <div class="col-12">
+              <span class="card-price">₹<del>{{offer.originalPrice}}</del></span>
+              <span class="card-discounted-price">{{priceAfterDiscount}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

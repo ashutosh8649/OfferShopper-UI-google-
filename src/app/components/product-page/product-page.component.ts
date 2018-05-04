@@ -112,15 +112,20 @@ export class ProductPageComponent implements OnInit {
    }
    this.wishlistService.addToWishlist(wishlistBean).subscribe((res) =>{
      this.messageService.showSuccessToast(this._vcr,"Added in wishlist");
-   },(error) =>{
-     this.messageService.showErrorToast(this._vcr,"Already added to wishlist");
-   })
+   },(res:Response) =>{
+      if(res.status==409){
+        this.messageService.showErrorToast(this._vcr,"Already in Wishlist");
+      }
+      else if(res.status==400){
+        this.messageService.showErrorToast(this._vcr,"Service Not Found");
+      }
+    })
  }
 
  addToCarrybag(offer1) {
    let carrybagBean = {
      "userId":this.user,
-     "offerId":offer1._id,
+     "offerId":offer1.offerId,
      "offerTitle":offer1.offerTitle,
      "offerOriginalPrice":offer1.originalPrice,
      "offerDiscount":offer1.discount,
@@ -128,11 +133,17 @@ export class ProductPageComponent implements OnInit {
      "offerValidity":offer1.offerValidity,
      "vendorId":offer1.userId
    }
+   console.log(carrybagBean);
    this.carrybagService.addToCarrybag(carrybagBean).subscribe((res) =>{
-     this.messageService.showSuccessToast(this._vcr,"Added in carrybag");
-   },(error) =>{
-     this.messageService.showErrorToast(this._vcr,"Already added to carrybag");
-   })
+     this.messageService.showSuccessToast(this._vcr,"Added in Carrybag");
+   },(res:Response) =>{
+      if(res.status==409){
+        this.messageService.showErrorToast(this._vcr,"Already in CarryBag");
+      }
+      else if(res.status==400){
+        this.messageService.showErrorToast(this._vcr,"Service Not Found");
+      }
+    })
  }
 
  searchRelatedProducts(category){

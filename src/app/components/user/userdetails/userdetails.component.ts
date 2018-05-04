@@ -1,22 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import{UserService} from './../../../services/user.service';
-import {FormsModule} from '@angular/forms';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { UserService } from './../../../services/user.service';
+import { FormsModule } from '@angular/forms';
 import { AuthorizationService } from '../../../services/authorization.service';
 import { Router } from '@angular/router';
-import {States} from '../../../configs/state.config';
-import {Cities} from '../../../configs/cities.config';
+import { States } from '../../../configs/state.config';
+import { Cities } from '../../../configs/cities.config';
+import { MessageService } from './../../../services/message.service';
 
 @Component({
   selector: 'app-userdetails',
   templateUrl: './userdetails.component.html',
   styleUrls: ['./userdetails.component.css'],
-  providers:[ AuthorizationService ]
+  providers:[ AuthorizationService, MessageService ]
 })
 export class UserdetailsComponent implements OnInit {
 
   constructor(private userdata:UserService,
     private router: Router,
-    private authorizationService: AuthorizationService) { }
+    private authorizationService: AuthorizationService,
+    private messageService: MessageService,
+    private _vcr: ViewContainerRef
+    ) { }
   states= States.states;
   cities=Cities.citiesName;
   data:any;
@@ -56,7 +60,7 @@ export class UserdetailsComponent implements OnInit {
   getUserId() {
     this.authorizationService.getUserId().subscribe((res) =>{
       if(res.text() == "UnAuthorized"){
-			     this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
       }
       this.userInfo = res.text().split(',');
       this.userId = this.userInfo[2];
@@ -126,8 +130,7 @@ export class UserdetailsComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("inputShopCity")).disabled = true;
     (<HTMLInputElement>document.getElementById("inputShopZip")).disabled = true;
     (<HTMLInputElement>document.getElementById("inputShopState")).disabled = true;
-    console.log(this.firstName);
-    this.obj={
+    let obj={
       "firstName": this.firstName,
       "lastName": this.lastName,
       "password": this.password,
@@ -158,8 +161,9 @@ export class UserdetailsComponent implements OnInit {
       "offerIdList":this.offerIdList,
       "timestamp": this.timestamp
     }
-    console.log(this.obj);
-    this.userdata.putProfile(this.obj).subscribe((res) =>{
+    console.log(obj);
+    this.userdata.putProfile(obj).subscribe((res) =>{
+      this.messageService.showSuccessToast(this._vcr,"Updated");
     }, (error) =>{
     })
   }

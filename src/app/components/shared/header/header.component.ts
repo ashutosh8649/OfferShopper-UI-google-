@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cities}  from '../../../configs/cities.config'
+import { Cities}  from '../../../configs/cities.config';
 
 @Component({
 	selector: 'app-header',
@@ -8,14 +8,15 @@ import { Cities}  from '../../../configs/cities.config'
 })
 export class HeaderComponent implements OnInit {
 
-	constructor() { }
+	constructor() {}
+
     cities = Cities.citiesName; 
 
-    selected={a:"Gurgaon"};
+    selected={a:"Delhi"};
+    tempselected={a:"Gurgaon"}
 
-    fav(selected){
-    var value=localStorage.getItem("loc").toString();
-    this.selected.a=value;
+    fav(tempselected){
+    this.selected.a=tempselected.a;
     }
     
 	ngOnInit() {
