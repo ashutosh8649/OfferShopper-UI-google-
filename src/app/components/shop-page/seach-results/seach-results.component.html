@@ -15,7 +15,7 @@
             <span class="border border-danger rounded px-2 py-1 mb-3">{{result.discount}}% off</span>
             <br/>
             <span class="offer-deleted-price">MRP:<del>₹{{result.originalPrice}}</del></span>
-            {{result.offerId}}
+            <!-- {{result.offerId}} -->
             <span>₹{{priceAfterDiscount}}</span>
           </p>
           <button class="btn btn-dark my-2 my-sm-0 container-button" [routerLink]="['/', 'vendorInfo',result.userId]" type="button">{{result.address.name}}</button>
@@ -28,8 +28,8 @@
           <ng-template #elseBlock>
             <div class="btn-group btn-group-justified">
               <button class="btn btn-success mr-4" type="button" (click)="notLogin()"><i class="fa fa-cart-plus" aria-hidden="true"></i> Carrybag</button>
-              <button class="btn btn-success" type="button" (click)="notLogin()"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Wishlist</button>   
-            </div>     
+              <button class="btn btn-success" type="button" (click)="notLogin()"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Wishlist</button>
+            </div>
           </ng-template>
         </div>
       </div>
@@ -65,7 +65,7 @@
           <div class="card display-offer-image bg-white border-0">
             <img class="card-img" src="../../../../assets/image-not-found.jpg" alt="Card image">
           </div>
-        </div>        
+        </div>
         <div class="col-md-2 col-sm-4 col-6 d-none d-sm-block offer-center">
           <b class="offertitle" [routerLink]="['/', 'product',result.userId, result.offerId]">{{result.offerTitle}}</b>
         </div>
