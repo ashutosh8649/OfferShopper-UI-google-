@@ -154,11 +154,11 @@ export class AddOfferComponent implements OnInit {
 		let day = "";
 		let month = "";
 		let year = "";
-		
+
 		if(this.date.getMinutes() < 10){
 			minutes = "0"+this.date.getMinutes().toString();
 		} else{
-			minutes = this.date.getMinutes().toString();	
+			minutes = this.date.getMinutes().toString();
 		}
 		if(this.date.getHours() < 10){
 			hours = "0"+this.date.getHours().toString();
@@ -170,11 +170,11 @@ export class AddOfferComponent implements OnInit {
 		} else{
 			seconds = this.date.getSeconds().toString();
 		}
-		
+
 		if(this.date.getDate() < 10) {
 			day = "0"+this.date.getDate().toString();
 		} else {
-			day = this.date.getDate().toString();		
+			day = this.date.getDate().toString();
 		}
 		if(this.date.getMonth() < 10) {
 			month = "0"+this.date.getMonth().toString();
@@ -182,7 +182,7 @@ export class AddOfferComponent implements OnInit {
 			month = this.date.getMonth().toString();
 		}
 		year = this.date.getFullYear().toString();
-		
+
 		let time = "T"+hours+":"+minutes+":"+seconds;
 		let datetime = year+"-"+month+"-"+day+time;
 		//2014-01-01T10:10:30
@@ -192,7 +192,7 @@ export class AddOfferComponent implements OnInit {
 			"userId"  :this.userId,
 			"offerTitle" :this.offerTitle,
 			"offerValidity" :this.offerValidity+time,
-			"dateOfAnnouncement" :"2014-01-01T10:10:30",
+			"dateOfAnnouncement" :datetime,
 			"address" :this.shopAddress,
 			"offerDescription" :this.offerDescription,
 			"originalPrice" :this.originalPrice,
