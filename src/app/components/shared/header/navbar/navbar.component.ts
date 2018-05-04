@@ -17,8 +17,8 @@ export class NavbarComponent implements OnInit {
 
 	private login:boolean = false;
 	private token:any;
-	private userId: string;
-	private user: string;
+	private userId: string = "";
+	private user: string = "";
 	private url: string;
 
 	constructor(
