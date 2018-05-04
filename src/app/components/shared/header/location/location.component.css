@@ -25,23 +25,31 @@
 
 #Modallabel
 {
-	font-family: 'Julius Sans One', sans-serif;
+	font-family: 'Julius Sans One', sans-serif,'Sree Krushnadevaraya','Suranna','Ramaraja',"Mukta Malar";
 }
 
 .text-heading {
     text-decoration: bold;
     text-transform: capitalize;
-    font-family: 'Holtwood One SC', serif;
+    font-family: 'Holtwood One SC', 'Sree Krushnadevaraya','Suranna','Ramaraja',"Mukta Malar",serif;
     color: white;
     font-size: 18px;
 }
 
 .text-lead {
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Julius Sans One', sans-serif,'Sree Krushnadevaraya','Suranna','Ramaraja',"Mukta Malar";
     color: lavender;
     font-size: 13px;
 }
 
 .lang {
 	float: right
+}
+
+.text-lang {
+    font-family: 'Julius Sans One', sans-serif,'Sree Krushnadevaraya','Suranna','Ramaraja',"Mukta Malar";
+    color: darkslategrey;
+	font-size: 1rem;
+	padding: 1px;
+	min-height: 2rem;
 }

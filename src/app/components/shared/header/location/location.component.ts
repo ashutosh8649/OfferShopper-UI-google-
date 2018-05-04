@@ -13,11 +13,11 @@ export class LocationComponent implements OnInit {
 constructor(private locationService: LocationService, public translate: TranslateService) {
   
   //translation 
-  translate.addLangs(['en', 'hi']);
+  translate.addLangs(['en', 'हिंदी','தமிழ்','తెలుగు']);
   translate.setDefaultLang('en');
 
   const browserLang = translate.getBrowserLang();
-  translate.use(browserLang.match(/en|hi/) ? browserLang : 'en');
+  translate.use(browserLang.match(/en|हिंदी|தமிழ்|తెలుగు/) ? browserLang : 'en');
 }
 
 

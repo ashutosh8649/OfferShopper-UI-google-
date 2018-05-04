@@ -92,5 +92,23 @@
           "CONTINUE": "Continue",
           "CITIES": ["Delhi", "Chandigarh", "Mumbai", "Hyderabad"]
       }
+  },
+  "LOGIN": {
+      "TITLE1": "Login",
+      "TITLE2": "Register",
+      "USERNAME": "Username",
+      "ALREADY": " Already present!",
+      "ERRORUNREQ": "Username is required!",
+      "ERRORUNINV": "Username Invalid!",
+      "PASSWORD": "Password",
+      "ERRORPASSREQ": "Password is required!",
+      "FORGOTPASSWORD": "Forgot Password",
+      "ERRORPASSDIG": "More than 20 digits",
+      "ERRORPASSINV": "Password Invalid (Atleast one lowercase, uppercase, specialcharacter, digit, minLength 8) !",
+      "ERRORPASSDIFF": "The new password and confirm password do not match",
+      "PASSWORDRE": "Re-enter Password",
+      "PASSWORDCON": "Confirm password is required",
+      "ASVENDOR": "Register as Vendor",
+      "SUBMIT": "Submit"
   }
 }
