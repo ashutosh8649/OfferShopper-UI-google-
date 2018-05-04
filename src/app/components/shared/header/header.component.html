@@ -8,7 +8,7 @@
       <h4 class="modal-title modallabel">{{ 'HEADER.LOCATION.CITY' | translate }}</h4>
     </div>
     <!-- this is for body for dropdown to select city -->
-    <div class="modal-body">
+    <div class="modal-body p-2">
    <select class="dropdown btn btn-light dropdown-toggle " [(ngModel)]="tempselected.a">
        <option *ngFor=" let city of cities" value={{city}}>{{city}}</option>
      </select><br>
