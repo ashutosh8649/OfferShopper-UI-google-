@@ -14,12 +14,12 @@
       </ul>
     </div>
     <!-- Categories -->
-    <div class="col-sm-12 col-md-4 col-lg-2">
+    <div class="col-sm-12 col-md-4 col-lg-3">
         <ul class="categories">
             <h4 class="text-heading"> {{ 'FOOTER.CATEGORIES.CATEGORY' | translate }} </h4>
-            <li class="text-lead">{{ 'FOOTER.CATEGORIES.SPORTS' | translate }}</li>
-            <li class="text-lead">{{ 'FOOTER.CATEGORIES.CLOTHES' | translate }}</li>
-            <li class="text-lead">{{ 'FOOTER.CATEGORIES.FOOD' | translate }}</li>
+            <li class="text-lead" [routerLink]="['/search', 'sports', '']">{{ 'FOOTER.CATEGORIES.SPORTS' | translate }}</li>
+            <li class="text-lead" [routerLink]="['/search', 'clothes', '']">{{ 'FOOTER.CATEGORIES.CLOTHES' | translate }}</li>
+            <li class="text-lead" [routerLink]="['/search', 'food', '']">{{ 'FOOTER.CATEGORIES.FOOD' | translate }}</li>
         </ul>
     </div>
     <!-- Links -->

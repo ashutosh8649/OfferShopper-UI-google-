@@ -12,11 +12,11 @@ export class HeaderComponent implements OnInit {
 
     cities = Cities.citiesName; 
 
-    selected={a:"Gurgaon"};
+    selected={a:"Delhi"};
+    tempselected={a:"Gurgaon"}
 
-    fav(selected){
-    var value=localStorage.getItem("loc").toString();
-    this.selected.a=value;
+    fav(tempselected){
+    this.selected.a=tempselected.a;
     }
     
 	ngOnInit() {

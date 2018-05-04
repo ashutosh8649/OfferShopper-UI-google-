@@ -44,7 +44,7 @@ export class AddOfferService {
  }
 
   addNewOffer(obj){
-
+    console.log(obj);
    return this.http.post(AddOfferConfig.addOfferURL,obj, this.options)
     .map(data => data.json(),
   (error: any)=>console.log("error"));

@@ -95,7 +95,13 @@ export class VendorPageComponent implements OnInit {
     console.log(carrybagBean);
     this.offersService.addToCarrybag(carrybagBean).subscribe((res) =>{
       this.messageService.showSuccessToast(this._vcr,"Added to CarryBag");
-    },(error) =>{
+    },(res:Response) =>{
+      if(res.status==409){
+        this.messageService.showErrorToast(this._vcr,"Already in CarryBag");
+      }
+      else if(res.status==400){
+        this.messageService.showErrorToast(this._vcr,"Service Not Found");
+      }
     })
   }
 
@@ -112,8 +118,13 @@ export class VendorPageComponent implements OnInit {
     console.log(subscribeBean);
     this.subscribeService.addToSubscriptionList(subscribeBean).subscribe((res) =>{
       this.messageService.showSuccessToast(this._vcr,"Added to Subscription List");
-    },(error) =>{
-      this.messageService.showSuccessToast(this._vcr,"Already in Subscription List");
+    },(res:Response) =>{
+      if(res.status==409){
+        this.messageService.showErrorToast(this._vcr,"Already in Subscription List");
+      }
+      else if(res.status==400){
+        this.messageService.showErrorToast(this._vcr,"Service Not Found");
+      }
     })
   }
 
@@ -129,8 +140,14 @@ export class VendorPageComponent implements OnInit {
       "offerValidity":offer1.offerValidity
     }
     this.wishlistService.addToWishlist(wishlistBean).subscribe((res) =>{
-      this.messageService.showSuccessToast(this._vcr,"Added");
-    },(error) =>{
+      this.messageService.showSuccessToast(this._vcr,"Added to Wishlist");
+    },(res:Response) =>{
+      if(res.status==409){
+        this.messageService.showErrorToast(this._vcr,"Already in Wishlist");
+      }
+      else if(res.status==400){
+        this.messageService.showErrorToast(this._vcr,"Service Not Found");
+      }
     })
   }
 

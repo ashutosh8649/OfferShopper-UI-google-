@@ -1,24 +1,26 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import{UserService} from './../../../services/user.service';
-import {FormsModule} from '@angular/forms';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { UserService } from './../../../services/user.service';
+import { FormsModule } from '@angular/forms';
 import { AuthorizationService } from '../../../services/authorization.service';
 import { Router } from '@angular/router';
-import {States} from '../../../configs/state.config';
-import {Cities} from '../../../configs/cities.config';
+import { States } from '../../../configs/state.config';
+import { Cities } from '../../../configs/cities.config';
+import { MessageService } from './../../../services/message.service';
 
 @Component({
   selector: 'app-userdetails',
   templateUrl: './userdetails.component.html',
   styleUrls: ['./userdetails.component.css'],
-  providers:[ AuthorizationService ]
+  providers:[ AuthorizationService, MessageService ]
 })
 export class UserdetailsComponent implements OnInit {
 
-  @Output() success = new EventEmitter<any>();
-
   constructor(private userdata:UserService,
     private router: Router,
-    private authorizationService: AuthorizationService) { }
+    private authorizationService: AuthorizationService,
+    private messageService: MessageService,
+    private _vcr: ViewContainerRef
+    ) { }
   states= States.states;
   cities=Cities.citiesName;
   data:any;
@@ -161,11 +163,7 @@ export class UserdetailsComponent implements OnInit {
     }
     console.log(obj);
     this.userdata.putProfile(obj).subscribe((res) =>{
-      if(obj.shopAddress.name && obj.shopAddress.street && obj.shopAddress.city && obj.shopAddress.state && obj.shopAddress.zipCode) {
-        this.userdata.convertToVendor(obj).subscribe((res) => {
-          this.success.emit(true);
-        }, (error) =>{})        
-      }
+      this.messageService.showSuccessToast(this._vcr,"Updated");
     }, (error) =>{
     })
   }
