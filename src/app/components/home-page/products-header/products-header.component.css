@@ -6,7 +6,20 @@
 	max-height: 22rem;
 }
 
-.card-img {
+.card-data {
+	margin-left: -1.1rem;
+	font-family: 'Julius Sans One', sans-serif;
+	margin-top: -0.5rem;
+}
+
+.card-discount {
+	font-family: 'Poiret One', cursive;
+}
+
+.card-heading {
+	font-size: 0.9rem;
+}
+/* .card-img {
 	position: relative;
 }
 
@@ -28,4 +41,4 @@
 
 .card:hover {
 	cursor: pointer;
-}
+} */
