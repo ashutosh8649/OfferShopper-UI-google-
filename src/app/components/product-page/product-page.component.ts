@@ -29,7 +29,8 @@ export class ProductPageComponent implements OnInit {
   public offer :any;
   public userInfo : any;
   public user : any;
-
+  public category: any;
+  public relatedProducts: any;
   constructor(
     private productDetailService : ProductDetailService,
     private route: ActivatedRoute,
@@ -45,6 +46,7 @@ export class ProductPageComponent implements OnInit {
     this.vendorId=this.route.snapshot.params.id;
     this.offerId = this.route.snapshot.params.offerId;
     if( this.vendorId && this.offerId) {
+      alert(this.offerId)
       this.getOfferById();
     }
     else {
@@ -80,6 +82,9 @@ export class ProductPageComponent implements OnInit {
      this.productSeller=res.userId;
      this.productOriginalPrice=res.originalPrice;
      this.productDiscount=res.discount;
+     this.category=res.offerCategories;
+     
+     this.searchRelatedProducts(this.category);
    },(error) =>{
 
    });
@@ -129,4 +134,11 @@ export class ProductPageComponent implements OnInit {
      this.messageService.showErrorToast(this._vcr,"Already added to carrybag");
    })
  }
+
+ searchRelatedProducts(category){
+   this.productDetailService.searchRelatedProducts(category).subscribe((res) =>{
+     this.relatedProducts=res;
+   },(error)=>{})
+ }
+
 }

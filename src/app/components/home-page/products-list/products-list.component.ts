@@ -19,7 +19,8 @@ export class ProductsListComponent implements OnInit {
   }
 
   productPrice(offerOriginalPrice,offerDiscount){
-    this.priceAfterDiscount = parseFloat((offerOriginalPrice)*(1-(offerDiscount)/100)).toFixed(2);
+
+    this.priceAfterDiscount =((offerOriginalPrice)*(1-(offerDiscount)/100)).toFixed(2);
   }
 
   loadOffers(){
