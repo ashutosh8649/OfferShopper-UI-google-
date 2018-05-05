@@ -34,3 +34,11 @@
 	width: 50%;
 	border-radius: 4px !important;
 }
+
+.img-hover-cursor {
+	cursor: pointer;
+}
+
+h5 {
+	cursor: pointer;
+}

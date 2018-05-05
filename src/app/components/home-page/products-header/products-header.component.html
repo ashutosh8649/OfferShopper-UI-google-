@@ -13,7 +13,8 @@
               <span class="card-heading">{{offer.offerTitle}}</span>
             </div>
             <div class="col-12">
-              <span class="card-price">₹{{offer.originalPrice}}</span>
+              <span class="card-price">₹<del>{{offer.originalPrice}}</del></span>
+              <span class="card-discounted-price">{{priceAfterDiscount}}</span>
             </div>
           </div>
         </div>

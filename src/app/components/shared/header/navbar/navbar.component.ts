@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { LoginService } from '../../../../services/login.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-navbar',
@@ -16,8 +17,8 @@ export class NavbarComponent implements OnInit {
 
 	private login:boolean = false;
 	private token:any;
-	private userId: string;
-	private user: string;
+	private userId: string = "";
+	private user: string = "";
 	private url: string;
 
 	constructor(
