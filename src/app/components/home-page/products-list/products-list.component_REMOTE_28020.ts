@@ -19,9 +19,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   productPrice(offerOriginalPrice,offerDiscount){
-
     this.priceAfterDiscount = Number((offerOriginalPrice)*(1-(offerDiscount)/100)).toFixed(2);
-
   }
 
   loadOffers(){
