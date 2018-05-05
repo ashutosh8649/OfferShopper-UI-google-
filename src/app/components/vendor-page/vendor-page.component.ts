@@ -60,6 +60,7 @@ export class VendorPageComponent implements OnInit {
   productPrice(offerOriginalPrice,offerDiscount){
     this.priceAfterDiscount = (offerOriginalPrice)*(1-(offerDiscount)/100);
   }
+  
   getOfferlist() {
     this.offersService.getOffers(this.vendorId).subscribe((res) =>{
       this.offersList = res;

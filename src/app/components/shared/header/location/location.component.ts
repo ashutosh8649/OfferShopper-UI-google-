@@ -1,9 +1,6 @@
 import { Component, OnInit ,Input, Output, EventEmitter} from '@angular/core';
 import { LocationService } from '../../../../services/location.service';
-<<<<<<< HEAD
-=======
 import { TranslateService } from '@ngx-translate/core';
->>>>>>> ebeb8cd9f6110943f19723c4be43b571aae78047
 
 @Component({
   selector: 'app-location',
@@ -75,9 +72,6 @@ ngOnInit(){
   }
   else
     this.getlocation();
-  console.log(this.obj.a);
-  debugger
-  this.success.emit(this.obj.a);
 }
 
 
