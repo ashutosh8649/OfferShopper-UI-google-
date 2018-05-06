@@ -37,4 +37,10 @@ export class UserService {
     },
       (error: any)=>console.log("error"));
   }
+
+  getVendorByCity(location : string) {
+    return this.http.get(UserData.getVendorsByLocationUrl+location, this.options)
+    .map(data => data.json(),
+      (error: any)=>console.log("error.."));
+  }
 }

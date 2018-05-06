@@ -57,9 +57,16 @@
     <app-seach-results  [results]="filteredResults"></app-seach-results>
   </div>
 </div>
+
+
 <ng-template #notSearched>
-  <span class="default-text text-center">
-    Lucky or not, search and get the deal!
-  </span>
+  <div>
+    <ul>
+      <li *ngFor="let vendor of vendorsByCity">
+        {{vendor.email}}
+      </li>
+    </ul>
+
+  </div>
 </ng-template>
 </div>

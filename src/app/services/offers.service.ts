@@ -35,5 +35,10 @@ export class OffersService {
       (error: any)=>console.log("error in adding restaurant"));
   }
 
+  getOffersByLocation(location : string) {
+    return this.http.get(Offerslist.offersByLocationUrl+location, this.options)
+    .map(data => data.json(),
+      (error: any)=>console.log("error in getting data from database"));
+  }
 
 }
