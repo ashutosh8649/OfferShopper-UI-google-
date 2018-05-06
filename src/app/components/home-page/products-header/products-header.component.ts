@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from '../../../services/search.service';
+import { OffersService } from '../../../services/offers.service';
 
 @Component({
   selector: 'app-products-header',
@@ -11,7 +11,7 @@ export class ProductsHeaderComponent implements OnInit {
   public offers : any;
   public priceAfterDiscount: any;
 
-  constructor(private searchService : SearchService) { }
+  constructor(private offersService : OffersService ) { }
 
   ngOnInit() {
     this.loadOffers();
@@ -21,8 +21,9 @@ export class ProductsHeaderComponent implements OnInit {
     this.priceAfterDiscount = Number((offerOriginalPrice)*(1-(offerDiscount)/100)).toFixed(2);
   }
 
+  //loads offers according to location.. currently location is hardcoded
   loadOffers(){
-    this.searchService.searchProductsCategoryOnly("clothing")
+    this.offersService.getOffersByLocation("Ahmedabad")
     .subscribe((res) =>{
       this.offers=res;
       console.log("homepage");

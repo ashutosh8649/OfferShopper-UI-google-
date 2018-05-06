@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from '../../services/search.service';
 import { Product } from '../../configs/product.config';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-shop-page',
@@ -12,8 +13,11 @@ export class ShopPageComponent implements OnInit {
 
   constructor( 
     private route: ActivatedRoute,
-    private searchService : SearchService ) { }
+    private searchService : SearchService,
+    private userService : UserService
+  ) { }
 
+  private vendorsByCity = [];
   private category: string = "";
   private searchKey: string = "";
   //results retrieved from searching
@@ -25,6 +29,7 @@ export class ShopPageComponent implements OnInit {
       this.category = params.get('id1');
       this.searchKey = params.get('id2');
       this.loadOffers();
+      this.getVendors();
     });
   }
 
@@ -98,6 +103,12 @@ export class ShopPageComponent implements OnInit {
   //whenever filter is changed
   onFinish(event) {
     this.filteredResults = this.results.filter((results)=> results.discount > event.from && results.discount < event.to);
+  }
+
+  //get vendors on basis of location - currently hardcoded to gurgaon
+  getVendors(){
+    this.userService.getVendorByCity("Ahmedabad").subscribe(
+      (res)=> this.vendorsByCity = res)
   }
 
 }
