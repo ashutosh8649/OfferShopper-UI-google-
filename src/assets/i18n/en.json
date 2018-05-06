@@ -96,7 +96,7 @@
   "LOGIN": {
       "TITLE1": "Login",
       "TITLE2": "Register",
-      "USERNAME": "Username",
+      "EMAIL": "Email",
       "ALREADY": " Already present!",
       "ERRORUNREQ": "Username is required!",
       "ERRORUNINV": "Username Invalid!",

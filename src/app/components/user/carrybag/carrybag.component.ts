@@ -67,18 +67,12 @@ export class CarrybagComponent implements OnInit {
   })
   }
   deleteOffer(userId, offerId){
-   /*this.carrybagService.deleteCarrybag(offerId,userId).subscribe((res) =>{
+   // debugger
+   this.carrybagService.deleteCarrybag(offerId,userId).subscribe((res) =>{
      this.getCarrybag();
    }, (error) =>{
      alert(error + "deletion not working");
-   })*/
-   this.messageService.deleteConfirmation(()=>
-     this.carrybagService.deleteCarrybag(offerId,userId).subscribe((res) =>{
-       this.messageService.showSuccessToast(this._vcr,"Deleted");
-       this.getCarrybag();
-     }, (error) =>{
-       alert(error + "deletion not working");
-     }));
+   })
  }
 
 
@@ -99,7 +93,8 @@ export class CarrybagComponent implements OnInit {
                  "vendorId" :vendorId,
                  "vendorValidationFlag" : false,
                  "rating" :0.0,
-                 "feedback" :null
+                 "feedback" :null,
+                 "inCarrybag" : true
                } 
                this.carrybagService.newCouponGenerate(this.obj).subscribe((res) =>{
 
@@ -127,6 +122,7 @@ export class CarrybagComponent implements OnInit {
        this.obj={
          "couponId" :data.couponId ,
          "userId"  :data.userId,
+         "vendorId" :data.vendorId,
          "offerId" :data.offerId,
          "vendorValidationFlag" : data.vendorValidationFlag,
          "rating" :this.rating,
