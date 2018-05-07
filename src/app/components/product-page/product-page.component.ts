@@ -148,7 +148,10 @@ export class ProductPageComponent implements OnInit {
 
  searchRelatedProducts(category){
    this.productDetailService.searchRelatedProducts(category).subscribe((res) =>{
-     this.relatedProducts=res;
+    console.log("related"); 
+    console.log(res);
+    this.relatedProducts=res;
+
    },(error)=>{})
  }
 
