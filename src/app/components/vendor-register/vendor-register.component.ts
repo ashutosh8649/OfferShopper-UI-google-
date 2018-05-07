@@ -18,11 +18,11 @@ export class VendorRegisterComponent implements OnInit {
 
 
   states= States.states;
-cities=Cities.citiesName;
- constructor(
+  cities=Cities.citiesName;
+  constructor(
     @Inject(FormBuilder)  fb: FormBuilder,
     private registerService:RegisterService,
-  ) {
+    ) {
     this.fb=fb;
   }
 
@@ -112,25 +112,25 @@ cities=Cities.citiesName;
 
 
   setAddress(){
-if( this.form.get('sameAddress').value==false){
-    if(this.form.get('city').value=="" || this.form.get('state').value=="" ||  this.form.get('address').value=="" || this.form.get('zip').value==""){
-    alert("Address not properly entered");
-    }
-    else{
-      let city= this.form.get('city').value;
-       let state= this.form.get('state').value;
+    if( this.form.get('sameAddress').value==false){
+      if(this.form.get('city').value=="" || this.form.get('state').value=="" ||  this.form.get('address').value=="" || this.form.get('zip').value==""){
+        alert("Address not properly entered");
+      }
+      else{
+        let city= this.form.get('city').value;
+        let state= this.form.get('state').value;
         let street= this.form.get('address').value;
         let zipCode=this.form.get('zip').value;
 
-  this.form.patchValue({
-    vendorAddress:  street,
-    vendorCity: city,
-    vendorState:  state,
-    vendorZip: zipCode
-  });
+        this.form.patchValue({
+          vendorAddress:  street,
+          vendorCity: city,
+          vendorState:  state,
+          vendorZip: zipCode
+        });
 
+      }
     }
-}
   }
 
 }
