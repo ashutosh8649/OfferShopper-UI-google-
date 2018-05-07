@@ -46,7 +46,6 @@ export class ProductPageComponent implements OnInit {
     this.vendorId=this.route.snapshot.params.id;
     this.offerId = this.route.snapshot.params.offerId;
     if( this.vendorId && this.offerId) {
-      alert(this.offerId)
       this.getOfferById();
     }
     else {
@@ -75,6 +74,7 @@ export class ProductPageComponent implements OnInit {
    this.productDetailService.getOfferById(this.offerId)
    .subscribe((res) =>{
      this.offer=res;
+     console.log("offer");
      console.log(res);
      this.productName=res.offerTitle;
      this.productDescription=res.offerDescription;
