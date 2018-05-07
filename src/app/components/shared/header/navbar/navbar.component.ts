@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthorizationService } from '../../../../services/authorization.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -20,6 +20,8 @@ export class NavbarComponent implements OnInit {
 	private userId: string = "";
 	private user: string = "";
 	private url: string;
+
+	@Input() userLocation:string;
 
 	constructor(
 		private router: Router,
