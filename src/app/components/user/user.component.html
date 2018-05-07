@@ -48,7 +48,7 @@
     <li class="text-center py-2" [ngClass]="{active:userList=='subscriptionlist', inactive:userList!='subscriptionlist'}" [routerLink]="['/user', 'subscriptionlist']">
       Subscriptions
     </li>
-    <li class="text-center py-2" [ngClass]="{active:userList=='add-offer', inactive:userList!='add-offer'}" *ngIf="role=='Vendor'" [routerLink]="['/user', 'add-offer']">
+    <li class="text-center py-2" [ngClass]="{active:userList=='add-offer', inactive:userList!='add-offer'}" *ngIf="role=='Vendor'||'vendor'" [routerLink]="['/user', 'add-offer']">
       Add Offers    
     </li>
     <li class="text-center py-2" [ngClass]="{active:userList=='be-a-seller', inactive:userList!='be-a-seller'}" *ngIf="role=='Customer'" [routerLink]="['/user', 'be-a-seller']">
