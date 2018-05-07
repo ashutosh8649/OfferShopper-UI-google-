@@ -82,20 +82,11 @@ export class VendorPageComponent implements OnInit {
   getFeedback() {
     this.feedbackService.getFeed(this.vendorId).subscribe((res) =>{
       this.feedbacks=res;
-      
-      /*let localFeedbacks=res;
-      console.log(this.feedbacks);
-      let count:any;
-      for(count in localFeedbacks) { 
-      this.offersService.getOffersByOfferId(localFeedbacks[count].offerId).subscribe((res) =>{
-        this.offerFeedback[count]=res;
-        console.log(res);
-      }, (error) =>{
-      }) 
-      }*/ 
     }, (error) =>{
     })
   }
+
+
   initMap(){
     this.offersService.getAddress(this.street,this.city,this.state,this.zip).subscribe((res) =>{
       this.address = res;
@@ -108,7 +99,6 @@ export class VendorPageComponent implements OnInit {
   addToCarrybag(offer) {
     let carrybagBean = {
       "userId":this.user,
-
       "offerId":offer.offerId,
       "offerTitle":offer.offerTitle,
       "offerOriginalPrice":offer.originalPrice,
