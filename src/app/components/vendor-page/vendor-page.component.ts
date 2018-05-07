@@ -5,12 +5,13 @@ import { SubscribeService } from '../../services/subscribe.service';
 import { AuthorizationService } from './../../services/authorization.service';
 import { MessageService } from './../../services/message.service';
 import { WishlistService } from './../../services/wishlist.service';
+import { FeedbackService } from './../../services/feedback.service';
 
 @Component({
   selector: 'app-vendor-page',
   templateUrl: './vendor-page.component.html',
   styleUrls: ['./vendor-page.component.css'],
-  providers:[OffersService,AuthorizationService,MessageService,SubscribeService,WishlistService]
+  providers:[OffersService,AuthorizationService,MessageService,SubscribeService,WishlistService,FeedbackService]
 })
 
 export class VendorPageComponent implements OnInit {
@@ -18,6 +19,8 @@ export class VendorPageComponent implements OnInit {
   lat: number;
   lng: number;
   offersList:Array<{}>=[];
+  offerFeedback:Array<{}>=[];
+  feedbacks:Array<{}>=[];
   priceAfterDiscount: any;
   shopName:string;
   address:any;
@@ -29,11 +32,13 @@ export class VendorPageComponent implements OnInit {
   vendorId:string;
   public userInfo : any;
   public user : any;
+  
 
   constructor(
     private offersService: OffersService,
     private subscribeService:SubscribeService,
     private wishlistService:WishlistService,
+    private feedbackService:FeedbackService,
     private route: ActivatedRoute,
     private authorizationService: AuthorizationService,
     private messageService:MessageService,
@@ -43,6 +48,7 @@ export class VendorPageComponent implements OnInit {
   ngOnInit() {
     this.getUserId();
     this.vendorId=this.route.snapshot.params.id;
+    console.log(this.vendorId);
     this.getOfferlist();
   }
 
@@ -57,6 +63,7 @@ export class VendorPageComponent implements OnInit {
   productPrice(offerOriginalPrice,offerDiscount){
     this.priceAfterDiscount = (offerOriginalPrice)*(1-(offerDiscount)/100);
   }
+  
   getOfferlist() {
     this.offersService.getOffers(this.vendorId).subscribe((res) =>{
       this.offersList = res;
@@ -68,6 +75,24 @@ export class VendorPageComponent implements OnInit {
       this.zip=this.data[0].address.zipCode;
       this.state=this.data[0].address.state.toUpperCase();
       this.initMap();
+    }, (error) =>{
+    })
+  }
+
+  getFeedback() {
+    this.feedbackService.getFeed(this.vendorId).subscribe((res) =>{
+      this.feedbacks=res;
+      
+      /*let localFeedbacks=res;
+      console.log(this.feedbacks);
+      let count:any;
+      for(count in localFeedbacks) { 
+      this.offersService.getOffersByOfferId(localFeedbacks[count].offerId).subscribe((res) =>{
+        this.offerFeedback[count]=res;
+        console.log(res);
+      }, (error) =>{
+      }) 
+      }*/ 
     }, (error) =>{
     })
   }

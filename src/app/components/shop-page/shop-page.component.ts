@@ -93,7 +93,8 @@ export class ShopPageComponent implements OnInit {
  //sorting 
   sorters = {
     byPrice: function(firstProduct, secondProduct) {
-      return firstProduct.originalPrice - secondProduct.originalPrice;
+      //sorting on basis of discounted price
+      return ((firstProduct.originalPrice)- (firstProduct.discount*firstProduct.originalPrice)/100) - ((secondProduct.originalPrice)- (secondProduct.discount*secondProduct.originalPrice)/100);
     },
     byDiscount: function(firstProduct, secondProduct) {
       return firstProduct.discount - secondProduct.discount;

@@ -168,11 +168,6 @@ export class UserdetailsComponent implements OnInit {
     })
   }
 
-  setShopAddress() {
-    this.shopState = this.state;
-    this.shopZip = this.zip;
-  }
-
   setCheckboxAddress() {
     this.shopState = this.state;
     this.shopZip = this.zip;

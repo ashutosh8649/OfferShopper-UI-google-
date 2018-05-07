@@ -53,3 +53,12 @@
 	padding: 1px;
 	min-height: 2rem;
 }
+.select-btn
+{
+	background-color: black;
+	color:white;
+	border:none;
+	border-width: 0.25rem;
+	margin-top: 0.50rem;
+	margin-right: 0.50rem;
+}

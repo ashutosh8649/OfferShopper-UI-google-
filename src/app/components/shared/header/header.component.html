@@ -23,8 +23,8 @@
    </div>
    <div class="modal-footer">
     <span>
-      <button type="button" class="btn btn-default " data-dismiss="modal">{{ 'HEADER.LOCATION.CONTINUE' | translate }}</button>
-      <button type="button" class="btn btn-dark " data-dismiss="modal"  (click)="fav(selected)">{{ 'HEADER.LOCATION.SKIP' | translate }}</button>
+      <button type="button" class="btn btn-default " data-dismiss="modal"  (click)="fav(tempselected)">{{ 'HEADER.LOCATION.CONTINUE' | translate }}</button>
+      <button type="button" class="btn btn-dark " data-dismiss="modal">{{ 'HEADER.LOCATION.SKIP' | translate }}</button>
     </span>
   </div>
 </div>
@@ -32,5 +32,5 @@
 </div>
 <div class="sticky-top">
   <app-location [obj]="selected"></app-location>
-	<app-navbar></app-navbar>
+	<app-navbar [userLocation]="selected.a"></app-navbar>
 </div>

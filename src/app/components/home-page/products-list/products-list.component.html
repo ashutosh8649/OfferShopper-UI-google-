@@ -2,7 +2,7 @@
   <div class="row mb-5">
     <div class="col-lg-4 col-md-6 card-group mb-3" *ngFor="let offer of offers">
       {{productPrice(offer.originalPrice,offer.discount)}}
-      <div class="card" [routerLink]="['/', 'product',offer.userId,offer._id]">
+      <div class="card" [routerLink]="['/', 'product',offer.userId,offer.offerId]">
           <div class="card-img">
             <img class="card-img-top" src="../../../../assets/opentable-scenic-restaurants.jpg" alt="Card image cap">
             <div class="card-rating bg-white border-bottom px-2 py-1">
