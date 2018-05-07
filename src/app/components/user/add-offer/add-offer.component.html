@@ -96,7 +96,7 @@
         <form>
           <div class="form-row">
             <div class="form-group col-md-6">
-                <div class="dropdown">
+                <!-- <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Select Category
                     </button>
@@ -105,7 +105,16 @@
                       <button class="dropdown-item" type="button">clothing</button>
                       <button class="dropdown-item" type="button">food</button>
                     </div>
-                  </div>
+                  </div> -->
+
+
+
+                  <select class="custom-select custom-select-lg mb-3" name="offerCategories" [(ngModel)]="offerCategories">
+                    <option selected>Select Category</option>
+                    <option value="sports">sports</option>
+                    <option value="clothing">clothing</option>
+                    <option value="food">food</option>
+                  </select>
               <!-- <label for="offerCategories">Select Category</label>
               <input type="offerCategories" class="form-control" id="offerCategories" placeholder="{{offerCategories}}" [(ngModel)]="offerCategories" [ngModelOptions]="{standalone: true}"> -->
             </div>

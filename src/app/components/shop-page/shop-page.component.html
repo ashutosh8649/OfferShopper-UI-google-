@@ -8,7 +8,7 @@
     <div class="col-2">
       <!-- dropdown for sorting -->
 
-      <div class="dropdown">
+      <div class="dropdown" *ngIf="results.length">
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Sorting
         </button>
@@ -29,6 +29,7 @@
 
       <!-- discount filter -->
 
+      <div *ngIf="results.length">
       <h5>Filter discounts</h5>
       <ion-range-slider #sliderElement
       type="double"
@@ -49,7 +50,7 @@
       decorate_both="false"
       (onFinish)="onFinish($event)">
     </ion-range-slider>
-
+    </div>
     <!-- end -->
 
   </div>
