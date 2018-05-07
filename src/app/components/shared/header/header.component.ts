@@ -14,17 +14,17 @@ export class HeaderComponent implements OnInit {
   private location: string;
   private mainUrl: string;
 
-	constructor(
+  constructor(
     location: Location,
     private router: Router
     ) { }
 
-    cities = Cities.citiesName; 
+  cities = Cities.citiesName; 
 
-    selected={a:"Delhi"};
-    tempselected={a:"Gurgaon"}
+  selected={a:"Delhi"};
+  tempselected={a:"Gurgaon"}
 
-    fav(tempselected){
+  fav(tempselected){
     this.selected.a=tempselected.a;
     let value = tempselected.a;
     localStorage.setItem("loc",tempselected.a);
@@ -32,14 +32,25 @@ export class HeaderComponent implements OnInit {
     this.mainUrl = (this.location.split('/'))[1];
     if(this.mainUrl=="homepage")
       this.router.navigate(['/',this.mainUrl,tempselected.a]);
-    }
-    
-	ngOnInit() {
+  }
 
-		  this.cities.sort(function(a,b){
-          return a.localeCompare(b);
-       });
-	}
+  set(city){
+    this.selected.a=city;
+    let value = city;
+    localStorage.setItem("loc",city);
+    this.location = location.pathname;
+    this.mainUrl = (this.location.split('/'))[1];
+    if(this.mainUrl=="homepage")
+      this.router.navigate(['/',this.mainUrl,city]);
+
+  }
+  
+  ngOnInit() {
+
+    this.cities.sort(function(a,b){
+      return a.localeCompare(b);
+    });
+  }
 
   getLocation(event) {
     console.log(event);
