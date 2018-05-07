@@ -10,7 +10,7 @@ import { SearchService } from '../../../services/search.service';
 export class ProductsListComponent implements OnInit {
 
   public offers : any;
-  public priceAfterDiscount: any;
+  public priceAfterDiscount: number;
 
   constructor(private searchService : SearchService) { }
 
@@ -18,10 +18,10 @@ export class ProductsListComponent implements OnInit {
     this.loadOffers();
   }
 
-  productPrice(offerOriginalPrice,offerDiscount){
+/*  productPrice(offerOriginalPrice,offerDiscount){
     this.priceAfterDiscount = parseFloat((offerOriginalPrice)*(1-(offerDiscount)/100)).toFixed(2);
   }
-
+*/
   loadOffers(){
     this.searchService.searchProductsCategoryOnly("clothing")
     .subscribe((res) =>{

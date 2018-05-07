@@ -19,6 +19,8 @@ export class VendorPageComponent implements OnInit {
   lat: number;
   lng: number;
   offersList:Array<{}>=[];
+  offerFeedback:Array<{}>=[];
+  feedbacks:Array<{}>=[];
   priceAfterDiscount: any;
   shopName:string;
   address:any;
@@ -30,7 +32,7 @@ export class VendorPageComponent implements OnInit {
   vendorId:string;
   public userInfo : any;
   public user : any;
-  feedback:string;
+  
 
   constructor(
     private offersService: OffersService,
@@ -46,6 +48,7 @@ export class VendorPageComponent implements OnInit {
   ngOnInit() {
     this.getUserId();
     this.vendorId=this.route.snapshot.params.id;
+    console.log(this.vendorId);
     this.getOfferlist();
   }
 
@@ -77,16 +80,19 @@ export class VendorPageComponent implements OnInit {
   }
 
   getFeedback() {
-    let x = this.feedbackService;
-    console.log(x);
     this.feedbackService.getFeed(this.vendorId).subscribe((res) =>{
-      this.feedback=res[0].feedback;      
-      /*this.shopName=this.data[0].address.name.toUpperCase()
-      this.street=this.data[0].address.street.toUpperCase();
-      this.city=this.data[0].address.city.toUpperCase();
-      this.zip=this.data[0].address.zipCode;
-      this.state=this.data[0].address.state.toUpperCase();*/
-
+      this.feedbacks=res;
+      
+      /*let localFeedbacks=res;
+      console.log(this.feedbacks);
+      let count:any;
+      for(count in localFeedbacks) { 
+      this.offersService.getOffersByOfferId(localFeedbacks[count].offerId).subscribe((res) =>{
+        this.offerFeedback[count]=res;
+        console.log(res);
+      }, (error) =>{
+      }) 
+      }*/ 
     }, (error) =>{
     })
   }
