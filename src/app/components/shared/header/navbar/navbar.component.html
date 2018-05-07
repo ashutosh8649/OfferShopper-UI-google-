@@ -14,7 +14,7 @@
   <!-- Navbar -->
   <nav class="navbar mt-0 navbar-expand-lg navbar-dark bg-white">
     <!-- Logo -->
-    <a [routerLink]="['/homepage']"><span class="logo justify-self-left">Offer<font class="dot">.</font>Shopper</span></a>
+    <a [routerLink]="['/homepage',userLocation]"><span class="logo justify-self-left">Offer<font class="dot">.</font>Shopper</span></a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse justify-content-center " id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-0 mb-0 mt-2 mt-lg-0 justify-self-center">
           <li class="nav-item nav-text ml-3">
-            <a class="nav-link text-dark" [ngClass]="{active:url=='/homepage'}" routerLink="/homepage">
+            <a class="nav-link text-dark" [ngClass]="{active:url=='/homepage'}" [routerLink]="['/homepage',userLocation]">
               {{ 'HEADER.NAVBAR.HOME' | translate }}
               <span class="sr-only">(current)</span>
             </a>
