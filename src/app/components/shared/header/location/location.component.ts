@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,Input, Output, EventEmitter} from '@angular/core';
 import { LocationService } from '../../../../services/location.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '../../../../configs/language.config';
@@ -8,7 +8,7 @@ import { Language } from '../../../../configs/language.config';
   selector: 'app-location',
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.css'],
-   providers:[LocationService]
+  providers:[LocationService]
 })
 export class LocationComponent implements OnInit {
 
@@ -66,18 +66,17 @@ get(varobj);
 }
 
 
- ngOnInit(){
-    var value:String=localStorage.getItem("loc");
-      if(value){
-        if(value.trim()=="Gurugram".trim())
-          this.obj.a="Gurgaon";
-        else
-           this.obj.a=value.trim();
-      }
-      else
-        this.getlocation();
-
- }
+ngOnInit(){
+  var value:String=localStorage.getItem("loc");
+  if(value){
+    if(value.trim()=="Gurugram".trim())
+      this.obj.a="Gurgaon";
+    else
+      this.obj.a=value.trim();
+  }
+  else
+    this.getlocation();
+}
 
 
 
