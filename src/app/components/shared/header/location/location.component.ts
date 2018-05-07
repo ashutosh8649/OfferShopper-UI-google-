@@ -47,7 +47,6 @@ getlocation(){
     if(userMainUrl == "homepage") {
       _router.navigate(['/',userMainUrl,"Delhi"]);
     }
-    console.log(userLocation);
     console.log("User refused access to his location");
   }  
   function get(varobj){

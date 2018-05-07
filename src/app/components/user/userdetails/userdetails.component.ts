@@ -63,7 +63,6 @@ export class UserdetailsComponent implements OnInit {
         this.router.navigate(['/login']);
       }
       this.userInfo = res.text().split(',');
-      console.log(this.userInfo[1]);
       this.userId = this.userInfo[2];
       this.getProfile(this.userId);
     }, (error) =>{

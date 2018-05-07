@@ -47,8 +47,7 @@
           </div>          
         </div>
         <hr/>
-        {{userInfo[1]}}
-        <div *ngIf="userInfo[1]='Vendor'">
+        <div *ngIf="role=='Vendor'">
         <div class="form-group">
             <label for="inputShopName">Shop Name</label>
             <input type="text" class="form-control" id="inputShopName" placeholder="{{shopName}}" disabled [(ngModel)]="shopName" [ngModelOptions]="{standalone: true}">
