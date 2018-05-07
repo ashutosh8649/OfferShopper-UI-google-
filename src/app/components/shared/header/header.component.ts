@@ -8,8 +8,8 @@ import { Cities}  from '../../../configs/cities.config';
 })
 export class HeaderComponent implements OnInit {
 
-	constructor() {}
-
+  private location: string;
+	constructor() { }
     cities = Cities.citiesName; 
 
     selected={a:"Delhi"};
@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
 
     fav(tempselected){
     this.selected.a=tempselected.a;
+    let value = tempselected.a;
+    localStorage.setItem("loc",tempselected.a);
     }
     
 	ngOnInit() {
@@ -25,4 +27,9 @@ export class HeaderComponent implements OnInit {
           return a.localeCompare(b);
        });
 	}
+
+  getLocation(event) {
+    console.log(event);
+    this.location = event;
+  }
 }
