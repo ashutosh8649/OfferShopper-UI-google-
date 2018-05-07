@@ -59,6 +59,7 @@ const appRoutes:Routes=[
 
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
   { path: 'homepage', component: HomePageComponent },
+  { path: 'homepage/:id', component: HomePageComponent },
   { path:'user/:id',component:UserComponent },
   { path:'login',component:LoginRegisterFrontpageComponent },
   { path:'vendor-register',component:VendorRegisterComponent },

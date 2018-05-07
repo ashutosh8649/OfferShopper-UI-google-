@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OffersService } from '../../../services/offers.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products-header',
@@ -10,11 +11,18 @@ export class ProductsHeaderComponent implements OnInit {
 
   public offers : any;
   public priceAfterDiscount: any;
+  private userLocation: string;
 
-  constructor(private offersService : OffersService ) { }
+  constructor(
+    private offersService : OffersService,
+    private route: ActivatedRoute,
+    ) { }
 
   ngOnInit() {
-    this.loadOffers();
+    this.route.paramMap.subscribe(params => {
+      this.userLocation = params.get('id');
+      this.loadOffers();
+    });
   }
 
   productPrice(offerOriginalPrice,offerDiscount){
@@ -23,12 +31,11 @@ export class ProductsHeaderComponent implements OnInit {
 
   //loads offers according to location.. currently location is hardcoded
   loadOffers(){
-    this.offersService.getOffersByLocation("Ahmedabad")
+    this.offersService.getOffersByLocation(this.userLocation)
     .subscribe((res) =>{
       this.offers=res;
-      console.log("homepage");
-      console.log(res);
      },(error) =>{
+       this.offers=null;
     });
   }
 }
