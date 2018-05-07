@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
 import { UpdatePasswordService } from '../../services/update-password.service';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from '../../services/message.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-update-password',
@@ -20,7 +21,8 @@ export class UpdatePasswordComponent implements OnInit {
   	private updatePasswordService:UpdatePasswordService,
   	private route: ActivatedRoute,
     private messageService: MessageService,
-    private _vcr: ViewContainerRef
+    private _vcr: ViewContainerRef,
+    private router:Router
     ) {
     this.up=up; 
     this.updatePass=this.up.group({
@@ -57,6 +59,7 @@ export class UpdatePasswordComponent implements OnInit {
     };
     this.updatePasswordService.updatePassWithEmail(body).subscribe((res) =>{
       this.messageService.showSuccessToast(this._vcr,"Updated");
+       this.router.navigate(['/homepage']);
     }, (res:Response) =>{
       if(res.status==401 || res.status==409){
         this.messageService.showErrorToast(this._vcr,"Username already exists");
