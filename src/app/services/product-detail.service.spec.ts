@@ -5,6 +5,7 @@ import {HttpModule, ResponseOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import {Headers, BaseRequestOptions,Response,Http, XHRBackend, RequestMethod} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
+
 import { ProductDetailService } from './product-detail.service';
 import { OFFER_BY_ID, RELATED_PRODUCTS, PRODUCTS_OF_A_VENDOR } from './product-detail-mockdata'
 
@@ -59,14 +60,6 @@ fdescribe('ProductDetailService', () => {
     expect(service.searchRelatedProducts).toBeTruthy();
   }));
 
-
-/*  it('should return an offer', async(inject([ProductDetailService], (service: ProductDetailService) =>{
-    service.getOfferById('offer-204').subscribe(results=>{
-      expect(results).toEqual(offerResult);
-
-    }) 
-
-  })));*/
 
 
   it('check for getOfferById function and should return an offer', async(inject([ProductDetailService], (service: ProductDetailService) => {
