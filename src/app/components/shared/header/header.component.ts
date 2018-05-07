@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
 
     fav(tempselected){
     this.selected.a=tempselected.a;
+    let value = tempselected.a;
+    localStorage.setItem("loc",tempselected.a);
     }
     
 	ngOnInit() {
