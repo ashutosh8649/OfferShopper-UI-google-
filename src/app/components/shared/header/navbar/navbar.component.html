@@ -75,7 +75,7 @@
           </li>
           <div *ngIf="login">
             <li class="nav-text">
-              <a class="text-dark font-weight-bold logout" (click)="logout()" routerLink="/homepage">{{ 'HEADER.NAVBAR.LOGOUT' | translate }}</a>
+              <a class="text-dark font-weight-bold logout" (click)="logout()" [routerLink]="['/homepage',userLocation]">{{ 'HEADER.NAVBAR.LOGOUT' | translate }}</a>
             </li>
           </div>
         </ul>
