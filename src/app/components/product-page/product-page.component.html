@@ -84,7 +84,7 @@
 </div>
 </div>
 
-
+      
 <!-- related products
 -->
 <div class="divbody">
@@ -96,7 +96,7 @@
             <div class=corousel_title>Customers who bought this item also bought</div>
             <div class="row">
               <div class="col-md-3" *ngIf="relatedProducts[0]"><!--  *ngFor="let product of relatedProducts | slice:0:3" -->
-                <a [routerLink]="['/', 'product',relatedProducts[0].userId,relatedProducts[0]._id]">
+                <a [routerLink]="['/', 'product',relatedProducts[0].userId,relatedProducts[0].offerId]">
                   <div class="card">
                     <div class="textWithblurredImage">
                       <img class="card-img-top" src="../../assets/related_products/ts3.jpg" alt="Card image cap">
@@ -111,7 +111,7 @@
                 <br> 
               </div>
               <div class="col-md-3" *ngIf="relatedProducts[1]">
-                <a [routerLink]="['/', 'product',relatedProducts[1].userId,relatedProducts[1]._id]">
+                <a [routerLink]="['/', 'product',relatedProducts[1].userId,relatedProducts[1].offerId]">
                   <div class="card">
                     <div class="textWithblurredImage">
                       <img class="card-img-top" src="../../assets/related_products/s1.jpg" alt="Card image cap">
@@ -125,7 +125,7 @@
                 Rs.{{relatedProducts[1].originalPrice}}
               </div>
               <div class="col-md-3" *ngIf="relatedProducts[2]">
-               <a [routerLink]="['/', 'product',relatedProducts[2].userId,relatedProducts[2]._id]">
+               <a [routerLink]="['/', 'product',relatedProducts[2].userId,relatedProducts[2].offerId]">
 
                 <div class="card">
                   <div class="textWithblurredImage">
@@ -141,7 +141,7 @@
               <br> 
             </div>        
             <div class="col-md-3" *ngIf="relatedProducts[3]">
-              <a [routerLink]="['/', 'product',relatedProducts[3].userId,relatedProducts[3]._id]">
+              <a [routerLink]="['/', 'product',relatedProducts[3].userId,relatedProducts[3].offerId]">
                 <div class="card">
                   <div class="textWithblurredImage">
                     <img class="card-img-top" src="../../assets/related_products/j2.jpg" alt="Card image cap">
@@ -166,7 +166,7 @@
           <div class=corousel_title>Customers who bought this item also bought</div>
           <div class="row">
             <div class="col-md-3" *ngIf="relatedProducts[4]">
-              <a [routerLink]="['/', 'product',relatedProducts[4].userId,relatedProducts[4]._id]">
+              <a [routerLink]="['/', 'product',relatedProducts[4].userId,relatedProducts[4].offerId]">
                 <div class="card">
                   <div class="textWithblurredImage">
                     <img class="card-img-top" src="../../assets/related_products/j3.jpg" alt="Card image cap">
@@ -181,7 +181,7 @@
               <br> 
             </div>
             <div class="col-md-3" *ngIf="relatedProducts[5]">
-              <a [routerLink]="['/', 'product',relatedProducts[5].userId,relatedProducts[5]._id]">
+              <a [routerLink]="['/', 'product',relatedProducts[5].userId,relatedProducts[5].offerId]">
                 <div class="card">
                   <div class="textWithblurredImage">
                     <img class="card-img-top" src="../../assets/related_products/s3.jpg" alt="Card image cap">
@@ -196,7 +196,7 @@
               <br> 
             </div>
             <div class="col-md-3" *ngIf="relatedProducts[6]">
-              <a [routerLink]="['/', 'product',relatedProducts[6].userId,relatedProducts[6]._id]">
+              <a [routerLink]="['/', 'product',relatedProducts[6].userId,relatedProducts[6].offerId]">
                 <div class="card">
                   <div class="textWithblurredImage">
                     <img class="card-img-top" src="../../assets/related_products/ts2.jpg" alt="Card image cap">
@@ -211,7 +211,7 @@
               <br> 
             </div>
             <div class="col-md-3" *ngIf="relatedProducts[7]">
-              <a [routerLink]="['/', 'product',relatedProducts[7].userId,relatedProducts[7]._id]">
+              <a [routerLink]="['/', 'product',relatedProducts[7].userId,relatedProducts[7].offerId]">
                 <div class="card">
                   <div class="textWithblurredImage">
                     <img class="card-img-top" src="../../assets/related_products/s2.jpg" alt="Card image cap">
@@ -236,7 +236,7 @@
           <div class=corousel_title>Customers who bought this item also bought</div>
           <div class="row">
             <div class="col-md-3" *ngIf="relatedProducts[8]">
-              <a [routerLink]="['/', 'product',relatedProducts[8].userId,relatedProducts[8]._id]">
+              <a [routerLink]="['/', 'product',relatedProducts[8].userId,relatedProducts[8].offerId]">
                 <div class="card">
                   <div class="textWithblurredImage">
                   <img class="card-img-top" src="../../assets/related_products/ts1.jpg" alt="Card image cap">
@@ -251,7 +251,7 @@
               <br> 
             </div>
             <div class="col-md-3" *ngIf="relatedProducts[9]">
-              <a [routerLink]="['/', 'product',relatedProducts[9].userId,relatedProducts[9]._id]">
+              <a [routerLink]="['/', 'product',relatedProducts[9].userId,relatedProducts[9].offerId]">
                 <div class="card">
                   <div class="textWithblurredImage">
                     <img class="card-img-top" src="../../assets/related_products/j1.jpg" alt="Card image cap">
@@ -266,7 +266,7 @@
               <br> 
             </div>
             <div class="col-md-3" *ngIf="relatedProducts[10]">
-              <a [routerLink]="['/', 'product',relatedProducts[10].userId,relatedProducts[10]._id]">
+              <a [routerLink]="['/', 'product',relatedProducts[10].userId,relatedProducts[10].offerId]">
                 <div class="card">
                   <div class="textWithblurredImage">
                     <img class="card-img-top" src="../../assets/related_products/s4.jpg" alt="Card image cap">
@@ -281,7 +281,7 @@
               <br>
             </div>
             <div class="col-md-3" *ngIf="relatedProducts[11]">
-              <a [routerLink]="['/', 'product',relatedProducts[11].userId,relatedProducts[11]._id]">
+              <a [routerLink]="['/', 'product',relatedProducts[11].userId,relatedProducts[11].offerId]">
                 <div class="card">
                   <div class="textWithblurredImage">
                     <img class="card-img-top" src="../../assets/related_products/j4.jpg" alt="Card image cap">

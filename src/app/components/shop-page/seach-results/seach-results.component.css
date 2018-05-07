@@ -42,3 +42,9 @@
 h5 {
 	cursor: pointer;
 }
+
+/* to center align an image */
+#no-products-found{
+	margin-left: 30%;
+	width: 30%;
+}
