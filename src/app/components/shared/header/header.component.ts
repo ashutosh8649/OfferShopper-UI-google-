@@ -8,8 +8,8 @@ import { Cities}  from '../../../configs/cities.config';
 })
 export class HeaderComponent implements OnInit {
 
-	constructor() {}
-
+  private location: string;
+	constructor() { }
     cities = Cities.citiesName; 
 
     selected={a:"Delhi"};
@@ -27,4 +27,9 @@ export class HeaderComponent implements OnInit {
           return a.localeCompare(b);
        });
 	}
+
+  getLocation(event) {
+    console.log(event);
+    this.location = event;
+  }
 }
