@@ -59,7 +59,6 @@ import { WheelComponent } from './components/wheel/wheel.component';
 const appRoutes:Routes=[
 
   { path: '', redirectTo: '/homepage/Delhi', pathMatch: 'full' },
-  { path: 'homepage', component: HomePageComponent },
   { path: 'homepage/:id', component: HomePageComponent },
   { path:'user/:id',component:UserComponent },
   { path:'login',component:LoginRegisterFrontpageComponent },

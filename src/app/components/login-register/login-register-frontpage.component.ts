@@ -32,6 +32,7 @@ export class LoginRegisterFrontpageComponent implements OnInit {
   tempPassword:String;
   isAlredyExist:boolean=false;
   status: boolean = false;
+  private userLocation: string = "Delhi";
 
   constructor(
     @Inject(FormBuilder)  fb: FormBuilder,
@@ -55,6 +56,7 @@ export class LoginRegisterFrontpageComponent implements OnInit {
       username : new FormControl('', [Validators.required, Validators.email]),
       password : new FormControl('', [Validators.required]),
     });
+    this.userLocation = localStorage.getItem("loc");
   }
 
   onChanges(): void {
@@ -88,7 +90,10 @@ export class LoginRegisterFrontpageComponent implements OnInit {
     }
 
     this.loginService.loginWithEmailId(username,result).subscribe((res) =>{
+
       this.router.navigate(['/homepage']);
+      this.router.navigate(['/homepage',this.userLocation]);
+
     }, (res:Response) =>{
       if(res.status==401){
         alert("Unauthorized User");

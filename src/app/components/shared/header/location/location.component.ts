@@ -38,11 +38,16 @@ export class LocationComponent implements OnInit {
 getlocation(){
   var varobj=this.obj;
   let locationService=this.locationService;
+  let _router = this.router;
+  let userMainUrl = (location.pathname.split('/'))[1];
   if (!navigator.geolocation){
     return;
   }  
-  function error() {
-    console.log("error");
+  function error() {    
+    if(userMainUrl == "homepage") {
+      _router.navigate(['/',userMainUrl,"Delhi"]);
+    }
+    console.log("User refused access to his location");
   }  
   function get(varobj){
     navigator.geolocation.getCurrentPosition((position)=>{
@@ -61,7 +66,9 @@ getlocation(){
           varobj.a=result[a-3];
         console.log(Latitude+" "+Longitude+" "+varobj.a);
         localStorage.setItem("loc",varobj.a);
-        this.homeResultRelatedToLocation(varobj.a);
+        if(userMainUrl == "homepage") {
+          _router.navigate(['/',userMainUrl,varobj.a]);
+        }
       }, (error) =>{ console.log("error")    
     })
 
@@ -78,10 +85,12 @@ ngOnInit(){
   if(value){
     if(value.trim()=="Gurugram".trim()) {
       this.obj.a="Gurgaon";
+      console.log(this.obj.a);
       this.homeResultRelatedToLocation(this.obj.a);
     }
     else {
       this.obj.a=value.trim();
+      console.log(this.obj.a);
       this.homeResultRelatedToLocation(this.obj.a); 
     }
   }

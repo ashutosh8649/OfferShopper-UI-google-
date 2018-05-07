@@ -110,11 +110,11 @@ export class UserdetailsComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("inputCity")).disabled = false;
     (<HTMLInputElement>document.getElementById("inputZip")).disabled = false;
     (<HTMLInputElement>document.getElementById("inputState")).disabled = false;
-    //(<HTMLInputElement>document.getElementById("inputShopName")).disabled = false;
-    //(<HTMLInputElement>document.getElementById("inputShopAddress")).disabled = false;
-    //(<HTMLInputElement>document.getElementById("inputShopCity")).disabled = false;
-    //(<HTMLInputElement>document.getElementById("inputShopZip")).disabled = false;
-    //(<HTMLInputElement>document.getElementById("inputShopState")).disabled = false;
+    (<HTMLInputElement>document.getElementById("inputShopName")).disabled = false;
+    (<HTMLInputElement>document.getElementById("inputShopAddress")).disabled = false;
+    (<HTMLInputElement>document.getElementById("inputShopCity")).disabled = false;
+    (<HTMLInputElement>document.getElementById("inputShopZip")).disabled = false;
+    (<HTMLInputElement>document.getElementById("inputShopState")).disabled = false;
   };
 
   submit(){
@@ -125,11 +125,11 @@ export class UserdetailsComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("inputCity")).disabled = true;
     (<HTMLInputElement>document.getElementById("inputZip")).disabled =true;
     (<HTMLInputElement>document.getElementById("inputState")).disabled = true;
-    //(<HTMLInputElement>document.getElementById("inputShopName")).disabled = true;
-    //(<HTMLInputElement>document.getElementById("inputShopAddress")).disabled = true;
-    //(<HTMLInputElement>document.getElementById("inputShopCity")).disabled = true;
-    //(<HTMLInputElement>document.getElementById("inputShopZip")).disabled = true;
-    //(<HTMLInputElement>document.getElementById("inputShopState")).disabled = true;
+    (<HTMLInputElement>document.getElementById("inputShopName")).disabled = true;
+    (<HTMLInputElement>document.getElementById("inputShopAddress")).disabled = true;
+    (<HTMLInputElement>document.getElementById("inputShopCity")).disabled = true;
+    (<HTMLInputElement>document.getElementById("inputShopZip")).disabled = true;
+    (<HTMLInputElement>document.getElementById("inputShopState")).disabled = true;
     let obj={
       "firstName": this.firstName,
       "lastName": this.lastName,
@@ -166,11 +166,6 @@ export class UserdetailsComponent implements OnInit {
       this.messageService.showSuccessToast(this._vcr,"Updated");
     }, (error) =>{
     })
-  }
-
-  setShopAddress() {
-    this.shopState = this.state;
-    this.shopZip = this.zip;
   }
 
   setCheckboxAddress() {
