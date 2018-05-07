@@ -44,8 +44,12 @@ label,a{
 
 }
 
-
 .btn-submit {
 	background-color: white;
 	color:black;
+}
+
+.btn-login {
+	background-color: #018b8b;
+	border-color: #018b8b;
 }
