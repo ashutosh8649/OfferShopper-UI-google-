@@ -147,6 +147,8 @@ export class AddOfferComponent implements OnInit {
 	getOffer(){
 		this.addOfferService.getShopAddress(this.userId).subscribe((res) =>{
 			this.shopAddress=res.shopAddress;
+			debugger
+			alert(this.shopAddress);
 			this.addOffer();
 		}, (error) =>{
 			console.log(error);
