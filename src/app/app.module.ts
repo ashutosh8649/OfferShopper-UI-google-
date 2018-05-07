@@ -58,7 +58,6 @@ import { BeASellerComponent } from './components/user/be-a-seller/be-a-seller.co
 const appRoutes:Routes=[
 
   { path: '', redirectTo: '/homepage/Delhi', pathMatch: 'full' },
-  { path: 'homepage', component: HomePageComponent },
   { path: 'homepage/:id', component: HomePageComponent },
   { path:'user/:id',component:UserComponent },
   { path:'login',component:LoginRegisterFrontpageComponent },
