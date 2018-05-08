@@ -16,5 +16,6 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
 		let time = "T"+this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+"Z";
+
   }
 }

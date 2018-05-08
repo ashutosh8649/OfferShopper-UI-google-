@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject,ViewContainerRef } from '@angular/core';
+import { Component, OnInit,Inject,ViewContainerRef ,OnDestroy} from '@angular/core';
 import {FormGroup, FormControl, Validators,FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {loginDetails} from './loginDetails';
@@ -7,15 +7,18 @@ import {LoginService} from '../../services/login.service';
 import {RegisterService} from '../../services/register.service';
 import {vendorDetails} from './vendorDetails';
 import { MessageService } from './../../services/message.service';
+import {GooglesigninService} from '../../services/googlesignin.service'
+import {HomeUrl} from '../../configs/homeRedirect.config';
+declare const gapi: any;
 
 @Component({
   selector: 'app-login-register-frontpage',
   templateUrl: './login-register-frontpage.component.html',
   styleUrls: ['./login-register-frontpage.component.css'],
-  providers:[ RegisterService,MessageService ]
+  providers:[ RegisterService,MessageService , GooglesigninService]
 })
-export class LoginRegisterFrontpageComponent implements OnInit {
-
+export class LoginRegisterFrontpageComponent implements OnInit , OnDestroy {
+  public auth2: any;
   registerUsername:String;
   registerPassword:String;
   registerAddress:String;
@@ -32,7 +35,9 @@ export class LoginRegisterFrontpageComponent implements OnInit {
   tempPassword:String;
   isAlredyExist:boolean=false;
   status: boolean = false;
+  signINResponse: any;
   private userLocation: string = "Delhi";
+  windowRef:any=window;
 
   constructor(
     @Inject(FormBuilder)  fb: FormBuilder,
@@ -40,7 +45,8 @@ export class LoginRegisterFrontpageComponent implements OnInit {
     private registerService:RegisterService,
     private router:Router,
     private messageService:MessageService,
-    private _vcr:ViewContainerRef
+    private _vcr:ViewContainerRef,
+    private googlesigninservice:GooglesigninService
     ) {
     this.fb=fb;
     this.registerForm=this.fb.group({
@@ -50,6 +56,52 @@ export class LoginRegisterFrontpageComponent implements OnInit {
     },{validator: this.checkIfMatchingPasswords});
     this.onChanges();
   }
+
+  ngOnDestroy(){
+    console.log("hello");
+  }
+
+  public googleInit() {
+    gapi.load('auth2', () => {
+      this.auth2 = gapi.auth2.init({
+        client_id: '365945332378-avlqvr9k9k1m1gkko3uocqaa5s5cj4pm.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        scope: 'profile email'
+      });
+      this.attachSignin(document.getElementById('googleBtn'));
+    });
+  }
+  public attachSignin(element) {
+    this.auth2.attachClickHandler(element, {},
+      (googleUser) => {
+        let id_token = googleUser.getAuthResponse().id_token;
+        console.log(id_token);
+
+        this.googlesigninservice.getgooglesign(id_token).subscribe(res=>{
+          res=res.toString();
+          localStorage.setItem("application-token",res);
+          let userLocation = localStorage.getItem("loc");
+          let redirectUrl=HomeUrl.homeUrl+userLocation;
+          window.location.href = redirectUrl;
+        },error=>{
+          console.log("error in services")
+        }
+        )
+        
+
+
+      }, (error) => {
+        alert(JSON.stringify(error, undefined, 2));
+      });
+  }
+
+  ngAfterViewInit(){
+    this.googleInit();
+  }
+
+
+
+
 
   ngOnInit() {
     this.loginForm=new FormGroup({

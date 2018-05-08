@@ -4,13 +4,13 @@
 }
 
 @media only screen and (max-width: 320px){
-h1{
-	font-size: 35px;
-}
+	h1{
+		font-size: 35px;
+	}
 }
 
 .cardPadding{
-padding: 4.5rem;
+	padding: 4.5rem;
 }
 
 .loginContainer{
@@ -20,27 +20,27 @@ padding: 4.5rem;
 
 @media only screen and (max-width: 367px){
 	h1{
-	font-size: 28px;
-}
+		font-size: 28px;
+	}
 }
 @media only screen and (min-width: 576px){
 	h1{
-	font-size: 28px;
-}
-label,a{
-	font-size: 15px;
-}
-.card-body{
-	padding: 0px;
-}
+		font-size: 28px;
+	}
+	label,a{
+		font-size: 15px;
+	}
+	.card-body{
+		padding: 0px;
+	}
 
-.bg-pride{
-	background:#018b8b;
-}
+	.bg-pride{
+		background:#018b8b;
+	}
 
-.text-pride{
-	color:#bd2121;
-}
+	.text-pride{
+		color:#bd2121;
+	}
 
 }
 
@@ -53,3 +53,11 @@ label,a{
 	background-color: #018b8b;
 	border-color: #018b8b;
 }
+
+#googleBtn {
+
+	background-color: silver;
+
+}
+
+

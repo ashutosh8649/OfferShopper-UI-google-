@@ -15,6 +15,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 export class NavbarComponent implements OnInit {
 
+	windowRef:any=window;
 	private login:boolean = false;
 	private token:any;
 	private userId: string = "";
@@ -48,7 +49,7 @@ export class NavbarComponent implements OnInit {
 			this.login = status;
 			this.getUserId();
 		});
-			this.getUserId();
+		this.getUserId();
 	}
 
 	logout(){
@@ -69,5 +70,5 @@ export class NavbarComponent implements OnInit {
 	loadUserprofile(){
 		this.isLogin();
 		this.router.navigate(['/user/userdetails']);
-		}
+	}
 }

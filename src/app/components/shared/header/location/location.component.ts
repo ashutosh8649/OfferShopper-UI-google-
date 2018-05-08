@@ -1,29 +1,21 @@
-import { Component, OnInit ,Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { LocationService } from '../../../../services/location.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '../../../../configs/language.config';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.css'],
-  providers:[LocationService]
+   providers:[LocationService]
 })
 export class LocationComponent implements OnInit {
 
-  languages = Language.languages;
-  private location: string;
-  private mainUrl: string;
+languages = Language.languages;
 
-  constructor(
-    private locationService: LocationService, 
-    public translate: TranslateService,
-    location: Location,
-    private router: Router
-    ) {
-
+constructor(private locationService: LocationService, public translate: TranslateService) {
+  
   //translation 
   translate.addLangs(this.languages);
   translate.setDefaultLang('en');
@@ -36,75 +28,58 @@ export class LocationComponent implements OnInit {
 
 @Input() obj={a:"Delhi"};
 getlocation(){
-  var varobj=this.obj;
-  let locationService=this.locationService;
-  let _router = this.router;
-  let userMainUrl = (location.pathname.split('/'))[1];
-  if (!navigator.geolocation){
-    return;
-  }  
-  function error() {    
-    if(userMainUrl == "homepage") {
-      _router.navigate(['/',userMainUrl,"Delhi"]);
-    }
-    console.log("User refused access to his location");
-  }  
-  function get(varobj){
+var varobj=this.obj;
+let locationService=this.locationService;
+if (!navigator.geolocation){
+  return;
+}  
+function error() {
+   console.log("error");
+}  
+function get(varobj){
     navigator.geolocation.getCurrentPosition((position)=>{
-      var Latitude  = position.coords.latitude;
-      var Longitude = position.coords.longitude;
+    var Latitude  = position.coords.latitude;
+    var Longitude = position.coords.longitude;
 
-      locationService.getLocation(position.coords.latitude, position.coords.longitude).subscribe((res) =>{
+    locationService.getLocation(position.coords.latitude, position.coords.longitude).subscribe((res) =>{
 
-        console.log(res.results[0].formatted_address);
-        var result = res.results[0].formatted_address.toString().split(",");
-        var a = result.length;
-        console.log(result[a-3]);
-        if(result[a-3].trim()=="Gurugram".trim())
-          varobj.a="Gurgaon";
-        else
-          varobj.a=result[a-3];
-        console.log(Latitude+" "+Longitude+" "+varobj.a);
-        localStorage.setItem("loc",varobj.a);
-        if(userMainUrl == "homepage") {
-          _router.navigate(['/',userMainUrl,varobj.a]);
-        }
-      }, (error) =>{ console.log("error")    
-    })
+         console.log(res.results[0].formatted_address);
+         var result = res.results[0].formatted_address.toString().split(",");
+         var a = result.length;
+         console.log(result[a-3]);
+         if(result[a-3].trim()=="Gurugram".trim())
+           varobj.a="Gurgaon";
+         else
+           varobj.a=result[a-3];
+         console.log(Latitude+" "+Longitude+" "+varobj.a);
+         localStorage.setItem("loc",varobj.a);
 
-    }, error);
-  }
+
+   }, (error) =>{ console.log("error")    
+   })
+
+}, error);
+ }
 //function call to callback
 get(varobj);
 
 }
 
 
-ngOnInit(){
-  var value:String=localStorage.getItem("loc");
-  if(value){
-    if(value.trim()=="Gurugram".trim()) {
-      this.obj.a="Gurgaon";
-      console.log(this.obj.a);
-      this.homeResultRelatedToLocation(this.obj.a);
-    }
-    else {
-      this.obj.a=value.trim();
-      console.log(this.obj.a);
-      this.homeResultRelatedToLocation(this.obj.a); 
-    }
-  }
-  else
-    this.getlocation();
-}
+ ngOnInit(){
+    var value:String=localStorage.getItem("loc");
+      if(value){
+        if(value.trim()=="Gurugram".trim())
+          this.obj.a="Gurgaon";
+        else
+           this.obj.a=value.trim();
+      }
+      else
+        this.getlocation();
 
-homeResultRelatedToLocation(userLocation) {
-  this.location = location.pathname;
-  this.mainUrl = (this.location.split('/'))[1];
-  console.log(this.mainUrl);
-  if(this.mainUrl=="homepage")
-    this.router.navigate(['/',this.mainUrl,userLocation]);
-}
+ }
+
+
 
 }
 
